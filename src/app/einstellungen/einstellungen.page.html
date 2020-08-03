@@ -1,0 +1,246 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Einstellungen</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="tertiary">
+
+  <mat-accordion class="example-headers-align" multi class="hide-ios" [style.font-size.em]="fontSize">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <ion-icon slot="start" name="notifications-outline"></ion-icon>
+          Benachrichtigungen
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+
+      <ion-list class="list-md">
+        <ion-item>
+          <ion-img class="list-img" slot="start" src="assets/icon/aktivitaet.png"></ion-img>
+          <ion-label class="label">
+            Aktivitäten
+          </ion-label>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-img class="list-img" slot="start" src="assets/icon/teilnahme.png"></ion-img>
+          <ion-label class="label">
+            Teilnahme
+          </ion-label>
+          <ion-button (click)="AlertTeilnahme()" fill="none" slot="end">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+          </ion-button>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-img class="list-img" slot="start" src="assets/icon/event.png"></ion-img>
+          <ion-label class="label">
+            Event
+          </ion-label>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-img class="list-img" slot="start" src="assets/icon/wettbewerb.png"></ion-img>
+          <ion-label class="label">
+            Wettbewerb
+          </ion-label>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-img class="list-img" slot="start" src="assets/icon/katalog.png"></ion-img>
+          <ion-label class="label">
+            Katalog
+
+          </ion-label>
+          <ion-button (click)="AlertKatalog()" fill="none" slot="end">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+          </ion-button>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-img class="list-img" slot="start" src="assets/icon/werbung.png"></ion-img>
+          <ion-label class="label">
+            Werbung
+          </ion-label>
+          <ion-button (click)="AlertWerbung()" fill="none" slot="end">
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+          </ion-button>
+          <ion-toggle slot="end"></ion-toggle>
+        </ion-item>
+
+      </ion-list>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <ion-icon slot="start" name="information-circle"></ion-icon> Informationen
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ion-list class="list-md">
+
+        <ion-item button (click)="goUberuns()" detail>
+          <ion-label class="label">
+            Über Uns
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="goImpressum()" detail>
+          <ion-label class="label">
+            Impressum
+          </ion-label>
+        </ion-item>
+
+        <ion-item button (click)="goDatenschutz()" detail>
+          <ion-label class="label">
+            Datenschutz
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+
+    </mat-expansion-panel>
+
+
+    <ion-item class="textgroesse" button (click)="goTextgroesse()" detail lines="none">
+      <ion-label class="label">
+        Textgröße
+      </ion-label>
+    </ion-item>
+
+  </mat-accordion>
+
+
+
+
+
+  <ion-div class="hide-md">
+
+
+    <div class="list-titel">
+
+      <ion-list-titel>
+        <ion-icon slot="start" name="notifications-outline"></ion-icon>
+        Benachrichtigungen
+      </ion-list-titel>
+
+    </div>
+
+    <ion-list class="list-ios" padding [style.font-size.em]="fontSize">
+
+      <ion-item>
+        <ion-img class="list-img" slot="start" src="assets/icon/aktivitaet.png"></ion-img>
+        <ion-label class="label">
+          Aktivitäten
+        </ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-img class="list-img" slot="start" src="assets/icon/teilnahme.png"></ion-img>
+        <ion-label class="label">
+          Teilnahme
+        </ion-label>
+        <ion-button (click)="AlertTeilnahme()" fill="none" slot="end">
+          <ion-icon slot="start" name="information-circle"></ion-icon>
+        </ion-button>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-img class="list-img" slot="start" src="assets/icon/event.png"></ion-img>
+        <ion-label class="label">
+          Event
+        </ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-img class="list-img" slot="start" src="assets/icon/wettbewerb.png"></ion-img>
+        <ion-label class="label">
+          Wettbewerbe
+        </ion-label>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-img class="list-img" slot="start" src="assets/icon/katalog.png"></ion-img>
+        <ion-label class="label">
+          Katalog
+        </ion-label>
+        <ion-button (click)="AlertKatalog()" fill="none" slot="end">
+          <ion-icon slot="start" name="information-circle"></ion-icon>
+        </ion-button>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-img class="list-img" slot="start" src="assets/icon/werbung.png"></ion-img>
+        <ion-label class="label">
+          Werbung
+        </ion-label>
+        <ion-button (click)="AlertWerbung()" fill="none" slot="end">
+          <ion-icon slot="start" name="information-circle"></ion-icon>
+        </ion-button>
+        <ion-toggle slot="end"></ion-toggle>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list class="list-ios">
+
+      <div class="list-titel">
+
+        <ion-list-titel>
+          <ion-icon slot="start" name="information-circle"></ion-icon>
+
+          Informationen
+        </ion-list-titel>
+
+      </div>
+
+      <ion-item button (click)="goUberuns()" detail>
+        <ion-label class="label">
+          Über Uns
+        </ion-label>
+      </ion-item>
+
+      <ion-item button (click)="goImpressum()" detail>
+        <ion-label class="label">
+          Impressum
+        </ion-label>
+      </ion-item>
+
+      <ion-item button (click)="goDatenschutz()" detail lines="none">
+        <ion-label class="label">
+          Datenschutz
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-item button (click)="goTextgroesse()" detail lines="none">
+      <ion-label class="label">
+        Textgröße
+      </ion-label>
+    </ion-item>
+
+  </ion-div>
+
+</ion-content>

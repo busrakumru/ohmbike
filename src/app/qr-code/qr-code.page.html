@@ -1,0 +1,27 @@
+<ion-content class="ion-padding-vertical">
+
+
+  <figure class="ion-text-center">
+    <img src="assets/qr.svg">
+    <figcaption>QR-Scanner</figcaption>
+  </figure>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-tab-button (click)="scanCode()">
+          <ion-icon src="assets/kamera.svg"></ion-icon>
+        </ion-tab-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-tab-button [routerLink]="['/login']">
+      <ion-label color="primary">ABBRECHEN</ion-label>
+    </ion-tab-button>
+  </ion-toolbar>
+</ion-footer>

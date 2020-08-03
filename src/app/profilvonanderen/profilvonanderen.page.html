@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profil</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="tertiary">
+
+  <div class="avatar" *ngIf="testuser">
+
+    <ion-avatar mode="ios">
+
+      <img src="assets/user.png">
+      <div class="ion-text-center">
+
+        <h7>{{testuser.name}} {{testuser.nachname}} </h7>
+
+        <ion-button id="remove" size="small" (click)="remove(testuser)">Als Freund entfernen</ion-button>
+
+      </div>
+    </ion-avatar>
+
+
+    <ion-segment mode="md" [(ngModel)]="segment">
+
+      <ion-segment-button value="aktivitaet">
+        <mat-icon class="segment-icon">history</mat-icon>
+        <ion-label class="ion-text-capitalize">Aktivität</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="freunde">
+        <mat-icon class="segment-icon">people</mat-icon>
+        <ion-label class="ion-text-capitalize">Freunde</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+  </div>
+
+
+  <div *ngIf="segment == 'aktivitaet'" class="inhalt">
+
+
+  </div>
+
+  <div *ngIf="segment == 'freunde'">
+
+    <ion-list lines="none" class="list">
+
+
+      <ion-searchbar class="searchbar" animated placeholder="Freunde Suchen" showcancelbutton=""
+        (ionInput)="filtern($event)"></ion-searchbar>
+
+
+
+
+      <ion-item *ngFor="let testId of test" button (click)="goFriend(testId)">
+
+
+        {{testId.name}} {{ testId.nachname}}
+
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

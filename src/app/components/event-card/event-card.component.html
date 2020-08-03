@@ -1,0 +1,82 @@
+<ion-card *ngFor=" let detail of eventcard">
+  <ion-card-header mode="md">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-no-padding" size="4">
+          <ion-avatar>
+            <img src="assets/testuser.jpg">
+          </ion-avatar>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-card-title>Max</ion-card-title>
+          <ion-card-subtitle>{{detail.title}}</ion-card-subtitle>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-no-padding" size="10">
+          <div>
+            <ion-icon name="bicycle" slot="start"></ion-icon>
+            <ion-label>{{detail.startPlace}} </ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="10">
+          <div>
+            <mat-icon slot="start">call_split</mat-icon>
+            <ion-label>15 km</ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="10">
+          <div>
+            <ion-icon name="time" slot="start"></ion-icon>
+            <ion-label>{{detail.startTime}}</ion-label>
+          </div>
+        </ion-col>
+
+
+
+        <ion-item-divider mode="md">
+        </ion-item-divider>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+
+        <ion-col class="ion-no-padding" size="2">
+
+          <ion-tab-button class="ion-float-right" fill="clear" (click)="merke(detail)">
+
+            <ion-icon name="bookmark-outline" *ngIf="!visible"></ion-icon>
+            <ion-icon name="bookmark" *ngIf="visible" color="primary"></ion-icon>
+
+          </ion-tab-button>
+
+        </ion-col>
+
+        <ion-col class="ion-no-padding" size="6">
+          <ion-button (click)="teilnehmen(detail)">Teilnehmen</ion-button>
+        </ion-col>
+
+
+        <ion-col class="ion-no-padding" size="4">
+
+          <ion-tab-button class="ion-float-right" fill="clear" (click)="details(detail)">
+
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+
+          </ion-tab-button>
+
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-card-content>
+</ion-card>

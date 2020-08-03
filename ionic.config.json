@@ -1,0 +1,8 @@
+{
+  "name": "ohmbike",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

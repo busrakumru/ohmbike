@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Route planen</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-label class="action" color="danger">Abbrechen</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="start()">
+        <ion-label class="action" color="primary">Starten</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-input class="input" placeholder="Start"></ion-input>
+
+    <ion-input class="input" placeholder="Ziel">
+      <!--ion-button item-right fill="none" slot="end">
+        <ion-icon name="swap-vertical-outline"></ion-icon>
+      </ion-button-->
+    </ion-input>
+    
+
+  <ion-item-divider mode="md" style="margin-top: -25px;"></ion-item-divider>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-icon name="time-outline"></ion-icon>
+            <ion-lable>..min</ion-lable>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <mat-icon>call_split</mat-icon>
+            <ion-lable>..km</ion-lable>
+
+          </ion-item>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

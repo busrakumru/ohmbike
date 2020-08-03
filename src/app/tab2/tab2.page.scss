@@ -1,0 +1,38 @@
+#map {
+
+    height: 100%;  
+  }
+
+  .md .hide-md {
+    display: none;
+  }
+  
+  .ios .hide-ios {
+    display: none;
+  }
+
+  ion-img{
+  
+    width: 50px;
+    position: absolute;
+    top:25%;
+    left: 50%;
+    transform: translate(-50%,0);
+  }
+
+  .input{
+
+    border:1px solid lightgrey; 
+    border-radius: 5px; 
+    height: 45px;
+    width: 90%;
+    position: relative;
+    margin-top: 2%;
+    margin-bottom:2%;
+    left: 50%;
+    transform: translate(-50%,0);
+ }
+
+ .icon{
+    color: #a4bf38;
+}

@@ -1,0 +1,74 @@
+<ion-app>
+
+  <ion-menu side="start" menu-id="first" contentId="main" type="overlay">
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title slot="start">Filtern</ion-title>
+        <ion-buttons slot="end">
+          <ion-button fill="none" (click)="closePage()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+
+      <ion-list class="ion-padding-top">
+
+
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">Katagoerie</ion-menu-title>
+        <ion-item style="margin-left: -15px;" lines="none" class="ion-padding-start">
+          <ion-checkbox color="primary" checked="true"></ion-checkbox>
+          <ion-label>Alle</ion-label>
+          <ion-checkbox color="primary" checked="true"></ion-checkbox>
+          <ion-label>Freunde</ion-label>
+        </ion-item>
+        <ion-item-divider mode="md"></ion-item-divider>
+
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">Strecke in Kilometer</ion-menu-title>
+
+        <ion-item lines="none">
+          <ion-row>
+            <ion-col size="6">
+              <input style="margin-top: 30px;" placeholder="0 km" matInput [(ngModel)]="value">
+            </ion-col>
+            <ion-col>
+              <ion-range mode="md" min="0" max="100" step="1" pin="true" [(ngModel)]="value">
+                <ion-label slot="start">0</ion-label>
+                <ion-label slot="end">100</ion-label>
+              </ion-range>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item-divider mode="md"></ion-item-divider>
+
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">Datum</ion-menu-title>
+        <ion-item lines="none">
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [formControl]="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+          </mat-form-field>
+
+        </ion-item>
+        <ion-item-divider mode="md"></ion-item-divider>
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">Uhrzeit</ion-menu-title>
+        <ion-item lines="none" style="transform: translate(-5%,0);">
+          <ion-datetime display-format="hh:mm " picker-format="hh:mm " value="1990-02-19T07:43Z"></ion-datetime>
+        </ion-item>
+
+
+      </ion-list>
+      <ion-button class="ion-padding" size="small" expand="block" color="primary"
+        style="position: relative; left: 50%; transform: translate(-50%,0);">Ansehen</ion-button>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+</ion-app>

@@ -1,0 +1,36 @@
+.md .hide-md {
+    display: none;
+  }
+  
+.ios .hide-ios {
+    display: none;
+  }
+
+  
+ion-title{
+
+    font-size: 13px;
+}
+
+.action{
+
+
+    font-size: 13px;
+
+}
+
+.ion-text-center{
+
+  //border: 1px solid;
+
+  display: flex;
+  justify-content: center;
+}
+
+.row{
+
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+
+}

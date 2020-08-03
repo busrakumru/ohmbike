@@ -1,0 +1,47 @@
+<div *ngFor="let fahrzeug of fahrzeuge">
+  <mat-accordion class="example-headers-align" class="ion-no-padding">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title color="primary">
+
+          {{fahrzeug.data().data}}
+
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <div mode="md">
+        <ion-card>
+
+          <ion-item lines="none" style="color:#636363">
+            <ion-icon name="battery-half" color="primary"></ion-icon>
+            <ion-note class="ion-padding-horizontal">Batterie:</ion-note>
+
+          </ion-item>
+
+          <ion-item lines="none" style="color:#636363">
+            <ion-icon name="analytics-sharp" color="primary"></ion-icon>
+            <ion-note class="ion-padding-horizontal">Hinterlegte Strecke:</ion-note>
+
+          </ion-item>
+
+
+          <ion-item lines="none" style="color:#636363">
+            <ion-icon name="cloud-done-sharp" color="primary"></ion-icon>
+            <ion-note class="ion-padding-horizontal">Gesparte Emissionsmenge:
+            </ion-note>
+
+          </ion-item>
+
+          <ion-item-divider mode="md">
+          </ion-item-divider>
+
+          <div class="ion-text-center">
+            <ion-button fill="clear" color="danger" (click)="delete(fahrzeug)">ENTFERNEN</ion-button>
+          </div>
+        </ion-card>
+
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

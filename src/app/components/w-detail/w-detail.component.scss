@@ -1,0 +1,47 @@
+#map {
+
+    height: 50%;  
+    position: relative;
+    top:5%;
+  }
+
+.md .hide-md {
+    display: none;
+}
+  
+.ios .hide-ios {
+    display: none;
+}
+
+  
+
+ion-title{
+
+    font-size: 15px;
+    
+}
+
+.label, ion-item p{
+
+    font-size: 13px;
+
+}
+
+.items{
+
+    top:2%;
+    width:99%;
+    position: relative;
+    left: 50%;
+    transform: translate(-53%,0);
+
+}
+
+ion-button{
+
+    position: relative;
+    top:5%;
+    padding-bottom: 15%;
+
+}
+

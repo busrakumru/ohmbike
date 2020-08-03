@@ -1,0 +1,126 @@
+<ion-header>
+  <div *ngFor="let user of users">
+
+    <ion-toolbar color="tertiary">
+      <ion-title color="secondary">Profil bearbeiten</ion-title>
+
+      <ion-buttons slot="start" class="hide-md">
+        <ion-button (click)="closeModal()">
+          <ion-label class="action" color="danger">Abbrechen</ion-label>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end" class="hide-md" *ngIf="user">
+        <ion-button (click)="test()">
+          <ion-label class="action" color="primary">Speichern</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content color="tertiary" *ngFor="let user of users" >
+
+  <div *ngIf="user">
+
+
+    <ion-progress-bar color="primary" *ngIf="showLoader" [value]="gespeichert"></ion-progress-bar>
+
+    <div class="avatar" mode="ios">
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+    </div>
+
+
+    <!--div class="aendern" >
+    <ion-button class="hide-md" size="small" (click)="profil()">Profilbild ändern</ion-button>
+    <ion-buttons class="hide-ios">
+      <ion-button (click)="closeModal()">
+      <ion-label color="primary">Profilbild ändern</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </div-->
+
+
+    <ion-grid class="hide-ios">
+
+      <ion-row class="row">
+
+        <ion-col class="ion-text-center">
+
+          <ion-buttons>
+            <ion-button (click)="closeModal()">
+              <ion-label class="action" color="primary">Abbrechen</ion-label>
+            </ion-button>
+          </ion-buttons>
+
+
+        </ion-col>
+
+        <ion-col class="ion-text-center">
+          <ion-buttons>
+            <ion-button (click)="test()">
+              <ion-label class="action" color="primary">Speichern</ion-label>
+            </ion-button>
+          </ion-buttons>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="eingabefelder">
+
+      <ion-input type="text" [(ngModel)]="user.user_name" color="secondary" clearInput value=""
+        placeholder="{{ user.data().user_name }}"></ion-input>
+      <ion-input color="secondary" [(ngModel)]="user.user_nachname" clearInput value=""
+        placeholder="{{ user.data().user_nachname }}"></ion-input>
+      <ion-input color="secondary" clearInput value="" placeholder="E-Mail Adresse"></ion-input>
+
+    </div>
+
+
+    <ion-fab vertical="bottom" horizontal="start" class="hide-md">
+
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button (click)="passwort()">
+          <ion-icon name="key-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="image-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="profilEntfernen()">
+          <ion-icon color="danger" name="trash-outline"></ion-icon>
+        </ion-fab-button>
+
+
+      </ion-fab-list>
+    </ion-fab>
+
+    <ion-fab vertical="center" horizontal="start" class="hide-ios">
+
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button (click)="passwort()">
+          <ion-icon name="key-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="image-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="profilEntfernen()">
+          <ion-icon color="danger" name="trash-outline"></ion-icon>
+        </ion-fab-button>
+
+
+      </ion-fab-list>
+    </ion-fab>
+
+  </div>
+
+
+</ion-content>

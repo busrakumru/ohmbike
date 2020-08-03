@@ -1,0 +1,73 @@
+<ion-card *ngFor=" let detail of ohmbikeEvent">
+  <ion-card-header mode="md">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-no-padding" size="4">
+          <ion-avatar>
+            <ion-img src="assets/logo.png"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-card-title>{{detail.title}}</ion-card-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-no-padding" size="12">
+          <div>
+            <ion-icon name="bicycle" slot="start"></ion-icon>
+            <ion-label> {{detail.startPlace}}</ion-label>
+          </div>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="6">
+          <div>
+            <mat-icon slot="start">call_split</mat-icon>
+            <ion-label>{{detail.length}}</ion-label>
+          </div>
+        </ion-col>
+
+        <ion-col class="ion-no-padding" size="12">
+          <ion-item-divider mode="md">
+          </ion-item-divider>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <ion-grid>
+      <ion-row>
+
+        <ion-col class="ion-no-padding" size="2">
+
+          <ion-tab-button class="ion-float-right" fill="clear" (click)="merke(detail)">
+
+            <ion-icon name="bookmark-outline" *ngIf="!visible"></ion-icon>
+            <ion-icon name="bookmark" *ngIf="visible" color="primary"></ion-icon>
+
+          </ion-tab-button>
+
+        </ion-col>
+
+
+        <ion-col class="ion-no-padding" size="10">
+
+          <ion-tab-button class="ion-float-right" fill="clear" (click)="details(detail)">
+
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+
+          </ion-tab-button>
+
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-card-content>
+</ion-card>

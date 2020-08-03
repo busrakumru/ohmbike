@@ -1,0 +1,64 @@
+<ion-app>
+
+  <div class="ion-page" id="main">
+
+    <ion-header [translucent]="true">
+
+      <ion-toolbar>
+
+        <ion-buttons slot="start">
+          <ion-button expand='block' (click)="scanCode()">
+            <ion-icon slot="icon-only" name="scan-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+
+        <ion-buttons slot="primary">
+          <app-menu>
+            <ion-button mat-button>
+              <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </app-menu>
+        </ion-buttons>
+
+        <ion-img src="assets/logo.png"></ion-img>
+
+      </ion-toolbar>
+
+      <ion-navbar>
+        <ion-buttons slot="start">
+          <app-root></app-root>
+          <ion-button menuToggle expand="block" (click)="openFirst()">
+            <ion-icon slot="icon-only" name="filter"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-navbar>
+
+
+    </ion-header>
+
+    <ion-content>
+
+      <div *nfIF="newEvent">
+        <h7>{{newEvent.data().title}}</h7>
+      </div>
+
+
+      <app-card-ob></app-card-ob>
+
+      <app-event-card></app-event-card>
+
+      <!--ion-button [routerLink]="['/src/app/modals/details']">qr</ion-button>
+      <ion-button [routerLink]="['/produkt2']">SCANNEN</ion-button>
+      <ion-button [routerLink]="['/produkt']">data</ion-button-->
+    </ion-content>
+
+    <ion-footer class="ion-no-border" >
+      <ion-toolbar >
+      </ion-toolbar>
+    </ion-footer>
+
+  </div>
+
+</ion-app>
+

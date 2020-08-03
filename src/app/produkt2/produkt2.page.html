@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title size="small" class="ion-text-center">Ihr Produkt wurde gefunden!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-text-center">
+    <figure *ngIf="data">
+      <img src="${data}">
+      <figcaption>{{data}}</figcaption>
+    </figure>
+
+    <ion-button color="primary" size="small" (click)="produkt(data)">Weiter</ion-button>
+
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,49 @@
+  #map {
+
+    height: 80%;  
+  }
+  
+  .md .hide-md {
+    display: none;
+  }
+  
+  .ios .hide-ios {
+    display: none;
+  }
+
+
+  ion-title{
+    padding-left: 50px;
+    font-size: 14px;
+  }
+  
+  ion-toolbar{
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 14px 2px rgba(0,0,0,0.12);
+    box-shadow: 0px 8px 10px 1px rgba(0,0,0,0.14);
+  }
+  
+  .teilnahme{
+    position: relative;
+    bottom:60px;
+  }
+
+  .label, ion-item p {
+
+    font-size: 13px;
+  }
+
+  .card{
+
+    transform: translate(0,-10%);
+  }
+
+  .items{
+
+    padding-bottom: 10%;
+    width: 99%;
+    position: relative;
+    left: 50%;
+    transform: translate(-53%,-10%);
+  }

@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img class="logo" src="assets/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding-top">
+
+  <ion-title mode="md" class="ion-text-center">LOGIN</ion-title>
+
+
+  <section>
+
+    <div class="ion-padding-top">
+      <mat-icon> email</mat-icon>
+      <mat-form-field appearance="outline">
+        <mat-label>E-Mail-Adresse</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]="user.email">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+
+      <mat-icon>vpn_key</mat-icon>
+      <mat-form-field appearance="outline">
+        <mat-label>Passwort</mat-label>
+        <input [formControl]="password" matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password">
+        <button style="background-color: white;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon style="top: 0px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+      </mat-form-field>
+
+    </div>
+
+
+  </section>
+
+  <div>
+    <ion-tab-button tab="" [disabled]="!email.valid">
+      <ion-label color="primary" (click)="passwort()">Passwort vergessen?</ion-label>
+    </ion-tab-button>
+  </div>
+
+
+  <div class="ion-padding">
+    <ion-tab-button>
+      <ion-button (click)="logIn()">Anmelden</ion-button>
+    </ion-tab-button>
+  </div>
+
+
+  <div class="ion-text-center">
+    <ion-label color="medium">Du hast noch kein Konto?</ion-label>
+    <ion-tab-button [routerLink]="['/registrierung']" tab="">
+      <ion-label color="primary">Registrieren</ion-label>
+    </ion-tab-button>
+  </div>
+
+  <div mode="md">
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-item-divider>
+          </ion-item-divider>
+        </ion-col>
+
+        <ion-col>
+          <p style="text-align: center; position: relative;top: 20px;">oder</p>
+        </ion-col>
+
+        <ion-col>
+          <ion-item-divider>
+          </ion-item-divider>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+  </div>
+
+  <div class="ion-padding">
+
+    <ion-tab-button tab="">
+      <ion-button style="width: 80% !important;" color="light">
+        <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
+      </ion-button>
+    </ion-tab-button>
+
+    <ion-tab-button tab="">
+      <ion-button style="width: 80% !important;" (click)="loginwithgp" color="light">
+        <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
+      </ion-button>
+    </ion-tab-button>
+
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,39 @@
+#map {
+
+    height: 50%;  
+  }
+  
+
+ion-title{
+
+    font-size: 15px;
+    
+}
+
+.label, ion-item p{
+
+    font-size: 13px;
+
+}
+
+.items{
+
+    top:2%;
+    width:99%;
+    position: relative;
+    left: 50%;
+    transform: translate(-53%,0);
+
+}
+
+.ion-text-center{
+
+    align-content: center;
+    background-color: #a4bf38;
+    border-radius: 10px;
+    height: 30px;
+    color: white;
+    padding-top: 5px;
+
+}
+

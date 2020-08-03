@@ -1,0 +1,20 @@
+<div [matMenuTriggerFor]="menu">
+  <ng-content></ng-content>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/wettbewerb']">
+    <mat-icon>emoji_events</mat-icon>
+    <ion-label>Wettbewerbe</ion-label>
+  </button>
+
+  <button mat-menu-item [routerLink]="['/katalog']">
+    <mat-icon>style</mat-icon>
+    <span class="ion-margin-bottom">Ohm Bike - Produkt Katalog</span>
+  </button>
+
+  <button mat-menu-item [routerLink]="['/einstellungen']">
+    <mat-icon>settings</mat-icon>
+    <span>Einstellungen</span>
+  </button>
+</mat-menu>

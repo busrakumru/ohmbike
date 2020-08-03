@@ -1,0 +1,26 @@
+.logo{
+  width: 50px;
+  position: absolute;
+  top:25%;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+mat-icon{
+  position: relative;
+  left: 10%;
+  top:6px;
+}
+
+mat-form-field {
+  width: 70%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  font-size: 12px;
+}
+  
+.position{
+    position: relative;
+    right: -50px;
+}

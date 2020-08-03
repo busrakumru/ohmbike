@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title size="small" class="ion-text-center">Ihr Produkt wurde gefunden!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <figure *ngIf="data" class="ion-text-center">
+    <img src="${data}">
+    <figcaption>{{data}}</figcaption>
+  </figure>
+
+  <div class="ion-text-center" style="margin-top: 99%;">
+
+    <ion-button color="primary" size="small" (click)="produkt(data)">Produkt hinzufügen</ion-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-label color="primary">Zurück zur Startseite</ion-label>
+    </ion-tab-button>
+  </div>
+
+</ion-content>

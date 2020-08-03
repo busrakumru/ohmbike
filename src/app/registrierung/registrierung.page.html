@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-img class="logo" src="assets/logo.png"></ion-img>
+
+
+
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="ion-padding-top">
+
+
+
+  <ion-title class="ion-text-center" mode="md">REGISTRIERUNG</ion-title>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+    <ion-list>
+
+      <form>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name </mat-label>
+          <input required matInput [formControl]="name" placeholder="Name" [(ngModel)]="user.name">
+
+          <mat-error>
+
+            <ng-container *ngIf="formctrl.name.errors && (name.dirty || name.touched)" class="invalid-feedback">
+              <div *ngIf="formctrl.name.errors.required">Bitte trage deinen Namen ein !</div>
+              <div *ngIf="formctrl.name.errors.minlength">Eingabe ist zu kurz !</div>
+            </ng-container>
+
+          </mat-error>
+        </mat-form-field>
+
+
+      </form>
+
+      <form>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Nachname </mat-label>
+          <input required matInput [formControl]="nachname" placeholder="Nachname" [(ngModel)]="user.nachname">
+
+          <mat-error>
+
+            <ng-container *ngIf="formctrl.nachname.errors && (nachname.dirty || nachname.touched)"
+              class="invalid-feedback">
+              <div *ngIf="formctrl.nachname.errors.required">Bitte trage deinen Nachnamen ein !</div>
+              <div *ngIf="formctrl.nachname.errors.minlength">Eingabe ist zu kurz !</div>
+            </ng-container>
+
+          </mat-error>
+        </mat-form-field>
+
+
+      </form>
+
+      <form>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>E-Mail-Adresse </mat-label>
+          <input required matInput [formControl]="email" placeholder="E-Mail-Adresse" [(ngModel)]="user.email">
+
+          <mat-error>
+
+            <ng-container *ngIf="formctrl.email.errors && (email.dirty || email.touched)" class="invalid-feedback">
+              <div *ngIf="formctrl.email.errors.required">Deine E-Mail-Adresse ist erforderlich !</div>
+              <div *ngIf="formctrl.email.errors.pattern">Bitte gib eine gültige E-Mail-Adresse ein !</div>
+
+            </ng-container>
+
+          </mat-error>
+        </mat-form-field>
+
+
+      </form>
+
+      <form>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Passwort</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" type="password" required matInput [formControl]="password"
+            placeholder="Passwort" [(ngModel)]="user.password">
+          <button style="background-color: white; height: 25px;" mat-icon-button matSuffix (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error>
+
+            <ng-container *ngIf="formctrl.password.errors && (password.dirty || password.touched)"
+              class="invalid-feedback">
+              <div *ngIf="formctrl.password.errors.required">Ein Passwort ist erforderlich !</div>
+              <div *ngIf="formctrl.password.errors.minlength">Dein Passwort muss mindestens 8 Zeichen lang sein !</div>
+            </ng-container>
+
+          </mat-error>
+        </mat-form-field>
+
+
+      </form>
+
+
+      <form>
+
+        <mat-form-field class="form" appearance="outline">
+          <mat-label>Passwort erneut angeben</mat-label>
+          <input matInput [type]="hidepw ? 'password' : 'text'" required type="password" matInput
+            [formControl]="password2" placeholder="Passwort">
+          <button style="background-color: white; height: 25px;" mat-icon-button matSuffix (click)="hidepw = !hidepw"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hidepw ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+          <mat-error>
+
+            <div *ngIf="formctrl.password2.errors && (password.dirty || password.touched)" class="invalid-feedback">
+              <div *ngIf="formctrl.password2.errors.required">Bitte gebe dein Passwort erneut ein !</div>
+              <div *ngIf="formctrl.password2.errors.confirmPasswordMatch">Dein Passwort stimmt nicht überein !</div>
+            </div>
+
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+
+
+      <div class="datenschutz">
+        <ion-checkbox formControlName="checkbox"></ion-checkbox>
+
+        <p class="text">Ich akzeptiere die <a [routerLink]="['/datenschutz']">allgemeinen Geschäftsbedienungen</a> von
+          Ohm Bike </p>
+      </div>
+
+      <div class="ion-padding">
+        <ion-tab-button tab="">
+          <ion-button [disabled]="!registrationForm.valid" type="submit" (click)="createAccount()">Registrieren
+          </ion-button>
+        </ion-tab-button>
+      </div>
+
+    </ion-list>
+
+
+
+  </form>
+
+
+  <div mode="md">
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-item-divider>
+          </ion-item-divider>
+        </ion-col>
+
+        <ion-col>
+          <p style="text-align: center; position: relative;top: 20px;">oder</p>
+        </ion-col>
+
+        <ion-col>
+          <ion-item-divider>
+          </ion-item-divider>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+  </div>
+
+  <div class="ion-padding">
+
+    <ion-tab-button tab="">
+      <ion-button style="width: 70% !important;" size="small" color="light">
+        <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
+      </ion-button>
+    </ion-tab-button>
+
+    <ion-tab-button tab="">
+      <ion-button style="width: 70% !important;" size="small" color="light">
+        <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
+      </ion-button>
+    </ion-tab-button>
+
+
+  </div>
+
+</ion-content>
