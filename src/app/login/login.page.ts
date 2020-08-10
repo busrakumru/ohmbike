@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-//import { Button } from 'protractor';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms'
-import { AlertController } from '@ionic/angular'
+import { AlertController, NavController } from '@ionic/angular'
 import { ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import * as firebase from 'firebase';
-//import 'firebase/firestore';
+
 
 interface User {
   email?: string;
@@ -34,36 +34,29 @@ export class LoginPage implements OnInit {
   password = new FormControl('', [Validators.required]);
 
 
+  /** generates the error messages of the inputs */
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'Geben Sie eine E-Mail-Adresse ein ';
+      return this.translate.instant('LOGIN.error-email-adress-required');
+
     }
 
-    return this.email.hasError('email') ? 'Die E-Mail-Adresse ist nicht gültig' : '';
+    return this.email.hasError('email') ? this.translate.instant('LOGIN.error-email-adress-invalid') : '';
   }
 
   constructor(
+
     public alertCtrl: AlertController,
     public toastController: ToastController,
     public afAuth: AngularFireAuth,
     private router: Router,
+    public navCtrl: NavController,
+    private translate: TranslateService
 
-  ) {
+  ) { }
 
-  }
 
-  /*resetPassword(emailAdress) {
-    this.auth.resetPassword()
-  }*/
-
-  /*resetPassword() {
-    var auth = firebase.auth();
-    var emailAdress = 'kkumrubusra@gmail.com';
-    return auth.sendPasswordResetEmail(emailAdress)
-      .then(() => console.log("email sent"))
-      .catch((error) => console.log(error))
-  }*/
-
+  /** this function allows the user to login */
   async logIn() {
 
     try {
@@ -78,26 +71,32 @@ export class LoginPage implements OnInit {
     } catch (err) {
 
       console.dir(err);
+
+      /** generates an error if there is not such a registered user */
       if (err.code === "auth/user-not-found") {
 
-        this.showAlert("Information", "Es besteht kein Profil zu dieser E-Mail Adresse ! Bitte überprüfe die Eingabe und versuche es erneut.")
+        this.showAlert("Information", this.translate.instant('ALERTS-LOGIN.user-not-found'))
 
       }
+
+      /** generates an error if the user enters a wrong password */
       if (err.code === "auth/wrong-password") {
 
-        this.showAlert("Information", "Dein Passwort stimmt mit der E-Mail Adresse nicht überein ! Bitte überprüfe die Eingabe und versuche es erneut.")
-
+        this.showAlert("Information", this.translate.instant('ALERTS-LOGIN.wrong-password'))
 
       }
+
+      /** generates an error if the user enters an invalid email adress */
       if (err.code === "auth/invalid-email") {
 
-        this.showAlert("Information", "Bitte überprüfe die Eingaben und versuche es erneut.")
+        this.showAlert("Information", this.translate.instant('ALERTS-LOGIN.invalid-email'))
 
       }
 
     }
   }
 
+  /** this is a general alert function. It takes the needed header and message from the login function */
   async showAlert(header: string, message: string) {
 
     const alert = await this.alertCtrl.create({
@@ -110,36 +109,25 @@ export class LoginPage implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  async passwort() {
+  /** this function lets the user reset his password. It will send an password-reset link to the entered email adress */
+  async resetPassword() {
     const alert = await this.alertCtrl.create({
-      header: 'Passwort vergessen',
+      header: this.translate.instant('ALERTS-LOGIN.forgotten-password-header'),
       subHeader: this.user.email,
-      message: 'Zum zurücksetzen deines Passworts wird dir ein Link an die oben stehende E-Mail Adresse zugeschickt !',
-      /*inputs: [
+      message: this.translate.instant('ALERTS-LOGIN.forgotten-password-message'),
 
-        {
-          label: 'hallo',
-          name: 'email',
-          placeholder: this.user.email,
-          type: 'text'
-
-        },
-
-      ],*/
       buttons: [{
 
-        text: 'Abbrechen',
+        text: this.translate.instant('ALERTS-LOGIN.forgotten-password-btn-cancel'),
         role: 'cancel'
 
       }, {
 
-        text: 'Weiter',
+        text: this.translate.instant('ALERTS-LOGIN.forgotten-password-btn-continue'),
         handler: () => {
-          this.weiter();
-          //this.resetPassword();
+          this.continue();
 
           var auth = firebase.auth();
           var emailAdress = this.user.email;
@@ -156,10 +144,11 @@ export class LoginPage implements OnInit {
 
   }
 
-  async weiter() {
+  /** this function generates a toast which informs the user about the password-reset link */
+  async continue() {
 
     const toast = await this.toastController.create({
-      message: 'Es wurde ein Link zur Passwortänderung an deine E-Mail-Adresse versendet.',
+      message: this.translate.instant('ALERTS-LOGIN.forgotten-password-toast'),
       duration: 2000,
       color: "dark"
     });

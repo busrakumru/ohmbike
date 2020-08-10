@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-event-card',
@@ -11,37 +12,58 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class EventCardComponent implements OnInit {
 
 
-  visible = false;
+  /** dummy event */
+  eventcard=[{
 
-  eventcard: any[] = [];
+    name:'Max',
+    title: 'kurze Fahrt durch Wedding',
+    startTime:'13.00 Uhr',
+    endTime: '14:00 Uhr',
+    startPlace: 'naunerplatz',
+    endPlace:'Seestraße',
+    description: 'zu lang',
+    length:'29km'
+
+  }]
+
   constructor(
+
     public toastController: ToastController,
-    //private aroute: ActivatedRoute,
     private router: Router,
-    private afs: AngularFirestore) { }
+    private translate: TranslateService
+    
+    ) { }
 
 
-  ngOnInit() {
+  ngOnInit() {}
+  
 
-    this.afs.collection(`eventcard`).snapshotChanges().subscribe(collectionItems => {
-      this.eventcard = [];
-      collectionItems.forEach(a => {
+  /** sends the data and navigates to the deatils page */
+  async details(detail) {
 
-        let detail: any = a.payload.doc.data();
-        detail.id = a.payload.doc.id;
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(detail),
 
-        this.eventcard.push(detail);
+      }
+    };
+    console.log("Data has been sent!");
 
-      });
-    })
+
+    this.router.navigate(['details'], navigationExtras);
+
   }
 
-  async merke(detail) {
+  /** the default visiblity of the bookmark is outlined and without color */
+  visible = false;
+
+  /** as soon as the user taps on the bookmark, it will be colored and sends the data to the noted list in the profile page */
+  async note(detail) {
     this.visible = !this.visible;
     if (this.visible) {
 
       const toast = await this.toastController.create({
-        message: 'Die Route wurde in deiner gemerketen Liste im Profil unter "Gemerkte Aktivitäten" hinzugefügt.',
+        message: this.translate.instant('TOASTS.cardob-noted'),
         duration: 2000,
         color: 'dark'
       });
@@ -54,15 +76,16 @@ export class EventCardComponent implements OnInit {
 
         }
       };
-      console.log("Daten wurden weitergeleitet!");
+      console.log("Data has been sent!");
 
 
       this.router.navigate(['tabs/tab4'], navigationExtras);
 
     } else {
 
+      /** deletes the noted event from the list */
       const toast = await this.toastController.create({
-        message: 'Die Route wurde aus der Liste entfernt.',
+        message: this.translate.instant('TOASTS.cardob-delete'),
         duration: 1000,
         color: 'dark'
       });
@@ -71,33 +94,27 @@ export class EventCardComponent implements OnInit {
     }
   }
 
-  async details(detail) {
-
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(detail),
-
-      }
-    };
-    console.log("Daten wurden weitergeleitet!");
-
-
-    this.router.navigate(['details'], navigationExtras);
-
-  }
-
-
-  async teilnehmen() {
+  /** allows the user to participate on an event */
+  async participate(detail) {
 
     const toast = await this.toastController.create({
-      message: 'Du nimmst an der Route teil. Es wurde in deinem Profil unter der "Offene Aktivitäten" - Liste hinzugefügt.',
+      message: this.translate.instant('TOASTS.event-participation'),
       duration: 2000,
       color: 'dark'
     });
     await toast.present();
 
-    this.router.navigate(['tabs/tab4']);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        specialtitle: JSON.stringify(detail),
 
+
+      }
+    };
+    console.log("Data has been sent!");
+
+
+    this.router.navigate(['tabs/tab4'], navigationExtras);
 
   }
 

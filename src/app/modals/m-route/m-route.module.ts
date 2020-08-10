@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { MRoutePageRoutingModule } from './m-route-routing.module';
 import { MRoutePage } from './m-route.page';
 import {MatIconModule} from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     IonicModule,
     MRoutePageRoutingModule,
-    MatIconModule
+    MatIconModule,
+    TranslateModule
   ],
   declarations: [MRoutePage]
 })

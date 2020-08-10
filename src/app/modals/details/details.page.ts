@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var google: any;
 
@@ -14,23 +15,30 @@ declare var google: any;
 export class DetailsPage implements OnInit {
 
   detail:any;
+
+  /** map integration */
   map: any;
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
 
   constructor(
-    //private modalCtrl: ModalController,
+
     public afs: AngularFirestore,
     public route: ActivatedRoute,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private translate: TranslateService,
+    private router: Router
+
+
     ) { 
 
+      /** gets the data from the event-card component */
      this.route.queryParams.subscribe(params => {
         if (params && params.special) {
           this.detail = JSON.parse(params.special);
           
 
-          console.log("Daten wurden entnommen!");
+          console.log("Got the data!");
 
         }
         
@@ -40,16 +48,31 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
   }
 
-  async teilnehmen() {
+  /** allows the user to participate on an event. It will be placed in the "open-activities" list in the profile */
+  async participate(detail) {
 
     const toast = await this.toastController.create({
-      message: 'Du nimmst an der Route teil. Es wurde in deinem Profil unter der "Offene Aktivitäten" - Liste hinzugefügt.',
+      message: this.translate.instant('TOASTS.event-participation'),
       duration: 2000,
       color: 'dark'
     });
     await toast.present();
 
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        specialtitle: JSON.stringify(detail),
+
+
+      }
+    };
+    console.log("Data has been sent!");
+
+
+    this.router.navigate(['tabs/tab4'], navigationExtras);
+
   }
+
+  /* shows the map */
 
   ionViewDidEnter() {
 

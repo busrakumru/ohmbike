@@ -6,6 +6,7 @@ import { Tab2Page } from './tab2.page';
 import {MatIconModule} from '@angular/material/icon';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     CommonModule,
     FormsModule,
     Tab2PageRoutingModule,
-    MatIconModule
+    MatIconModule,
+    TranslateModule
   ],
   declarations: [Tab2Page]
 })

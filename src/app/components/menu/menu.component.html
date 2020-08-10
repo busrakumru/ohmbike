@@ -1,20 +1,23 @@
+<!-- this component will be shown if the user tabs on the 'three dots' icon which is on the home page. 
+  It will let the user navigate to the pages competitions,product catalog and settings-->
+
 <div [matMenuTriggerFor]="menu">
   <ng-content></ng-content>
 </div>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/wettbewerb']">
+  <button mat-menu-item [routerLink]="['/competitions']">
     <mat-icon>emoji_events</mat-icon>
-    <ion-label>Wettbewerbe</ion-label>
+    <ion-label>{{ 'MENU.competitions' | translate }}</ion-label>
   </button>
 
-  <button mat-menu-item [routerLink]="['/katalog']">
+  <button mat-menu-item [routerLink]="['/catalog']">
     <mat-icon>style</mat-icon>
-    <span class="ion-margin-bottom">Ohm Bike - Produkt Katalog</span>
+    <span class="ion-margin-bottom">{{ 'MENU.catalog' | translate }}</span>
   </button>
 
-  <button mat-menu-item [routerLink]="['/einstellungen']">
+  <button mat-menu-item [routerLink]="['/settings']">
     <mat-icon>settings</mat-icon>
-    <span>Einstellungen</span>
+    <span>{{ 'MENU.settings' | translate }}</span>
   </button>
 </mat-menu>

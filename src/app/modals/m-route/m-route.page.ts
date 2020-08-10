@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController, AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-m-route',
@@ -8,34 +10,36 @@ import { ModalController, ToastController, AlertController } from '@ionic/angula
 })
 export class MRoutePage implements OnInit {
 
-visible=false;
   constructor(
-    private modalController: ModalController,
+     private modalController: ModalController,
      public toastController: ToastController,
-     public alertController: AlertController
+     public alertController: AlertController,
+     private translate: TranslateService
     ) { }
 
   ngOnInit() {
   }
 
+  /** closes the modal page */
   async closeModal(){
 
     await this.modalController.dismiss();
 
   }
 
+  /** this function isn't complete. It should start the given route */
   async start(){
   
       const alert = await this.alertController.create({
-      header: 'Geschafft !',
-      message: 'Wir freuen uns auf weitere Routen mit dir !',
+      header: this.translate.instant('ROUTE-MODAL.alert-header'),
+      message: this.translate.instant('ROUTE-MODAL.alert-message'),
       buttons: [{
-        text:'Löschen',
+        text:this.translate.instant('ROUTE-MODAL.alert-btn-delete'),
       handler:()=>{
 
 
       }},{
-        text:'Weiter',
+        text:this.translate.instant('ROUTE-MODAL.alert-btn-continue'),
       handler:()=>{
 
         

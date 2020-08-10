@@ -1,0 +1,79 @@
+.ios .hide-ios {
+  display: none;
+}
+
+.md .hide-md {
+  display: none;
+}
+
+.list-img{
+
+  width: 15px;
+
+}
+
+mat-expansion-panel{
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 99%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  padding-left: -60px;
+  
+}
+
+ion-icon, mat-panel-title{
+
+  color: #a4bf38;
+  
+}
+
+.label{
+
+  font-size: 13px;
+
+}
+
+.list-md{
+
+  width: 110%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  margin-bottom:20px;
+
+}
+
+.list-ios{
+
+  width: 100%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  margin-bottom:20px;
+
+}
+
+.list-titel{
+
+
+  width: full-width;
+  padding: 10px 0px 0px 10px;
+  background-color: white;
+  color: #a4bf38;
+  font-weight: bold;
+
+
+}
+
+.textsize{
+
+  border-radius: 5px;
+  width: 99%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+
+}

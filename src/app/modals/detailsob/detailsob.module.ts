@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DetailsobPageRoutingModule } from './detailsob-routing.module';
 
 import { DetailsobPage } from './detailsob.page';
+import { TranslateModule } from '@ngx-translate/core'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailsobPageRoutingModule
+    DetailsobPageRoutingModule,
+    TranslateModule
   ],
   declarations: [DetailsobPage]
 })

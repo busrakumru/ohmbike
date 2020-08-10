@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { AngularFirestore } from '@angular/fire/firestore';
-
-import * as firebase from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 
@@ -21,8 +19,6 @@ export class Tab3Page {
   minDate: Date;
   maxDate: Date;
 
-  visible = false;
-
   events: any[] = [];
   newEvent: any;
 
@@ -32,7 +28,7 @@ export class Tab3Page {
     private menuCtl: MenuController,
     private barcodeScanner: BarcodeScanner,
     public route: Router,
-    //private afs: AngularFirestore,
+    public afAuth: AngularFireAuth
 
   ) {
 
@@ -40,38 +36,38 @@ export class Tab3Page {
     this.minDate = new Date(currentYear, 0, 1);
     this.maxDate = new Date(currentYear + 20, 11, 31);
 
-    this.getUser();
-
+    /** gets the event data from tab1 */
     this.aroute.queryParams.subscribe(params => {
       if (params && params.special) {
         this.newEvent = JSON.parse(params.special);
-        console.log("aldim bebek")
+        console.log("got data !");
+
       }
 
     });
 
 
   }
+  
+  /** this function will refresh the page by pulling down */
+  refresh(event){
 
+    setTimeout(() => {
+
+      event.target.complete();
+    },2000);
+  }
+
+  /** opens the filter menu */
   openFirst() {
 
     this.menuCtl.enable(true, 'first');
     this.menuCtl.open('first');
   }
 
-  getUser() {
-
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        console.log("User is signed in.");
-      } else {
-        // No user is signed in.
-      }
-    });
-  }
-
+  /** opens the scanner function to scan the qr-code */
   async scanCode() {
-    console.log('startet zu scannen');
+    console.log('scanning');
 
     this.barcodeScanner.scan().then(
       barcodeData => {
@@ -82,7 +78,7 @@ export class Tab3Page {
             queryParams: {
               special: JSON.stringify(barcodeData.text)
             }
-          }; this.route.navigate(['produkt'], navigationExtras);
+          }; this.route.navigate(['product'], navigationExtras);
 
         }
       }).catch((err) => {
@@ -94,6 +90,3 @@ export class Tab3Page {
   }
 
 }
-
-
-

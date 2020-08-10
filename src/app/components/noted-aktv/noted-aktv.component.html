@@ -1,0 +1,8 @@
+<!-- this component will be placed in the 'noted activities list' in the profile page. It contains all the data but just shows the title of the event -->
+
+<ion-item button *ngIf="noted" (click)="goDetail(noted)" style="font-size: 13px;"lines="none">
+  <ion-avatar slot="start">
+    <ion-img src="assets/logo.png"></ion-img>
+  </ion-avatar>
+  <ion-label>{{noted.title}}</ion-label>
+</ion-item>

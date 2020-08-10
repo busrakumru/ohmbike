@@ -13,27 +13,28 @@ declare var google: any;
 })
 export class DetailsobPage implements OnInit {
 
-
-
   ohmbikeEvent: any [] = [];
   detail:any;
   title:any;
-  map:any;
 
+  /** map integration */
+  map:any;
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
 
   constructor(
-    //private modalCtrl: ModalController,
+
     public afs: AngularFirestore,
     public route: ActivatedRoute
+
     ) { 
 
+    /** gets the data from the card-ob component */
      this.route.queryParams.subscribe(params => {
         if (params && params.special) {
           this.detail = JSON.parse(params.special);
 
-          console.log("Daten wurden entnommen!");
+          console.log("Got the data!");
 
         }
         
@@ -43,6 +44,7 @@ export class DetailsobPage implements OnInit {
   ngOnInit() {
   }
 
+  /* shows the map */
   ionViewDidEnter() {
 
     this.showMap();

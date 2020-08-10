@@ -1,0 +1,23 @@
+<!-- this page will be presented when the user installs the application for the first time and navigates from the onboarding page to the scan page.
+  It will recieve the scanned data and gives the user the option to save it in the profile or cancel and navigate forward to the login page -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title size="small" class="ion-text-center">{{ 'PRODUCT.message' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-text-center">
+    <figure *ngIf="data">
+      <img src="${data}">
+      <figcaption>{{data}}</figcaption>
+    </figure>
+
+    <ion-button color="primary" size="small" (click)="product(data)">{{ 'PRODUCT.btn-continue' | translate }}:</ion-button>
+
+  </div>
+
+
+</ion-content>

@@ -28,9 +28,20 @@
   
     width: 50px;
       position: absolute;
-      top:26px;
+      top:25%;
       left: 50%;
       transform: translate(-50%,0);
   
   }
+
+  ion-label{
+
+    font-size: 13px;
+    
+  }
    
+  .ion-padding{
+
+    padding-left: 35px;
+    padding-right: 35px;
+  }

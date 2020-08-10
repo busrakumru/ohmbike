@@ -2,21 +2,14 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { PopoverController, ModalController, AlertController } from '@ionic/angular';
 import { PopovercomponentPage } from '../popovercomponent/popovercomponent.page';
-import { ProfilbearbeitenPage } from '../modals/profilbearbeiten/profilbearbeiten.page';
-//import { FahrzeugComponent } from '../components/fahrzeug/fahrzeug.component';
-//import { stringify } from 'querystring';
-import { AbgeschlosseneAktvComponent } from '../components/abgeschlossene-aktv/abgeschlossene-aktv.component';
-//import { FriendComponent } from '../components/friend/friend.component';
-import { OffeneAktvComponent } from '../components/offene-aktv/offene-aktv.component';
-import { CardOBComponent } from '../components/card-ob/card-ob.component';
+import { EditprofilePage } from '../modals/editprofile/editprofile.page';
+import { CompletedAktvComponent } from '../components/completed-aktv/completed-aktv.component';
+import { OpenAktvComponent } from '../components/open-aktv/open-aktv.component';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { first } from 'rxjs/operators';
-//import { Observable } from 'rxjs';
-
-//import { GemerkteAktvComponent } from '../components/gemerkte-aktv/gemerkte-aktv.component';
-
-//import { ProfilvonanderenPage } from '../profilvonanderen/profilvonanderen.page';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { TranslateService } from '@ngx-translate/core';
+import { NotedAktvComponent } from '../components/noted-aktv/noted-aktv.component';
 
 import * as firebase from 'firebase';
 
@@ -30,40 +23,85 @@ import * as firebase from 'firebase';
 export class Tab4Page implements OnInit {
 
 
-  //list: FriendComponent[];
   segment = 'aktivitaet';
 
-
-  fahrzeuge: any[] = [];
-  testusers = [];
+  //fahrzeuge: any[] = [];
+  vehicles: any[] = [];
   users: any[] = [];
 
-  data: any;
-  gemerkt: any;
+  //gemerkt: any;
   testuser: any;
+  data: any;
 
+  notedActivities:  NotedAktvComponent [];
+  openActivities: OpenAktvComponent[] ;
 
-  activities: OffeneAktvComponent[];
-  ob: CardOBComponent[];
-
-
-  /*profile = 
-  {
+  term = '';
+ 
+  /** dummy friends */
+  testusers = [{
 
     name: 'Marie',
-    nachname: 'Müller' 
+    nachname: 'Müller',
+    image: 'assets/profile/profil.jpg'
+  },
+  {
+    name: 'Kai',
+    nachname: 'Baum',
+    image: 'assets/profile/profil2.jpg'
 
-  }*/
+  },
+  {
+    name: 'Kelly',
+    nachname: 'Tänzer',
+    image: 'assets/profile/profil3.jpg'
 
-  // user: any = {};
-  //currentuser = firebase.auth().currentUser;
+  },
+  {
+    name: 'Max',
+    nachname: 'Krüger',
+    image: 'assets/profile/testuser.jpg'
 
+  },
+  {
+    name: 'Robin',
+    nachname: 'Schulz',
+    image: 'assets/profile/profil4.jpg'
 
+  },
+  {
+    name: 'Paul',
+    nachname: 'Hermann',
+    image: 'assets/profile/profil5.jpg'
 
-  //test = [];
+  },
+  {
+    name: 'Phillip',
+    nachname: 'Baum',
+    image: 'assets/profile/profil6.jpg'
 
-  //qrprodukt:any;
+  },
+  {
+    name: 'Telly',
+    nachname: 'Karsten',
+    image: 'assets/profile/profil7.jpg'
 
+  }];
+
+  initializer() {
+
+    this.openActivities = [
+
+      name,
+    
+    ];
+
+    this.notedActivities =[
+     
+       name       
+    ]
+
+  }
 
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
@@ -71,101 +109,60 @@ export class Tab4Page implements OnInit {
   constructor(
     private popoverController: PopoverController,
     private modalController: ModalController,
-    public alertController: AlertController,
+    public alertCtrl: AlertController,
     public router: Router,
-    //private userservice: UserService,
     public afs: AngularFirestore,
     public aroute: ActivatedRoute,
+    public afAuth: AngularFireAuth,
+    private translate: TranslateService,
   ) {
 
-    /*this.route.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.testuser = JSON.parse(params.special);
-      }
-      
-    });*/
-
-    this.aroute.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.data = JSON.parse(params.special);
-      }
-
-    });
-
-    /*this.route.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.qrprodukt = JSON.parse(params.special);
-      }
-      
-    });*/
-    this.getDocuments();
+    this.getUser();
 
     this.initializer();
 
-  }
+    this.getDocuments();
 
-  initializer() {
 
-    this.activities = [
 
-      name
-    ];
-
-  }
-
-  async ngOnInit() {
-
-    /* this.afs.collection(`testusers`).snapshotChanges().subscribe(collectionItems => {
- 
-       this.testusers = [];
-       collectionItems.forEach(a => {
-         let testuser: any = a.payload.doc.data();
-         testuser.id = a.payload.doc.id;
-         this.testusers.push(testuser);
- 
-         
-       })
-     })*/
-
-    this.testusers = await this.initializeItems();
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        firebase.firestore().doc(`/users/${user.uid}`).get().then(userProfileSnapshot => {
-          console.log(userProfileSnapshot.data().uid);
-
-        });
+    /** gets data from dummy test */
+    this.aroute.queryParams.subscribe(params => {
+      if (params && params.specialData) {
+        this.data = JSON.parse(params.specialData);
+        console.log("got data !" , this.data)
       }
+
+      
+
     });
-  }
 
-  async initializeItems(): Promise<any> {
-    const testusers = await this.afs.collection('testusers').valueChanges().pipe(first()).toPromise();
-    return testusers;
+    /** gets data from dummy testuser */
+    this.aroute.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.testusers = JSON.parse(params.special);
+        console.log("array:", this.testusers)
 
-
-  }
-
-  async filtern(evt) {
-
-    this.testusers = await this.initializeItems();
-    const suche = evt.srcElement.value;
-
-    if (!suche) {
-
-      return;
-    }
-    this.testusers = this.testusers.filter(currentFriend => {
-
-      if (currentFriend.name && suche) {
-
-        return (currentFriend.name.toLowerCase().indexOf(suche.toLowerCase()) > -1 || currentFriend.nachname.toLowerCase().indexOf(suche.toLowerCase()) > -1);
       }
-    })
-
+      
+    });
 
   }
+  
+  /** this function will refresh the page by pulling down */
 
+  refresh(event) {
+
+  
+    setTimeout(() => {
+
+      event.target.complete();
+    }, 2000);
+  }
+
+  async ngOnInit() {}
+
+  
+/** opens the popover */
   async presentPopover(event) {
 
     const popover = await this.popoverController.create({
@@ -180,11 +177,12 @@ export class Tab4Page implements OnInit {
 
   }
 
+/** opens the edip profile modal */
   edit() {
 
     this.modalController.create({
 
-      component: ProfilbearbeitenPage,
+      component: EditprofilePage,
       cssClass: 'edit-modal-class',
       componentProps: this.users
 
@@ -197,21 +195,18 @@ export class Tab4Page implements OnInit {
         if (res.data != null) {
 
           this.users = res.data;
-
-
         }
 
       })
     })
-
-
   }
 
-  async abgeschlossen() {
+  /** opens the details page of the completed activity */
+  async completed() {
 
     const modal = await this.modalController.create({
 
-      component: AbgeschlosseneAktvComponent,
+      component: CompletedAktvComponent,
       cssClass: 'my-custom-class',
 
 
@@ -223,26 +218,26 @@ export class Tab4Page implements OnInit {
 
   }
 
- 
 
+/** deletes the selected activity from the list */
   async deleteActivities(offen) {
 
-    let alert = await this.alertController.create({
-      header: 'Achtung',
-      message: 'Du bist dabei, nicht mehr an dem Wettbewerb teilzunehmen !',
+    let alert = await this.alertCtrl.create({
+      header: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-header'),
+      message: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-message'),
       buttons: [
         {
-          text: 'nicht mehr Teilnehmen',
+          text: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-btn-not-participate'),
           handler: () => {
             console.log('Freund wurde gelöscht');
-            this.activities.splice(offen, 1);
+            this.openActivities.splice(offen, 1);
           }
         },
         {
-          text: 'Abbrechen',
+          text: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-btn-cancel'),
           role: 'cancel',
           handler: () => {
-            console.log('Abgebrochen');
+            console.log('canceled');
           }
 
         }
@@ -253,31 +248,32 @@ export class Tab4Page implements OnInit {
   }
 
 
-
-  goFreund(testuser) {
+/** navigates to the friends profile */
+  goFriend(testuser) {
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        special: JSON.stringify(testuser)
+        special: JSON.stringify(testuser),
+        specialArray: JSON.stringify(this.testusers)
       }
     };
-    this.router.navigate(['profilvonanderen'], navigationExtras);
+    this.router.navigate(['testuser'], navigationExtras);
   }
 
-  goFreundData(data) {
+  /** navigates to the friends profile */
+  goFriendData(data) {
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        special: JSON.stringify(data)
+        special: JSON.stringify(data),
+        
       }
     };
     this.router.navigate(['test'], navigationExtras);
   }
 
-
+  /** gets all users from firestore */
   getDocuments() {
-
-
 
     var user = firebase.auth().currentUser;
     var name, email, uid;
@@ -300,4 +296,66 @@ export class Tab4Page implements OnInit {
     })
   }
 
+  /** deletes the selected user from the list */
+  async deleteTestuser(friend) {
+
+    let alert = await this.alertCtrl.create({
+      header: this.translate.instant('TESTUSER.alert-header'),
+      message: this.translate.instant('TESTUSER.alert-message'),
+      buttons: [
+        {
+          text: this.translate.instant('TESTUSER.alert-btn-unfollow'),
+          handler: () => {
+            console.log('Freund wurde entfolgt');
+            this.testusers.splice(friend, 1);
+          }
+        },
+        {
+          text: this.translate.instant('TESTUSER.alert-btn-cancel'),
+          role: 'cancel',
+          handler: () => {
+            console.log('Abgebrochen');
+          }
+
+        }
+      ]
+    });
+    await alert.present();
+
+
+  }
+
+  /** this function is checking wheter the user is logged in or not. If the user is logged in, the application will open the root page "tab4-profile".
+   * If not, the application will navigate to the login page. 
+   */
+  getUser() {
+
+    var user = firebase.auth().currentUser;
+    var name, email, uid;
+
+    if (user != null) {
+      name = user.displayName;
+      email = user.email;
+      uid = user.uid;
+      console.log(user);
+    }
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        firebase.firestore().doc(`/users/${user.uid}`).get().then(userProfileSnapshot => {
+          console.log(userProfileSnapshot.data().uid);
+        });
+        console.log("User is signed in.");
+
+        this.router.navigate(['tabs/tab4']);
+      } else {
+
+        this.router.navigate(['login']);
+        console.log("No user is signed in.");
+
+      }
+    });
+  }
+
+  
 }

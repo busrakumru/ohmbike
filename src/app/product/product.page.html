@@ -1,0 +1,36 @@
+<!-- this page opens after the user taps in the home page to the scan button and scans a qr-code. It will recieve the scanned data and gives the user the option
+   to save it in the profile or navigate back to the home page-->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title size="small" class="ion-text-center">{{ 'PRODUCT.message' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!--div>
+    
+    <ion-label style="margin-left: 6%;">Benenne dein Fahrzeug !</ion-label>
+    <ion-input  placeholder="Titel"></ion-input>
+
+
+
+  </div-->
+
+
+  <figure *ngIf="data" class="ion-text-center">
+    <img src="${data}">
+    <figcaption>{{ 'PRODUCT.description' | translate }}: {{data}}</figcaption>
+  </figure>
+
+  <div class="ion-text-center" style="margin-top: 99%;">
+
+    <ion-button color="primary" size="small" (click)="product(data)">{{ 'PRODUCT.btn-add-product' | translate }}</ion-button>
+
+    <ion-tab-button [routerLink]="['/tabs/tab3']">
+      <ion-label color="primary">{{ 'PRODUCT.btn-back-to-home' | translate }}</ion-label>
+    </ion-tab-button>
+  </div>
+
+</ion-content>

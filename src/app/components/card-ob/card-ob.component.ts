@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -11,16 +12,28 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CardOBComponent implements OnInit {
 
-  ohmbikeEvent: any[] = [];
+
+  /** dummy event */
+  ohmbikeEvent=[{
+
+    title: 'Zoo',
+    startPlace: 'Zoologischer Garten',
+    description: 'Hier kommt die Beschreibung über die Route !',
+    length:'5km'
+
+  }]
 
   constructor(
+
     public toastController: ToastController,
-    private afs: AngularFirestore,
-    private router: Router) {
+    private router: Router,
+    private translate: TranslateService) {
+
   }
 
-  visible = false;
+   ngOnInit() {}
 
+  /** sends the data and navigates to the deatils page */
   async details(detail) {
 
     let navigationExtras: NavigationExtras = {
@@ -29,20 +42,23 @@ export class CardOBComponent implements OnInit {
 
       }
     };
-    console.log("Daten wurden weitergeleitet!");
+    console.log("Data has been sent!");
 
     this.router.navigate(['detailsob'], navigationExtras);
 
   }
 
+  /** the default visiblity of the bookmark is outlined and without color */
+  visible = false;
 
-  async merke(detail) {
+  /** as soon as the user taps on the bookmark, it will be colored and sends the data to the profile page */
+  async note(detail) {
     this.visible = !this.visible;
 
     if (this.visible) {
 
       const toast = await this.toastController.create({
-        message: 'Die Route wurde in deinem Profil unter der "Gemerkte Aktivitäten" - Liste hinzugefügt.',
+        message: this.translate.instant('TOASTS.cardob-noted'),
         duration: 2000,
         color: 'dark',
 
@@ -56,7 +72,7 @@ export class CardOBComponent implements OnInit {
 
         }
       };
-      console.log("Daten wurden weitergeleitet!");
+      console.log("Data has been sent!");
 
 
       this.router.navigate(['tabs/tab4'], navigationExtras);
@@ -64,7 +80,7 @@ export class CardOBComponent implements OnInit {
     } else {
 
       const toast = await this.toastController.create({
-        message: 'Die Route wurde aus der Liste entfernt.',
+        message: this.translate.instant('TOASTS.cardob-delete'),
         duration: 1000,
         color: 'dark',
 
@@ -72,23 +88,6 @@ export class CardOBComponent implements OnInit {
       await toast.present();
 
     }
-  }
-
-  ngOnInit() {
-
-
-    this.afs.collection(`ohmbikeEvent`).snapshotChanges().subscribe(collectionItems => {
-      this.ohmbikeEvent = [];
-      collectionItems.forEach(a => {
-
-        let detail: any = a.payload.doc.data();
-        detail.id = a.payload.doc.id;
-
-        this.ohmbikeEvent.push(detail);
-
-
-      })
-    });
   }
 
 }

@@ -1,10 +1,13 @@
+<!-- this is the datils page which will open if the details button of one of the users created events got tapped. It includes the details about an event 
+and a button for the participation. -->
+
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="src\app\tab3" icon="chevron-back-outline" text=""></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Route von Max</ion-title>
+    <ion-title>{{ 'DETAILS-PAGE.title' | translate }}</ion-title>
 
   </ion-toolbar>
 </ion-header>
@@ -12,33 +15,33 @@
 <ion-content>
 
   <div #map id="map"></div>
-  <ion-button class="teilnahme" (click)="teilnehmen()">Teilnehmen</ion-button>
+  <ion-button class="participation" (click)="participate(detail)">{{ 'DETAILS-PAGE.btn' | translate }}</ion-button>
 
   <div class="hide-md">
 
     <div class="items" *ngIf="detail">
       <ion-item>
-        <ion-label class="label">Beginn <p>{{detail.startTime}}</p>
+        <ion-label class="label">{{ 'DETAILS-PAGE.beginning' | translate }} <p>{{detail.startTime}}</p>
         </ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-label class="label">Ende <p>{{detail.endTime}}</p>
+        <ion-label class="label">{{ 'DETAILS-PAGE.end' | translate }} <p>{{detail.endTime}}</p>
         </ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-label class="label">Start <p>{{detail.startPlace}}</p>
+        <ion-label class="label">{{ 'DETAILS-PAGE.from' | translate }} <p>{{detail.startPlace}}</p>
         </ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-label class="label">Ziel <p>{{detail.endPlace}}</p>
+        <ion-label class="label">{{ 'DETAILS-PAGE.to' | translate }} <p>{{detail.endPlace}}</p>
         </ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-label class="label">Notizen <p>{{detail.description}}</p>
+        <ion-label class="label">{{ 'DETAILS-PAGE.notes' | translate }} <p>{{detail.description}}</p>
         </ion-label>
       </ion-item>
     </div>
@@ -55,8 +58,8 @@
           <ion-row>
             <ion-col>
               <ion-note>
-                Beginn:
-              </ion-note>
+                {{ 'DETAILS-PAGE.beginning' | translate }}:             
+               </ion-note>
             </ion-col>
             <ion-col>
               <ion-note>
@@ -70,7 +73,7 @@
           <ion-row>
             <ion-col>
               <ion-note>
-                Ende
+                {{ 'DETAILS-PAGE.end' | translate }}:
               </ion-note>
             </ion-col>
             <ion-col>

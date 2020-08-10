@@ -3,6 +3,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { MRoutePage } from '../modals/m-route/m-route.page';
 import { Platform } from '@ionic/angular';
 import { ViewChild, ElementRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var google: any;
 
@@ -13,16 +14,19 @@ declare var google: any;
 })
 export class Tab2Page {
 
+  /** map integration */
   map: any;
-
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
   constructor(
+
     private modalController: ModalController,
-    //public platform: Platform,
     public alertController: AlertController,
+    private translate: TranslateService
+
     ) { }
 
+  /** opens the modal page for the ios version */
   async Modal() {
 
     const modal = await this.modalController.create({
@@ -37,6 +41,7 @@ export class Tab2Page {
   }
 
 
+  /* shows the map */
   ionViewDidEnter(){
     
     this.showMap();
@@ -57,18 +62,19 @@ export class Tab2Page {
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
 
+  /** this function isn't complete. It should start the given route */
   async start(){
 
     const alert = await this.alertController.create({
-      header: 'Geschafft !',
-      message: 'Wir freuen uns auf weitere Routen mit dir !',
+      header: this.translate.instant('TAB2.alert-header'),
+      message: this.translate.instant('TAB2.alert-message'),
       buttons: [{
-        text:'Löschen',
+        text:this.translate.instant('TAB2.alert-btn-delete'),
       handler:()=>{
-
+        
 
       }},{
-        text:'Weiter',
+        text:this.translate.instant('TAB2.alert-btn-continue'),
       handler:()=>{
 
         

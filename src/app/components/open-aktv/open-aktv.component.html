@@ -1,0 +1,15 @@
+<!-- this component will be placed in the 'open activities list' in the profile page. It contains all the data but just shows the title of the event -->
+
+<ion-item button *ngIf="data" (click)="goDetail()" style="font-size: 13px;">
+  <ion-avatar slot="start">
+    <ion-img src="assets/logo.png"></ion-img>
+  </ion-avatar>
+  <ion-label>{{data}}</ion-label>
+</ion-item>
+
+<ion-item button *ngIf="aktv" (click)="goDetails(aktv)" style="font-size: 13px;">
+  <ion-avatar slot="start">
+    <ion-img src="assets/logo.png"></ion-img>
+  </ion-avatar>
+  <ion-label>{{aktv.title}}</ion-label>
+</ion-item>

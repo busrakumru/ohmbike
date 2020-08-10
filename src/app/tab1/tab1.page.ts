@@ -9,6 +9,8 @@ import { NavigationExtras, Router } from '@angular/router';
 
 import * as moment from 'moment';
 import * as firebase from 'firebase';
+import { TranslateService } from '@ngx-translate/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -53,7 +55,8 @@ export class Tab1Page implements OnInit{
     private menuCtl: MenuController,
     public modalController: ModalController,
     private alertCtrl: AlertController,
-    private router: Router) {
+    private router: Router,
+    private translate: TranslateService) {
 
       this.loadEvent();  
 
@@ -89,7 +92,17 @@ export class Tab1Page implements OnInit{
     console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
   }
 
-  
+  /** this function will refresh the page by pulling down */
+  refresh(event){
+
+    this.loadEvent();
+    setTimeout(() => {
+
+      event.target.complete();
+    },2000);
+  }
+
+
   addEvent() {
 
     let events={
@@ -116,7 +129,7 @@ export class Tab1Page implements OnInit{
     this.db.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
       actions.forEach(action => {  
-        console.log('Titre: ' + action.payload.exportVal().title);
+        console.log('Title: ' + action.payload.exportVal().title);
         let event={title: action.payload.exportVal().title,
 
           startTime:  new Date(action.payload.exportVal().startTime),
@@ -134,17 +147,18 @@ export class Tab1Page implements OnInit{
     }); 
   }
 
-  remove(){
+  /*remove(){
 
     var adaRef = this.db.list('/Events');
     adaRef.remove()
       .then(function() {
+        //window.location.reload();
         console.log("Remove succeeded.")
       })
       .catch(function(error) {
         console.log("Remove failed: " + error.message)
       });
-    }
+    }*/
 
 async back(){
   var swiper = document.querySelector('.swiper-container')['swiper'];
@@ -180,21 +194,32 @@ async onEventSelected(newEvent) {
         
       `,
       buttons: [
-        {text:'Löschen',
-        handler:(key)=>{
+        {text:this.translate.instant('TAB1.btn-delete'),
+        handler:()=>{
 
-          this.remove();
+          var adaRef = this.db.list('/Events');
+    adaRef.remove()
+      .then(function() {
+        
+        //window.location.reload();
+        console.log("Remove succeeded.")
+      })
+      .catch(function(error) {
+        console.log("Remove failed: " + error.message)
+      });
+
+          //this.remove();
           
         }
       },{
-        text:'Berarbeiten',
+        text: this.translate.instant('TAB1.btn-edit'),
         handler:()=>{
           
           
         }
               
         },{
-          text:'Teilen',
+          text:this.translate.instant('TAB1.btn-share'),
           handler:(newEvent)=>{
 
             this.hallo();

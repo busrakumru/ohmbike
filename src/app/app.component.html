@@ -1,10 +1,12 @@
 <ion-app>
 
+  <!-- here is the filter menu which let the user customize his home page posts -->
+
   <ion-menu side="start" menu-id="first" contentId="main" type="overlay">
 
     <ion-header>
       <ion-toolbar>
-        <ion-title slot="start">Filtern</ion-title>
+        <ion-title slot="start">{{ 'FILTER.title' | translate }}</ion-title>
         <ion-buttons slot="end">
           <ion-button fill="none" (click)="closePage()">
             <ion-icon name="close-outline"></ion-icon>
@@ -17,17 +19,18 @@
 
       <ion-list class="ion-padding-top">
 
-
-        <ion-menu-title class="ion-padding" style="font-weight: bold;">Katagoerie</ion-menu-title>
+        <!-- let the user choose wheter all posts should be shown or just from his friends -->
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.category' | translate }}</ion-menu-title>
         <ion-item style="margin-left: -15px;" lines="none" class="ion-padding-start">
           <ion-checkbox color="primary" checked="true"></ion-checkbox>
-          <ion-label>Alle</ion-label>
+          <ion-label>{{ 'FILTER.all' | translate }}</ion-label>
           <ion-checkbox color="primary" checked="true"></ion-checkbox>
-          <ion-label>Freunde</ion-label>
+          <ion-label>{{ 'FILTER.friends' | translate }}</ion-label>
         </ion-item>
         <ion-item-divider mode="md"></ion-item-divider>
 
-        <ion-menu-title class="ion-padding" style="font-weight: bold;">Strecke in Kilometer</ion-menu-title>
+        <!-- let the user define the route distance -->
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.distance-in-kilometers' | translate }}</ion-menu-title>
 
         <ion-item lines="none">
           <ion-row>
@@ -45,18 +48,21 @@
 
         <ion-item-divider mode="md"></ion-item-divider>
 
-        <ion-menu-title class="ion-padding" style="font-weight: bold;">Datum</ion-menu-title>
+        <!-- let the user choose the date of the events -->
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.date' | translate }}</ion-menu-title>
         <ion-item lines="none">
           <mat-form-field>
-            <mat-label>Choose a date</mat-label>
+            <mat-label>{{ 'FILTER.choose' | translate }}</mat-label>
             <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [formControl]="date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi="true" #picker></mat-datepicker>
           </mat-form-field>
 
+
+        <!-- let the user choose the time of the events -->
         </ion-item>
         <ion-item-divider mode="md"></ion-item-divider>
-        <ion-menu-title class="ion-padding" style="font-weight: bold;">Uhrzeit</ion-menu-title>
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.time' | translate }}</ion-menu-title>
         <ion-item lines="none" style="transform: translate(-5%,0);">
           <ion-datetime display-format="hh:mm " picker-format="hh:mm " value="1990-02-19T07:43Z"></ion-datetime>
         </ion-item>
@@ -64,7 +70,7 @@
 
       </ion-list>
       <ion-button class="ion-padding" size="small" expand="block" color="primary"
-        style="position: relative; left: 50%; transform: translate(-50%,0);">Ansehen</ion-button>
+        style="position: relative; left: 50%; transform: translate(-50%,0);" (click)="filter()">{{ 'FILTER.btn' | translate }}</ion-button>
     </ion-content>
   </ion-menu>
 

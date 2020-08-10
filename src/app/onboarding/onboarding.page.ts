@@ -12,6 +12,7 @@ export class OnboardingPage implements OnInit {
 
   constructor(private router: Router) {}
 
+  /** navigates to the qr-code scanner page */
   go() {
 
     this.router.navigate(['qr-code']);

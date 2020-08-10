@@ -1,6 +1,11 @@
+<!-- tab4 is the profile page. Here exists three segments:
+  - activities: shows the noted, open, and completed activities
+  - friends: includes a friendsliste which navigates to their profile
+  - vehicles: lists the added vehicles -->
+
 <ion-header>
   <ion-toolbar>
-    <ion-title class="hide-md">Profil</ion-title>
+    <ion-title class="hide-md">{{ 'TAB4.title' | translate }}</ion-title>
     <ion-img class="hide-ios" src="assets/logo.png"></ion-img>
 
 
@@ -12,6 +17,15 @@
 </ion-header>
 
 <ion-content color="tertiary">
+
+  <div class="ion-padding" style="background-color: white;">
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+
+      <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
+
+    </ion-refresher>
+  </div>
+
 
   <div class="avatar">
 
@@ -26,8 +40,9 @@
 
         </div>
 
-
-        <ion-button id="edit" size="small" (click)="edit(user)">Profil bearbeiten</ion-button>
+        <ion-button id="edit" size="small" (click)="edit(user)">
+          {{'TAB4.edit-profile' | translate}}
+        </ion-button>
 
       </div>
     </ion-avatar>
@@ -37,17 +52,23 @@
 
       <ion-segment-button value="aktivitaet">
         <mat-icon class="segment-icon">history</mat-icon>
-        <ion-label class="ion-text-capitalize">Aktivität</ion-label>
+        <ion-label class="ion-text-capitalize">
+          {{'TAB4.segment-activity' | translate}}
+        </ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="freunde">
         <mat-icon class="segment-icon">people</mat-icon>
-        <ion-label class="ion-text-capitalize">Freunde</ion-label>
+        <ion-label class="ion-text-capitalize">
+          {{'TAB4.segment-friends' | translate}}
+        </ion-label>
       </ion-segment-button>
 
-      <ion-segment-button value="fahrzeuge">
+      <ion-segment-button value="vehicles">
         <mat-icon class="segment-icon">motorcycle</mat-icon>
-        <ion-label class="ion-text-capitalize">Fahrzeuge</ion-label>
+        <ion-label class="ion-text-capitalize">
+          {{'TAB4.segment-vehicles' | translate}}
+        </ion-label>
       </ion-segment-button>
 
     </ion-segment>
@@ -60,26 +81,32 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Gemerkte Aktivitäten
+            {{'TAB4.noted-activities' | translate}}
           </mat-panel-title>
 
 
 
         </mat-expansion-panel-header>
 
-        <ion-item lines="none" *ngFor="let item of activities;" style="width:270px; margin-left: -15px;">
+        <ion-item-sliding id="itemSlide" lines="none" *ngFor="let item of notedActivities;">
 
+          <app-noted-aktv></app-noted-aktv>
 
-          <app-gemerkte-aktv></app-gemerkte-aktv>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteActivitie(item)">
+              <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
+            </ion-item-option>
 
-        </ion-item>
+          </ion-item-options>
+        </ion-item-sliding>
+
 
       </mat-expansion-panel>
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Offene Aktivitäten
+            {{'TAB4.open-activities' | translate}}
           </mat-panel-title>
 
         </mat-expansion-panel-header>
@@ -87,12 +114,9 @@
         <ion-list class="abgeschlossen" lines="none">
 
 
-          <ion-item-sliding id="itemSlide" *ngFor="let item of activities; let offen = index">
+          <ion-item-sliding id="itemSlide" *ngFor="let item of openActivities; let offen = index">
 
-
-            <app-offene-aktv></app-offene-aktv>
-
-
+            <app-open-aktv></app-open-aktv>
 
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="deleteActivities(offen)">
@@ -108,13 +132,14 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Abgeschlossene Aktivitäten
+            {{'TAB4.completed-activities' | translate}}
           </mat-panel-title>
 
         </mat-expansion-panel-header>
         <ion-list class="abgeschlossen" lines="none">
 
-          <ion-item button (click)="abgeschlossen()">
+          <!-- dummy item -->
+          <ion-item button (click)="completed()">
             <ion-avatar slot="start">
               <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
             </ion-avatar>
@@ -134,25 +159,46 @@
 
     <ion-list lines="none" class="list">
 
+      <ion-searchbar class="searchbar" animated placeholder="{{ 'TAB4.searchbar' | translate }}" showcancelbutton=""
+        [(ngModel)]="term"></ion-searchbar>
 
-      <ion-searchbar class="searchbar" animated placeholder="Freunde Suchen" showcancelbutton=""
-        (ionInput)="filtern($event)"></ion-searchbar>
+      <ion-item-sliding id="itemSlide" *ngIf="data">
 
-      <ion-item *ngIf="data" button (click)="goFreundData(data)">
+        <ion-item button (click)="goFrienddData(data)">
+          <ion-avatar mode="ios">
 
+            <img src="assets/user.png">
 
-        {{data.name}} {{ data.nachname}}
+          </ion-avatar>
+          <ion-label>{{data.name}} {{ data.nachname}}</ion-label>
+        </ion-item>
 
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="delete(data)">
+            <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
+          </ion-item-option>
 
-      </ion-item>
+        </ion-item-options>
+      </ion-item-sliding>
 
+      <ion-item-sliding id="itemSlide" *ngFor="let testuser of testusers | filter:term; let friend = index">
 
-      <ion-item *ngFor="let testuser of testusers" button (click)="goFreund(testuser)">
+        <ion-item button (click)="goFriend(testuser)">
+          <ion-avatar mode="ios">
 
-        {{testuser.name}} {{ testuser.nachname}}
+            <img src="{{testuser.image}}" />
 
-      </ion-item>
+          </ion-avatar>
+          <ion-label>{{testuser.name}} {{testuser.nachname}}</ion-label>
+        </ion-item>
 
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteTestuser(friend)">
+            <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
+          </ion-item-option>
+
+        </ion-item-options>
+      </ion-item-sliding>
 
 
 
@@ -160,63 +206,10 @@
 
   </div>
 
-  <!--ion-list lines="none" class="list">
 
-    <ion-item-sliding *ngFor="let friend of friends">
-      <ion-item button (click)="goFriend()">
+  <div *ngIf="segment == 'vehicles'">
 
-        <h3>{{ friend.name }} {{ friend.nachname }}</h3>
-        <button (click)="remove(friend)">Remove</button>
-
-      </ion-item>
-
-
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash" style="color: white;"></ion-icon>
-        </ion-item-option>
-
-      </ion-item-options>
-    </ion-item-sliding-->
-
-    <!--ion-item-sliding  id="itemSlide"  *ngFor="let item of friends; let i = index"-->
-
-
-
-
-
-    <!--app-friend ></app-friend-->
-
-
-
-    <!--ion-item-options side="end">
-        <ion-item-option color="danger" (click)="delete(i)">
-          <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
-        </ion-item-option>
-       
-      </ion-item-options>
-    </ion-item-sliding-->
-
-    <!--ion-item button *ngFor="let item of list" (click)="goDetail(wettbewerb)" >      
-
-        
-        <ion-label>{{item}}</ion-label> 
-        </ion-item-->
-
-
-
-
-
-    <!--ion-item *ngFor="let item of list">
-          {{item}}
-        </ion-item-->
-
-
-
-
-  <div *ngIf="segment == 'fahrzeuge'">
-
-    <app-fahrzeug></app-fahrzeug>
+    <app-vehicle></app-vehicle>
 
   </div>
 

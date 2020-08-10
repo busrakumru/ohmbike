@@ -1,0 +1,51 @@
+<!-- this component shows the added vehicle. It contains the name, battery, saved route and the amount of saved emissions of the vehicle -->
+
+<div *ngFor="let vehicle of vehicles">
+  <mat-accordion class="example-headers-align" class="ion-no-padding">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title color="primary">
+
+          {{vehicle.data().data}}
+
+        </mat-panel-title>
+
+
+
+      </mat-expansion-panel-header>
+      <div mode="md">
+        <ion-card>
+
+          <ion-item lines="none" style="color:#636363">
+            <ion-icon name="battery-half" color="primary"></ion-icon>
+            <ion-note class="ion-padding-horizontal">{{ 'VEHICLE.battery' | translate }}:</ion-note>
+
+          </ion-item>
+
+          <ion-item lines="none" style="color:#636363">
+            <ion-icon name="analytics-sharp" color="primary"></ion-icon>
+            <ion-note class="ion-padding-horizontal">{{ 'VEHICLE.saved-route' | translate }}:</ion-note>
+
+          </ion-item>
+
+
+          <ion-item lines="none" style="color:#636363">
+            <ion-icon name="cloud-done-sharp" color="primary"></ion-icon>
+            <ion-note class="ion-padding-horizontal">{{ 'VEHICLE.amount-of-emissions-saved' | translate }}:
+            </ion-note>
+
+          </ion-item>
+
+          <ion-item-divider mode="md">
+          </ion-item-divider>
+
+          <div class="ion-text-center">
+            <ion-button fill="clear" color="danger" (click)="delete(vehicle)">{{ 'VEHICLE.btn' | translate }}</ion-button>
+          </div>
+        </ion-card>
+
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

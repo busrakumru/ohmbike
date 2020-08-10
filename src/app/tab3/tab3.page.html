@@ -1,3 +1,6 @@
+<!-- tab3 is the main home page where various events will be shown. So the user can go through different posts and can eventually get details or directly 
+participate on those.-->
+
 <ion-app>
 
   <div class="ion-page" id="main">
@@ -25,6 +28,7 @@
 
       </ion-toolbar>
 
+      <!-- here is the filter icon. If the user tapps on it the filter menu will be open. This function is defined in the app-component.html -->
       <ion-navbar>
         <ion-buttons slot="start">
           <app-root></app-root>
@@ -32,6 +36,7 @@
             <ion-icon slot="icon-only" name="filter"></ion-icon>
           </ion-button>
         </ion-buttons>
+
       </ion-navbar>
 
 
@@ -39,6 +44,15 @@
 
     <ion-content>
 
+      <div class="ion-no-padding">
+        <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+
+        <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
+        
+        </ion-refresher>
+    </div>
+
+    
       <div *nfIF="newEvent">
         <h7>{{newEvent.data().title}}</h7>
       </div>
@@ -48,9 +62,6 @@
 
       <app-event-card></app-event-card>
 
-      <!--ion-button [routerLink]="['/src/app/modals/details']">qr</ion-button>
-      <ion-button [routerLink]="['/produkt2']">SCANNEN</ion-button>
-      <ion-button [routerLink]="['/produkt']">data</ion-button-->
     </ion-content>
 
     <ion-footer class="ion-no-border" >

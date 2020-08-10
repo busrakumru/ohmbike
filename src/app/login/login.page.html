@@ -1,3 +1,5 @@
+<!-- the login page allows the user to login with his private data  -->
+
 <ion-header>
   <ion-toolbar>
     <ion-img class="logo" src="assets/logo.png"></ion-img>
@@ -9,13 +11,13 @@
 
   <ion-title mode="md" class="ion-text-center">LOGIN</ion-title>
 
-
   <section>
 
+<!-- input for the email adress -->
     <div class="ion-padding-top">
       <mat-icon> email</mat-icon>
       <mat-form-field appearance="outline">
-        <mat-label>E-Mail-Adresse</mat-label>
+        <mat-label>{{ 'LOGIN.label-email-adress' | translate }}</mat-label>
         <input matInput placeholder="pat@example.com" [formControl]="email" [(ngModel)]="user.email">
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
@@ -23,40 +25,40 @@
 
     <div>
 
+<!-- input for the password -->
       <mat-icon>vpn_key</mat-icon>
       <mat-form-field appearance="outline">
-        <mat-label>Passwort</mat-label>
+        <mat-label>{{ 'LOGIN.label-password' | translate }}</mat-label>
         <input [formControl]="password" matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password">
         <button style="background-color: white;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide">
           <mat-icon style="top: 0px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-
+        
       </mat-form-field>
 
     </div>
-
 
   </section>
 
   <div>
     <ion-tab-button tab="" [disabled]="!email.valid">
-      <ion-label color="primary" (click)="passwort()">Passwort vergessen?</ion-label>
+      <ion-label color="primary" (click)="resetPassword()">{{ 'LOGIN.forgotten-password' | translate }}</ion-label>
     </ion-tab-button>
   </div>
 
 
   <div class="ion-padding">
     <ion-tab-button>
-      <ion-button (click)="logIn()">Anmelden</ion-button>
+      <ion-button (click)="logIn()">{{ 'LOGIN.LogIn' | translate }}</ion-button>
     </ion-tab-button>
   </div>
 
 
   <div class="ion-text-center">
-    <ion-label color="medium">Du hast noch kein Konto?</ion-label>
-    <ion-tab-button [routerLink]="['/registrierung']" tab="">
-      <ion-label color="primary">Registrieren</ion-label>
+    <ion-label color="medium">{{ 'LOGIN.dont-have-an-account' | translate }}</ion-label>
+    <ion-tab-button [routerLink]="['/registration']" tab="">
+      <ion-label color="primary">{{ 'LOGIN.SignUp' | translate }}</ion-label>
     </ion-tab-button>
   </div>
 
@@ -70,7 +72,7 @@
         </ion-col>
 
         <ion-col>
-          <p style="text-align: center; position: relative;top: 20px;">oder</p>
+          <p style="text-align: center; position: relative;top: 20px;">{{ 'LOGIN.or' | translate }}</p>
         </ion-col>
 
         <ion-col>

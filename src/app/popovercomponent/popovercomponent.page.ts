@@ -20,26 +20,29 @@ export class PopovercomponentPage implements OnInit {
   ngOnInit() {
   }
 
-  async einstellungen(){
-
-    this.router.navigate(['einstellungen']);
-    this.popoverController.dismiss();
-
-  }
-
+/** closes the popover */
   closePopover(){
 
     this.popoverController.dismiss();
 
   }
 
+/** navigates to the settings page  */
+  async settings(){
+
+    this.router.navigate(['settings']);
+    this.popoverController.dismiss();
+
+  }
+
+/** the user will be logged out */
   async logOut(){
 
     firebase.auth().signOut().then(() => {
       this.router.navigate(['/login']);
     });
     this.popoverController.dismiss();
-    console.log('abgemeldet');
+    console.log('logged out');
     
 
   }

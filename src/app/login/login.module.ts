@@ -8,6 +8,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule} from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { ReactiveFormsModule} from '@angular/forms';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   declarations: [LoginPage]
 })

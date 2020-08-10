@@ -1,0 +1,42 @@
+<!-- the competitions page lists all competitions which are organized by OhmBike. If the user selects one competition it will navigate to the 
+  c-datail modal page. -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'COMPETITIONS.title' | translate }}</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  
+</ion-header>
+
+<ion-content>
+
+  <img src="assets/Wettbewerb-grafik.png">
+
+
+  <div class="items">
+
+    <ion-list>
+      <ion-item button *ngFor="let competition of competitions" (click)="goDetail(competition)" >
+
+
+        <ion-label>{{competition.name}}</ion-label> 
+
+
+     
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+  
+ 
+
+
+  
+
+</ion-content>

@@ -1,38 +1,34 @@
-<ion-content>
+<!-- the onboarding page includes three sliders where the user get informed about the main functions of the application. The only function in this page is the button
+where the user navigates to the qr-code scanning page -->
 
+<ion-content>
 
   <ion-slides pager="true" class="swiper-pagination-black">
 
     <ion-slide>
       <ion-img class="logo" src="assets/logo.png"></ion-img>
       <ion-img class="grafik" src="assets/qr-scanner.png"></ion-img>
-      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">Starten</ion-button>
+      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}</ion-button>
       <ion-text class="text">
-        <h4>Scanne den QR-Code
-          von deinem Fahrzeug und füge
-          es in dein Profil ein </h4>
+        <h4>{{ 'ONBOARDING.slide-1' | translate }}</h4>
       </ion-text>
     </ion-slide>
 
     <ion-slide>
       <ion-img class="logo" src="assets/logo.png"></ion-img>
       <ion-img class="grafik" src="assets/route.png"></ion-img>
-      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">Starten</ion-button>
+      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}</ion-button>
       <ion-text class="text">
-        <h4>Plane Routen und
-          teile es mit anderen
-          Interessenten </h4>
+        <h4>{{ 'ONBOARDING.slide-2' | translate }}</h4>
       </ion-text>
     </ion-slide>
 
     <ion-slide>
       <ion-img class="logo" src="assets/logo.png"></ion-img>
       <ion-img class="grafik" src="assets/wettbewerb.png"></ion-img>
-      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">Starten</ion-button>
+      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}</ion-button>
       <ion-text class="text">
-        <h4>Nehme an verschiedenen
-          Wettbewerben und Events teil
-          und gewinne tolle Preise ! </h4>
+        <h4>{{ 'ONBOARDING.slide-3' | translate }}</h4>
       </ion-text>
     </ion-slide>
   </ion-slides>

@@ -4,14 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Tab4PageRoutingModule } from './tab4-routing.module';
 import { Tab4Page } from './tab4.page';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { PopovercomponentPage } from '../popovercomponent/popovercomponent.page';
-import {MatIconModule} from '@angular/material/icon';
-//import { FriendComponent } from '../components/friend/friend.component';
-import { OffeneAktvComponent } from '../components/offene-aktv/offene-aktv.component';
-import { FahrzeugComponent } from '../components/fahrzeug/fahrzeug.component';
-import { GemerkteAktvComponent } from '../components/gemerkte-aktv/gemerkte-aktv.component';
+import { MatIconModule } from '@angular/material/icon';
+import { OpenAktvComponent } from '../components/open-aktv/open-aktv.component';
+import { VehicleComponent } from '../components/vehicle/vehicle.component';
+import { NotedAktvComponent } from '../components/noted-aktv/noted-aktv.component';
+import { CompletedAktvComponent } from '../components/completed-aktv/completed-aktv.component';
+import { EventCardComponent } from '../components/event-card/event-card.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -21,9 +24,21 @@ import { GemerkteAktvComponent } from '../components/gemerkte-aktv/gemerkte-aktv
     Tab4PageRoutingModule,
     MatExpansionModule,
     MatIconModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,    
+    Ng2SearchPipeModule,
+    TranslateModule,
+
+
   ],
-  declarations: [Tab4Page,PopovercomponentPage,OffeneAktvComponent,FahrzeugComponent,GemerkteAktvComponent],
+
+  declarations: [Tab4Page,
+                 PopovercomponentPage,
+                 OpenAktvComponent,
+                 VehicleComponent,
+                 NotedAktvComponent,
+                 CompletedAktvComponent,
+                 EventCardComponent,
+                 ],
   entryComponents: [PopovercomponentPage]
 })
 export class Tab4PageModule {}

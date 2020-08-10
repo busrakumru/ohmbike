@@ -1,5 +1,6 @@
-<ion-content class="ion-padding-vertical">
+<!-- after the onboarding page the user will be navigate to this qr-code scanner page. It includes the barcode scanner function -->
 
+<ion-content class="ion-padding-vertical">
 
   <figure class="ion-text-center">
     <img src="assets/qr.svg">
@@ -21,7 +22,7 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <ion-tab-button [routerLink]="['/login']">
-      <ion-label color="primary">ABBRECHEN</ion-label>
+      <ion-label color="primary">{{ 'QR-CODE.btn-cancel' | translate }}</ion-label>
     </ion-tab-button>
   </ion-toolbar>
 </ion-footer>

@@ -20,6 +20,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MenuComponent } from '../components/menu/menu.component';
 import { CardOBComponent } from '../components/card-ob/card-ob.component';
 import{ EventCardComponent } from '../components/event-card/event-card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -42,6 +43,7 @@ import{ EventCardComponent } from '../components/event-card/event-card.component
     MatDividerModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    TranslateModule
   
   ],
   

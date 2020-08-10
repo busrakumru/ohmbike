@@ -21,15 +21,17 @@ export class QrCodePage implements OnInit {
   ngOnInit() {
   }
 
-
+  /** closes the page  */
   dismiss() {
 
     this.modalCtrl.dismiss();
   }
 
 
+  /** opens the camera to scan the qr-code */
   async scanCode() {
-    console.log('startet zu scnannen');
+
+    console.log('scanning');
 
     this.barcodeScanner.scan().then(
       barcodeData => {
@@ -40,9 +42,9 @@ export class QrCodePage implements OnInit {
             queryParams: {
               special: JSON.stringify(barcodeData.text)
             }
-          }; this.route.navigate(['produkt2'], navigationExtras);
+          }; this.route.navigate(['product2'], navigationExtras);
 
-        } 
+        }
 
       }).catch((err) => {
         alert(err);

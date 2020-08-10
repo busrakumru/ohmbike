@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 
 import * as _moment from 'moment';
 import * as firebase from 'firebase/app';
+import { LanguageService } from './services/language.service';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menuCtl: MenuController,
+    private languageService: LanguageService
   ) {
     this.initializeApp();
     firebase.initializeApp(environment.firebase);
@@ -43,10 +45,13 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      this.languageService.setInitialAppLanguage();
+
     });
   }
 
-  async closePage() {
+  /** this function isn't complete. It should filter the customized entries  */
+  async filter() {
 
     await this.menuCtl.close();
 

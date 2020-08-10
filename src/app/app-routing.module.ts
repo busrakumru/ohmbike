@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AuthGuardService } from "./services/auth-guard.service";
 
 const routes: Routes = [
   {
@@ -8,37 +9,30 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'start',
-    loadChildren: () => import('./start/start.module').then( m => m.StartPageModule)
-  },
-  {
     path: '',
-    redirectTo: 'onboarding',
-    pathMatch: 'full'
+    redirectTo: 'tabs/tab4',
+    pathMatch: 'full',
+    //canActivate: [AuthGuardService]
   },
   {
     path: 'onboarding',
     loadChildren: () => import('./onboarding/onboarding.module').then( m => m.OnboardingPageModule)
   },
   {
-    path: 'registrierung',
-    loadChildren: () => import('./registrierung/registrierung.module').then( m => m.RegistrierungPageModule)
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
   },
   {
-    path: 'einstellungen',
-    loadChildren: () => import('./einstellungen/einstellungen.module').then( m => m.EinstellungenPageModule)
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule),
   },
   {
-    path: 'uberuns',
-    loadChildren: () => import('./uberuns/uberuns.module').then( m => m.UberunsPageModule)
+    path: 'aboutus',
+    loadChildren: () => import('./aboutus/aboutus.module').then( m => m.AboutusPageModule)
   },
   {
-    path: 'impressum',
-    loadChildren: () => import('./impressum/impressum.module').then( m => m.ImpressumPageModule)
-  },
-  {
-    path: 'datenschutz',
-    loadChildren: () => import('./datenschutz/datenschutz.module').then( m => m.DatenschutzPageModule)
+    path: 'imprint',
+    loadChildren: () => import('./imprint/imprint.module').then( m => m.ImprintPageModule)
   },
   {
     path: 'm-route',
@@ -49,25 +43,25 @@ const routes: Routes = [
     loadChildren: () => import('./popovercomponent/popovercomponent.module').then( m => m.PopovercomponentPageModule)
   },
   {
-    path: 'profilbearbeiten',
-    loadChildren: () => import('./modals/profilbearbeiten/profilbearbeiten.module').then( m => m.ProfilbearbeitenPageModule)
+    path: 'editprofile',
+    loadChildren: () => import('./modals/editprofile/editprofile.module').then( m => m.EditprofilePageModule)
   },
  
   {
-    path: 'passwort',
-    loadChildren: () => import('./modals/passwort/passwort.module').then( m => m.PasswortPageModule)
+    path: 'password',
+    loadChildren: () => import('./modals/password/password.module').then( m => m.PasswordPageModule)
   },
   {
-    path: 'profilvonanderen',
-    loadChildren: () => import('./profilvonanderen/profilvonanderen.module').then( m => m.ProfilvonanderenPageModule)
+    path: 'testuser',
+    loadChildren: () => import('./testuser/testuser.module').then( m => m.TestuserPageModule)
   },
   {
-    path: 'wettbewerb',
-    loadChildren: () => import('./wettbewerb/wettbewerb.module').then( m => m.WettbewerbPageModule)
+    path: 'competitions',
+    loadChildren: () => import('./competitions/competitions.module').then( m => m.CompetitionsPageModule)
   },
   {
-    path: 'textgroesse',
-    loadChildren: () => import('./textgroesse/textgroesse.module').then( m => m.TextgroessePageModule)
+    path: 'textsize',
+    loadChildren: () => import('./textsize/textsize.module').then( m => m.TextsizePageModule)
   },
   {
     path: 'test',
@@ -82,12 +76,12 @@ const routes: Routes = [
     loadChildren: () => import('./qr-code/qr-code.module').then( m => m.QrCodePageModule)
   },
   {
-    path: 'produkt',
-    loadChildren: () => import('./produkt/produkt.module').then( m => m.ProduktPageModule)
+    path: 'product',
+    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
   },
   {
-    path: 'produkt2',
-    loadChildren: () => import('./produkt2/produkt2.module').then( m => m.Produkt2PageModule)
+    path: 'product2',
+    loadChildren: () => import('./product2/product2.module').then( m => m.Product2PageModule)
   },
   {
     path: 'details',
@@ -98,8 +92,8 @@ const routes: Routes = [
     loadChildren: () => import('./modals/detailsob/detailsob.module').then( m => m.DetailsobPageModule)
   },
   {
-    path: 'katalog',
-    loadChildren: () => import('./katalog/katalog.module').then( m => m.KatalogPageModule)
+    path: 'catalog',
+    loadChildren: () => import('./catalog/catalog.module').then( m => m.CatalogPageModule)
   }
   
   /*{

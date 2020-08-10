@@ -1,0 +1,121 @@
+<!-- this is a modal page where the user can edit his private data like name, surename and email adress. Under the inputs is a flatbutton which has three options:
+  - the user can navigate to another modal page for resetting the password
+  - the user can change his profile picture 
+  - the user can delete his own account -->
+
+<ion-header>
+  <div >
+
+    <ion-toolbar color="tertiary">
+      <ion-title color="secondary">{{ 'EDIT-PROFILE.title' | translate }}</ion-title>
+
+      <ion-buttons slot="start" class="hide-md">
+        <ion-button (click)="closeModal()">
+          <ion-label class="action" color="danger">{{ 'EDIT-PROFILE.btn-cancel' | translate }}</ion-label>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end" class="hide-md" *ngIf="user">
+        <ion-button (click)="save()">
+          <ion-label class="action" color="primary">{{ 'EDIT-PROFILE.btn-save' | translate }}</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content color="tertiary" *ngIf="user">
+
+  <div >
+
+
+    <ion-progress-bar color="primary" *ngIf="showLoader" [value]="saved"></ion-progress-bar>
+
+    <div class="avatar" mode="ios">
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+    </div>
+
+
+    <ion-grid class="hide-ios">
+
+      <ion-row class="row">
+
+        <ion-col class="ion-text-center">
+
+          <ion-buttons>
+            <ion-button (click)="closeModal()">
+              <ion-label class="action" color="primary">{{ 'EDIT-PROFILE.btn-cancel' | translate }}</ion-label>
+            </ion-button>
+          </ion-buttons>
+
+
+        </ion-col>
+
+        <ion-col class="ion-text-center">
+          <ion-buttons>
+            <ion-button (click)="save()">
+              <ion-label class="action" color="primary">{{ 'EDIT-PROFILE.btn-save' | translate }}</ion-label>
+            </ion-button>
+          </ion-buttons>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="eingabefelder">
+
+      <ion-input type="text" [(ngModel)]="user.user_name" color="secondary" clearInput value=""
+        placeholder="{{ 'EDIT-PROFILE.label-name' | translate }}"></ion-input>
+      <ion-input color="secondary" [(ngModel)]="user.user_nachname" clearInput value=""
+        placeholder="{{ 'EDIT-PROFILE.label-surname' | translate }}"></ion-input>
+      <ion-input color="secondary" clearInput value="" placeholder="{{ 'EDIT-PROFILE.label-email-adress' | translate }}"></ion-input>
+
+    </div>
+
+
+    <ion-fab vertical="bottom" horizontal="start" class="hide-md">
+
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button (click)="password()">
+          <ion-icon name="key-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="image-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="deleteProfile()">
+          <ion-icon color="danger" name="trash-outline"></ion-icon>
+        </ion-fab-button>
+
+
+      </ion-fab-list>
+    </ion-fab>
+
+    <ion-fab vertical="center" horizontal="start" class="hide-ios">
+
+      <ion-fab-button>
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button (click)="password()">
+          <ion-icon name="key-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="image-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="deleteProfile()">
+          <ion-icon color="danger" name="trash-outline"></ion-icon>
+        </ion-fab-button>
+
+
+      </ion-fab-list>
+    </ion-fab>
+
+  </div>
+
+
+</ion-content>

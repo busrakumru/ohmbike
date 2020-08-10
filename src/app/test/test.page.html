@@ -1,3 +1,6 @@
+<!-- this is a dummy page that is placed in the friends list of the testusers. Its just there to demonstrate how you can navigate to another profile and 
+add that to your friendslist. It has the same structure like the testuser page -->
+
 <ion-header>
   <ion-toolbar>
 
@@ -19,14 +22,13 @@
 
     <ion-avatar mode="ios">
 
-      <img src="assets/icon/profil.png">
+      <img src="assets/user.png">
       <div class="ion-text-center">
-    
+
         <h7>{{data.name}}</h7>
         <h7> {{data.nachname}}</h7>
 
-        <ion-button id="edit" size="small" (click)="addfriend()">Als Freund hinzufügen</ion-button>
-        <ion-button id="edit" size="small" (click)="removeData(data)">Als Freund entfernen</ion-button>
+        <ion-button  size="small" (click)="addfriend(data)">{{ 'TESTUSER.btn-follow' | translate }}</ion-button>
 
       </div>
     </ion-avatar>
@@ -35,12 +37,12 @@
 
       <ion-segment-button value="aktivitaet">
         <mat-icon class="segment-icon">history</mat-icon>
-        <ion-label class="ion-text-capitalize">Aktivität</ion-label>
+        <ion-label class="ion-text-capitalize">{{ 'TESTUSER.segment-activity' | translate}}</ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="freunde">
         <mat-icon class="segment-icon">people</mat-icon>
-        <ion-label class="ion-text-capitalize">Freunde</ion-label>
+        <ion-label class="ion-text-capitalize">{{ 'TESTUSER.segment-friends' | translate}}</ion-label>
       </ion-segment-button>
 
     </ion-segment>
@@ -57,19 +59,9 @@
     <ion-list lines="none" class="list">
 
 
-      <ion-searchbar class="searchbar" animated placeholder="Freunde Suchen" showcancelbutton=""
-        (ionInput)="filtern($event)"></ion-searchbar>
+      <ion-searchbar class="searchbar" animated placeholder="{{ 'TAB4.searchbar' | translate }}" showcancelbutton="" [(ngModel)]="term">
+      </ion-searchbar>
 
-
-
-
-      <ion-item *ngFor="let testId of test" button (click)="goFriend(testId)">
-
-
-        {{testId.name}} {{ testId.nachname}}
-
-
-      </ion-item>
 
     </ion-list>
 

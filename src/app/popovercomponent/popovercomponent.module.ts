@@ -9,6 +9,8 @@ import { PopovercomponentPageRoutingModule } from './popovercomponent-routing.mo
 import { PopovercomponentPage } from './popovercomponent.page';
 
 import {MatIconModule} from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     IonicModule,
     PopovercomponentPageRoutingModule,
-    MatIconModule
+    MatIconModule,
+    TranslateModule
   ],
   declarations: [PopovercomponentPage]
 })

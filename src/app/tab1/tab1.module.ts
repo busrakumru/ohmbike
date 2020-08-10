@@ -19,6 +19,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MenuComponent } from '../components/menu/menu.component';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { TranslateModule } from '@ngx-translate/core';
 
 registerLocaleData(localeDe)
 
@@ -40,6 +41,7 @@ registerLocaleData(localeDe)
     MatDividerModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    TranslateModule
     
   ],
   

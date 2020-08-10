@@ -10,6 +10,10 @@ import { TestPage } from './test.page';
 
 import {MatIconModule} from '@angular/material/icon';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TranslateModule } from '@ngx-translate/core';
+
+
 
 @NgModule({
   imports: [
@@ -18,6 +22,8 @@ import {MatIconModule} from '@angular/material/icon';
     IonicModule,
     TestPageRoutingModule,
     MatIconModule,
+    Ng2SearchPipeModule,
+    TranslateModule
 
   ],
   declarations: [TestPage]
