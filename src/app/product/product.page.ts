@@ -11,6 +11,12 @@ export class ProductPage implements OnInit {
   
   data:any;
 
+  vehicle = {
+
+    title: ''
+
+  };
+
   constructor(
     private router: Router,
     public aroute: ActivatedRoute,
@@ -25,20 +31,23 @@ export class ProductPage implements OnInit {
     
    }
 
-   /** adds the scanned product to the profile  */
+   /** adds the scanned product to the 'vehicles' collection in firestore  */
    product(data){
 
-    let navigationExtras: NavigationExtras = {
-      queryParams: {special: JSON.stringify(data)}};
+   /* let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(data), 
+        specialTitle: JSON.parse(this.vehicle.title)
+      }};*/
       
       this.afs.collection(`vehicles`).add({
-        data
-      })  
-    this.router.navigate(['/tabs/tab4'], navigationExtras).then(() => {
-    });
+        data, 
+        "title": this.vehicle.title,
 
-  
+      })  
+    this.router.navigate(['/tabs/tab4'])
   }
+
   ngOnInit() {
   }
 

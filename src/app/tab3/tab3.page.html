@@ -53,14 +53,17 @@ participate on those.-->
     </div>
 
     
-      <div *nfIF="newEvent">
-        <h7>{{newEvent.data().title}}</h7>
+      <div *ngIf="newEvent">
+        <h7>ciaoss</h7>
+        <h7>{{newEvent}}</h7>
       </div>
 
 
       <app-card-ob></app-card-ob>
 
       <app-event-card></app-event-card>
+
+      <ion-button [routerLink]="['/product']">product</ion-button>
 
     </ion-content>
 

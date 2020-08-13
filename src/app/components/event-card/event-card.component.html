@@ -1,6 +1,6 @@
 <!-- this component contains informations about the created event from other users -->
 
-<ion-card *ngFor=" let detail of eventcard ">
+<ion-card *ngFor=" let detail of eventcard " >
   <ion-card-header mode="md">
     <ion-grid>
       <ion-row>
@@ -10,7 +10,7 @@
           </ion-avatar>
         </ion-col>
         <ion-col class="ion-no-padding">
-          <ion-card-title>{{detail.name}}</ion-card-title>
+          <ion-card-title (click)="details(detail)">{{detail.name}}</ion-card-title>
           <ion-card-subtitle>{{detail.title}}</ion-card-subtitle>
         </ion-col>
       </ion-row>

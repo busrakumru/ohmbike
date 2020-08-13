@@ -4,12 +4,16 @@
   <mat-accordion class="example-headers-align" class="ion-no-padding">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title color="primary">
+        <mat-panel-title color="primary" *ngIf="vehicle.data().title">
 
-          {{vehicle.data().data}}
+          {{ vehicle.data().title }}
 
         </mat-panel-title>
 
+        <mat-panel-title color="primary" *ngIf="!vehicle.data().title">
+
+          {{ vehicle.data().data }}
+        </mat-panel-title>
 
 
       </mat-expansion-panel-header>
@@ -39,8 +43,17 @@
           <ion-item-divider mode="md">
           </ion-item-divider>
 
+
           <div class="ion-text-center">
-            <ion-button fill="clear" color="danger" (click)="delete(vehicle)">{{ 'VEHICLE.btn' | translate }}</ion-button>
+            <ion-grid>
+              <ion-col size="6">
+                <ion-button fill="clear" color="danger" (click)="delete(vehicle)">{{ 'VEHICLE.btn' | translate }}</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button fill="clear" (click)="edit(vehicle)">EDIT</ion-button>
+              </ion-col>
+            </ion-grid>
+
           </div>
         </ion-card>
 

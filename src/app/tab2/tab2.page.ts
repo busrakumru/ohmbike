@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { MRoutePage } from '../modals/m-route/m-route.page';
-import { Platform } from '@ionic/angular';
 import { ViewChild, ElementRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+
+import { Plugins, AppState } from '@capacitor/core';
+const { App } = Plugins;
 
 declare var google: any;
 
@@ -22,9 +26,12 @@ export class Tab2Page {
 
     private modalController: ModalController,
     public alertController: AlertController,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private iab: InAppBrowser,
+
 
     ) { }
+
 
   /** opens the modal page for the ios version */
   async Modal() {
@@ -76,6 +83,9 @@ export class Tab2Page {
       }},{
         text:this.translate.instant('TAB2.alert-btn-continue'),
       handler:()=>{
+
+        this.iab.create('https://www.google.com/maps');
+
 
         
       }}]

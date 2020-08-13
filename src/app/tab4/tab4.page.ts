@@ -33,11 +33,11 @@ export class Tab4Page implements OnInit {
   testuser: any;
   data: any;
 
-  notedActivities:  NotedAktvComponent [];
-  openActivities: OpenAktvComponent[] ;
+  notedActivities: NotedAktvComponent[];
+  openActivities: OpenAktvComponent[];
 
   term = '';
- 
+
   /** dummy friends */
   testusers = [{
 
@@ -93,12 +93,12 @@ export class Tab4Page implements OnInit {
     this.openActivities = [
 
       name,
-    
+
     ];
 
-    this.notedActivities =[
-     
-       name       
+    this.notedActivities = [
+
+      name
     ]
 
   }
@@ -123,46 +123,32 @@ export class Tab4Page implements OnInit {
 
     this.getDocuments();
 
+    this.getDummyData();
 
-
-    /** gets data from dummy test */
-    this.aroute.queryParams.subscribe(params => {
-      if (params && params.specialData) {
-        this.data = JSON.parse(params.specialData);
-        console.log("got data !" , this.data)
-      }
-
-      
-
-    });
-
-    /** gets data from dummy testuser */
-    this.aroute.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.testusers = JSON.parse(params.special);
-        console.log("array:", this.testusers)
-
-      }
-      
-    });
+    this.getDummyTestuser();
 
   }
-  
+
   /** this function will refresh the page by pulling down */
 
   refresh(event) {
+    
+    this.getDummyTestuser();
 
-  
+    this.getDummyData();
+
+    this.getDocuments();
+
     setTimeout(() => {
 
       event.target.complete();
     }, 2000);
   }
 
-  async ngOnInit() {}
+  async ngOnInit() { }
 
-  
-/** opens the popover */
+
+  /** opens the popover */
   async presentPopover(event) {
 
     const popover = await this.popoverController.create({
@@ -177,14 +163,17 @@ export class Tab4Page implements OnInit {
 
   }
 
-/** opens the edip profile modal */
+  /** opens the edip profile modal */
   edit() {
 
     this.modalController.create({
 
       component: EditprofilePage,
       cssClass: 'edit-modal-class',
-      componentProps: this.users
+      componentProps: this.users,
+
+      swipeToClose: true
+
 
     }).then(modalres => {
 
@@ -219,8 +208,8 @@ export class Tab4Page implements OnInit {
   }
 
 
-/** deletes the selected activity from the list */
-  async deleteActivities(offen) {
+  /** deletes the selected activity from the list */
+  async deleteActivities(activity) {
 
     let alert = await this.alertCtrl.create({
       header: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-header'),
@@ -230,7 +219,7 @@ export class Tab4Page implements OnInit {
           text: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-btn-not-participate'),
           handler: () => {
             console.log('Freund wurde gelöscht');
-            this.openActivities.splice(offen, 1);
+            this.openActivities.splice(activity, 1);
           }
         },
         {
@@ -248,7 +237,7 @@ export class Tab4Page implements OnInit {
   }
 
 
-/** navigates to the friends profile */
+  /** navigates to the friends profile */
   goFriend(testuser) {
 
     let navigationExtras: NavigationExtras = {
@@ -266,7 +255,7 @@ export class Tab4Page implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(data),
-        
+
       }
     };
     this.router.navigate(['test'], navigationExtras);
@@ -357,5 +346,31 @@ export class Tab4Page implements OnInit {
     });
   }
 
-  
+  /** gets data from dummy test */
+  getDummyData() {
+
+    this.aroute.queryParams.subscribe(params => {
+      if (params && params.specialData) {
+        this.data = JSON.parse(params.specialData);
+        console.log("got data !", this.data)
+      }
+
+    });
+
+  }
+
+  /** gets data from dummy testuser */
+  getDummyTestuser() {
+
+    this.aroute.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.testusers = JSON.parse(params.special);
+        console.log("array:", this.testusers)
+
+      }
+
+    });
+  }
+
+
 }

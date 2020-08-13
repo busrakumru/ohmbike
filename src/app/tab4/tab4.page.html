@@ -34,9 +34,9 @@
       <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
       <div class="ion-text-center">
 
-        <div *ngFor="let user of users">
+        <div *ngFor="let uid of users">
 
-          <h7>{{ user.data().user_name }} {{ user.data().user_nachname }}</h7>
+          <h7>{{ uid.data().user_name }} {{ uid.data().user_nachname }}</h7>
 
         </div>
 
@@ -88,12 +88,12 @@
 
         </mat-expansion-panel-header>
 
-        <ion-item-sliding id="itemSlide" lines="none" *ngFor="let item of notedActivities;">
+        <ion-item-sliding id="itemSlide" lines="none" *ngFor="let item of notedActivities; let activity = index">
 
           <app-noted-aktv></app-noted-aktv>
 
           <ion-item-options side="end">
-            <ion-item-option color="danger" (click)="deleteActivitie(item)">
+            <ion-item-option color="danger" (click)="deleteActivitie(activity)">
               <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
             </ion-item-option>
 
@@ -114,12 +114,12 @@
         <ion-list class="abgeschlossen" lines="none">
 
 
-          <ion-item-sliding id="itemSlide" *ngFor="let item of openActivities; let offen = index">
+          <ion-item-sliding id="itemSlide" *ngFor="let item of openActivities; let activity = index">
 
             <app-open-aktv></app-open-aktv>
 
             <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="deleteActivities(offen)">
+              <ion-item-option color="danger" (click)="deleteActivities(activity)">
                 <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
               </ion-item-option>
 

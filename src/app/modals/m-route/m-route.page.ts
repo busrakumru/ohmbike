@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class MRoutePage implements OnInit {
      private modalController: ModalController,
      public toastController: ToastController,
      public alertController: AlertController,
-     private translate: TranslateService
+     private translate: TranslateService,
+     private iab: InAppBrowser,
+
     ) { }
 
   ngOnInit() {
@@ -41,6 +44,8 @@ export class MRoutePage implements OnInit {
       }},{
         text:this.translate.instant('ROUTE-MODAL.alert-btn-continue'),
       handler:()=>{
+
+        this.iab.create('https://www.google.com/maps');
 
         
       }}]

@@ -13,9 +13,6 @@ export class CatalogserviceService {
   constructor(public http: HttpClient) {
     console.log('Hello ServiceProvider Provider');
 
-
-    
-  
    }
 
    load(){

@@ -75,7 +75,6 @@ export class Tab1Page implements OnInit{
 
   showHideForm() {
 
-
     this.showAddEvent = !this.showAddEvent;
 
     this.newEvent = {
@@ -102,7 +101,7 @@ export class Tab1Page implements OnInit{
     },2000);
   }
 
-
+/** the created event will be pushed in the realtime database */
   addEvent() {
 
     let events={
@@ -125,6 +124,7 @@ export class Tab1Page implements OnInit{
   }
   
 
+  /** this function loads all the events from the database */
   loadEvent() {
     this.db.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
@@ -160,11 +160,13 @@ export class Tab1Page implements OnInit{
       });
     }*/
 
+/** function for sliding back in the calendar */
 async back(){
   var swiper = document.querySelector('.swiper-container')['swiper'];
   swiper.slidePrev();
 }
 
+/** function for sliding forward in the calendar */
 async next(){
   var swiper=document.querySelector('.swiper-container')['swiper'];
   swiper.slideNext();
@@ -174,10 +176,9 @@ async onViewTitleChanged(title:string) {
   this.viewTitle = title;
 }
 
-
+/** this function opens an alert if the created event is selected */
 async onEventSelected(newEvent) {
   
- 
   console.log('Event: ' + JSON.stringify(newEvent));
   const start = moment(newEvent.startTime).format('LL');
   const end = moment(newEvent.endTime).format('LL');
@@ -222,18 +223,20 @@ async onEventSelected(newEvent) {
           text:this.translate.instant('TAB1.btn-share'),
           handler:(newEvent)=>{
 
-            this.hallo();
-
             
-           
-    
+           // this.hallo();
+            
+            let navigationExtras: NavigationExtras = {
+              queryParams: {
+                special: JSON.stringify(this.newEvent)
+              }};
+            this.router.navigate(['tabs/tab3'], navigationExtras).then(() => {
+            console.log('going to produkt' + navigationExtras);
+              })
+            
 
-        let navigationExtras: NavigationExtras = {queryParams: {special: JSON.stringify(newEvent)}};
-        this.router.navigate(['tabs/tab3'], navigationExtras).then(() => {
-        console.log('going to produkt');
-          })
-          this.db.list('Events/').valueChanges().subscribe(data=>{
-            console.log(newEvent)
+        this.db.list('Events/').valueChanges().subscribe(data=>{
+            console.log("bye" + this.newEvent)
               })
                 
           }
@@ -248,10 +251,10 @@ items:any;
 
 async hallo(){
 
- firebase.database().ref('/Events/').once('value').then(function(data){
+ /*firebase.database().ref('/Events/').once('value').then(function(data){
 
     alert(JSON.stringify(data.val()));
-  })
+  })*/
 }
 
 }

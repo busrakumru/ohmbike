@@ -93,7 +93,10 @@ export class EditprofilePage implements OnInit {
   async password() {
     const modal = await this.modalController.create({
       component: PasswordPage,
-      cssClass: 'password-modal-class'
+      cssClass: 'password-modal-class',
+      
+      swipeToClose: true
+
 
     });
     return await modal.present();

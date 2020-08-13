@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService } from "./services/auth-guard.service";
-
 const routes: Routes = [
   {
     path: 'tabs',
@@ -12,7 +10,6 @@ const routes: Routes = [
     path: '',
     redirectTo: 'tabs/tab4',
     pathMatch: 'full',
-    //canActivate: [AuthGuardService]
   },
   {
     path: 'onboarding',
