@@ -1,35 +1,69 @@
 <!-- the onboarding page includes three sliders where the user get informed about the main functions of the application. The only function in this page is the button
 where the user navigates to the qr-code scanning page -->
 
-<ion-content>
+<ion-content class="ion-padding-vertical">
 
   <ion-slides pager="true" class="swiper-pagination-black">
 
     <ion-slide>
-      <ion-img class="logo" src="assets/logo.png"></ion-img>
-      <ion-img class="grafik" src="assets/qr-scanner.png"></ion-img>
-      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}</ion-button>
-      <ion-text class="text">
-        <h4>{{ 'ONBOARDING.slide-1' | translate }}</h4>
-      </ion-text>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-img class="logo" src="assets/logo.png"></ion-img>
+
+          <figure class="ion-text-center">
+            <ion-img class="grafik" src="assets/qr-scanner.png"></ion-img>
+            <figcaption>
+              {{ 'ONBOARDING.slide-1' | translate }}
+            </figcaption>
+          </figure>
+
+          <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}
+          </ion-button>
+        </ion-row>
+      </ion-grid>
+
     </ion-slide>
 
     <ion-slide>
-      <ion-img class="logo" src="assets/logo.png"></ion-img>
-      <ion-img class="grafik" src="assets/route.png"></ion-img>
-      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}</ion-button>
-      <ion-text class="text">
-        <h4>{{ 'ONBOARDING.slide-2' | translate }}</h4>
-      </ion-text>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-img class="logo" src="assets/logo.png"></ion-img>
+
+          <figure class="ion-text-center">
+            <ion-img class="grafik" src="assets/route.png"></ion-img>
+            <figcaption>
+              {{ 'ONBOARDING.slide-2' | translate }}
+            </figcaption>
+
+          </figure>
+
+          <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}
+          </ion-button>
+
+        </ion-row>
+      </ion-grid>
     </ion-slide>
 
     <ion-slide>
-      <ion-img class="logo" src="assets/logo.png"></ion-img>
-      <ion-img class="grafik" src="assets/wettbewerb.png"></ion-img>
-      <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}</ion-button>
-      <ion-text class="text">
-        <h4>{{ 'ONBOARDING.slide-3' | translate }}</h4>
-      </ion-text>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+
+          <ion-img class="logo" src="assets/logo.png"></ion-img>
+          <figure class="ion-text-center">
+            <ion-img class="grafik" src="assets/wettbewerb.png"></ion-img>
+            <figcaption>
+              {{ 'ONBOARDING.slide-3' | translate }}
+            </figcaption>
+          </figure>
+
+          <ion-button class="blockbutton" size="small" expand="block" (click)="go()">{{ 'ONBOARDING.btn' | translate }}
+          </ion-button>
+
+        </ion-row>
+      </ion-grid>
     </ion-slide>
   </ion-slides>
 

@@ -82,16 +82,16 @@ The user can plan an event and save it in the same page. With a tap of the creat
 
           <ion-item lines="none">
 
-            <ion-input placeholder="{{ 'TAB1.from' | translate }}"></ion-input>
+            <ion-input placeholder="{{ 'TAB1.from' | translate }}" [(ngModel)]="newEvent.startplace"></ion-input>
           </ion-item>
 
           <ion-item lines="none">
 
-            <ion-input placeholder="{{ 'TAB1.to' | translate }}"></ion-input>
+            <ion-input placeholder="{{ 'TAB1.to' | translate }}" [(ngModel)]="newEvent.endplace"></ion-input>
           </ion-item>
           <ion-item-divider></ion-item-divider>
           <ion-item lines="none">
-            <ion-textarea auto-grow="true" placeholder="{{ 'TAB1.notes' | translate }}"></ion-textarea>
+            <ion-textarea auto-grow="true" placeholder="{{ 'TAB1.notes' | translate }}" [(ngModel)]="newEvent.description"></ion-textarea>
           </ion-item>
         </ion-list>
       </ion-content>
@@ -141,17 +141,17 @@ The user can plan an event and save it in the same page. With a tap of the creat
 
         <ion-card>
           <ion-item>
-            <ion-icon name="flag"></ion-icon>
+            <ion-icon name="flag" style="padding-right: 10px;"></ion-icon>
             <ion-input placeholder="{{ 'TAB1.from' | translate }}" [(ngModel)]="newEvent.startplace"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="location"></ion-icon>
+            <ion-icon name="location" style="padding-right: 10px;"></ion-icon>
             <ion-input placeholder="{{ 'TAB1.to' | translate }}" [(ngModel)]="newEvent.endplace"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-icon name="document-text"></ion-icon>
+            <ion-icon style="margin-top: -15px;" name="document-text"></ion-icon>
             <ion-textarea [(ngModel)]="newEvent.description" auto-grow="true" placeholder="{{ 'TAB1.notes' | translate }}"></ion-textarea>
           </ion-item>
         </ion-card>
@@ -161,19 +161,20 @@ The user can plan an event and save it in the same page. With a tap of the creat
 
         <ion-grid>
           <ion-row class="ion-padding">
-            <ion-col size="2" class="ion-no-padding">
 
+            <ion-col size="2" class="ion-no-padding">
               <ion-button fill="clear" (click)="back()">
-                <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+                <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
               </ion-button>
             </ion-col>
+
             <ion-col size="8" class="ion-text-center" mode="md">
               <ion-title size="small">{{viewTitle}}</ion-title>
             </ion-col>
 
             <ion-col size="2" class="ion-no-padding">
               <ion-button fill="clear" (click)="next()">
-                <ion-icon name="chevron-forward-outline" slot="icon-only"></ion-icon>
+                <ion-icon name="chevron-forward-outline" slot="start"></ion-icon>
               </ion-button>
             </ion-col>
 
@@ -194,7 +195,6 @@ The user can plan an event and save it in the same page. With a tap of the creat
           </ion-fab-button>
         </ion-fab>
 
-     <!--ion-button (click)="remove(data)">Löschen</ion-button-->
       </ion-content>
 
 

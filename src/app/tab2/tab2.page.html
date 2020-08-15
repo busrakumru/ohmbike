@@ -11,27 +11,29 @@
 
 <ion-content [fullscreen]="true">
 
-<!-- this section will just be presented in the android version. For the IOS version exists a m-route page -->
+  <!-- this section will just be presented in the android version. For the IOS version exists a m-route page -->
   <div class="hide-ios">
-    <ion-item lines="none" class="input">
 
-      <ion-icon name="flag" slot="start"></ion-icon>
-      <ion-input placeholder="{{ 'TAB2.from' | translate }}"></ion-input>
+    <ion-grid>
+      <ion-row>
 
-    </ion-item>
+        <ion-col>
+          <ion-icon class="icon-position" name="flag" size="large"></ion-icon>
+        </ion-col>
+        <ion-col size="10">
+          <ion-input class="input" placeholder="{{ 'TAB2.from' | translate }}"></ion-input>
+        </ion-col>
 
-    <ion-item lines="none" class="input">
+        <ion-col>
+          <ion-icon class="icon-position" name="location"  size="large"></ion-icon>
+        </ion-col>
+        <ion-col size="10">
+          <ion-input class="input" placeholder="{{ 'TAB2.to' | translate }}"> </ion-input>
+        </ion-col>
 
-      <ion-input placeholder="{{ 'TAB2.to' | translate }}"> </ion-input>
-      <ion-icon name="location" slot="start"></ion-icon>
-
-      <ion-button item-right fill="none" slot="end">
-        <ion-icon name="swap-vertical-outline"></ion-icon>
-      </ion-button>
-
-    </ion-item>
-
-
+      </ion-row>
+    </ion-grid>
+    
     <ion-item-divider mode="md" style="margin-top: -25px;"></ion-item-divider>
     <div>
       <ion-grid>
@@ -54,7 +56,7 @@
       </ion-grid>
     </div>
   </div>
-<!-- -->
+  <!-- -->
 
   <div #map id="map"></div>
 

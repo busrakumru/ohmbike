@@ -241,7 +241,9 @@
 
     "QR-CODE": {
 
-        "btn-cancel":"Cancel"
+        "btn-cancel":"Cancel",
+        "text": "Scan the qr-code from your vehicle !"
+
     },
 
     "SIGNUP": {
@@ -386,7 +388,16 @@
         "event-participation": "You take part in the route. It is added to your profile under the list of open activities."
 
 
+    },
+
+    "ALERT-SCANCODE": {
+
+        "header": "Error",
+        "message": "This is an invalid QR code !",
+
+        "try-it-again": "Try it again"
     }
+
 
 
    

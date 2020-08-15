@@ -5,8 +5,6 @@
 
     <ion-img class="logo" src="assets/logo.png"></ion-img>
 
-
-
     <ion-buttons slot="start">
       <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
@@ -14,11 +12,10 @@
   </ion-toolbar>
 
 </ion-header>
-<ion-content class="ion-padding-top">
+<ion-content>
 
-
-
-  <ion-title class="ion-text-center" mode="md">{{ 'SIGNUP.title' | translate }}</ion-title>
+  <ion-title class="ion-text-center" mode="md" style="margin-top: 10% !important;">{{ 'SIGNUP.title' | translate }}
+  </ion-title>
 
   <form [formGroup]="registrationForm" (ngSubmit)="submit()">
     <ion-list>
@@ -163,14 +160,29 @@
         </mat-form-field>
 
       </form>
+      <ion-grid>
 
+        <ion-row>
 
-      <div class="privacy">
-        <ion-checkbox formControlName="checkbox"></ion-checkbox>
+          <ion-item style="margin-left: -15px;" lines="none" class="ion-padding-start">
 
-        <p class="text">{{ 'SIGNUP.privacy-1' | translate }} <a
-            (click)="privacy()">{{ 'SIGNUP.privacy-2' | translate }}</a> {{ 'SIGNUP.privacy-3' | translate }}</p>
-      </div>
+            <ion-col size="2">
+
+              <ion-checkbox formControlName="checkbox"></ion-checkbox>
+
+            </ion-col>
+
+            <ion-col>
+
+              <p style="font-size: 12px;">{{ 'SIGNUP.privacy-1' | translate }} <a
+                  (click)="privacy()">{{ 'SIGNUP.privacy-2' | translate }}</a> {{ 'SIGNUP.privacy-3' | translate }}</p>
+
+            </ion-col>
+
+          </ion-item>
+
+        </ion-row>
+      </ion-grid>
 
       <div class="ion-padding">
         <ion-tab-button tab="">
@@ -210,19 +222,17 @@
     </ion-grid>
   </div>
 
-  <div class="ion-padding">
+  <div class="ion-text-center">
 
-    <ion-tab-button tab="">
-      <ion-button style="width: 70% !important;" size="small" color="light">
-        <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
-      </ion-button>
-    </ion-tab-button>
 
-    <ion-tab-button tab="">
-      <ion-button style="width: 70% !important;" size="small" color="light">
-        <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
-      </ion-button>
-    </ion-tab-button>
+    <ion-button style="width: 80% !important;" color="light">
+      <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
+    </ion-button>
+
+
+    <ion-button style="width: 80% !important;" (click)="loginwithgp" color="light">
+      <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
+    </ion-button>
 
 
   </div>

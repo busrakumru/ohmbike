@@ -51,7 +51,7 @@ export class AppComponent {
   }
 
   /** this function isn't complete. It should filter the customized entries  */
-  async filter() {
+  async closePage() {
 
     await this.menuCtl.close();
 

@@ -7,9 +7,9 @@
 </ion-header>
 
 
-<ion-content class="ion-padding-top">
+<ion-content>
 
-  <ion-title mode="md" class="ion-text-center">LOGIN</ion-title>
+  <ion-title  style="margin-top: 10% !important;" mode="md" class="ion-text-center">LOGIN</ion-title>
 
   <section>
 
@@ -47,10 +47,8 @@
   </div>
 
 
-  <div class="ion-padding">
-    <ion-tab-button>
+  <div class="ion-text-center" style="padding: 3%;">
       <ion-button (click)="logIn()">{{ 'LOGIN.LogIn' | translate }}</ion-button>
-    </ion-tab-button>
   </div>
 
 
@@ -84,19 +82,17 @@
     </ion-grid>
   </div>
 
-  <div class="ion-padding">
+  <div class="ion-text-center">
 
-    <ion-tab-button tab="">
+    
       <ion-button style="width: 80% !important;" color="light">
         <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
       </ion-button>
-    </ion-tab-button>
 
-    <ion-tab-button tab="">
+   
       <ion-button style="width: 80% !important;" (click)="loginwithgp" color="light">
         <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
       </ion-button>
-    </ion-tab-button>
 
 
   </div>

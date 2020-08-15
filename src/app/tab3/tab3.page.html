@@ -52,18 +52,11 @@ participate on those.-->
         </ion-refresher>
     </div>
 
-    
-      <div *ngIf="newEvent">
-        <h7>ciaoss</h7>
-        <h7>{{newEvent}}</h7>
-      </div>
-
+      <app-my-event-card></app-my-event-card>
 
       <app-card-ob></app-card-ob>
 
       <app-event-card></app-event-card>
-
-      <ion-button [routerLink]="['/product']">product</ion-button>
 
     </ion-content>
 

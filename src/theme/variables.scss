@@ -31,6 +31,9 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 /** Ionic CSS Variables **/
 :root {
+
+  --ion-background-color: #fdfdff;
+
   /** primary **/
   --ion-color-primary: #a4bf38;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -254,5 +257,5 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
     --ion-tab-bar-background: #1f1f1f;
   }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;  background-color :--ion-background-color;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}

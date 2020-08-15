@@ -241,7 +241,9 @@
 
     "QR-CODE": {
 
-        "btn-cancel":"Abbrechen"
+        "btn-cancel":"Abbrechen",
+        "text": "Scanne den Qr-Code von deinem Fahrzueg !"
+
     },
 
     "SIGNUP": {
@@ -384,18 +386,14 @@
         "cardob-delete": "Die Route wurde aus der Liste entfernt.",
 
         "event-participation": "Du nimmst an der Route teil. Es wurde in deinem Profil unter der Offene Aktivitäten - Liste hinzugefügt."
+    },
+
+    "ALERT-SCANCODE": {
+
+        "header": "Fehler",
+        "message": "Dies ist ein ungültiger QR-Code !",
+
+        "try-it-again": "Erneut versuchen"
     }
-    
-
-    
-
-
-
-
-
-
-
-
-
 
 }

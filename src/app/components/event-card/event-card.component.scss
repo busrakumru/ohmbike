@@ -25,21 +25,16 @@ ion-avatar{
   
 }
 
-ion-icon{
+ion-icon, mat-icon{
     
     width:24px; 
     height:24px;
+    margin: 5px 0px 0px 15px;
 }
 
 ion-label{
     padding-left:10px;
     font-size:14px;
-}
-
-ion-range {
-    width: 240px;
-    right: 25px;
-    bottom: 30px;
 }
 
 .detailbutton{

@@ -24,15 +24,18 @@
 
     border:1px solid lightgrey; 
     border-radius: 5px; 
-    height: 45px;
-    width: 90%;
     position: relative;
-    margin-top: 2%;
-    margin-bottom:2%;
-    left: 50%;
-    transform: translate(-50%,0);
+    width: 95%;
+   
  }
 
  .icon{
     color: #a4bf38;
+}
+
+.icon-position{
+
+  position: relative;
+  left: 10%;
+  top:20%;
 }

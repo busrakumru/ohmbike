@@ -11,6 +11,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class Product2Page implements OnInit {
   
   data:any;
+  dataImg:any;
 
   constructor(
     private router: Router,
@@ -21,6 +22,8 @@ export class Product2Page implements OnInit {
     this.aroute.queryParams.subscribe(params => {
       if (params && params.special) {
         this.data = JSON.parse(params.special);
+        this.dataImg = JSON.parse(params.specialImg);
+
       }
     });
   }

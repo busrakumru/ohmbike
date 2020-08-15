@@ -1,9 +1,9 @@
-import { Component,  LOCALE_ID,ViewChild, OnInit, Inject, } from '@angular/core';
-import {ModalController } from '@ionic/angular';
+import { Component, LOCALE_ID, ViewChild, OnInit, Inject, } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
-import {AlertController} from '@ionic/angular'
-import {AngularFireDatabase, snapshotChanges} from '@angular/fire/database';
-import {AngularFirestore} from '@angular/fire/firestore';
+import { AlertController } from '@ionic/angular'
+import { AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { CalendarComponent } from 'ionic2-calendar';
 import { NavigationExtras, Router } from '@angular/router';
 
@@ -19,31 +19,31 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['tab1.page.scss']
 })
 
-export class Tab1Page implements OnInit{
+export class Tab1Page implements OnInit {
 
   @ViewChild(CalendarComponent) myCalendar: CalendarComponent;
-  
-  eventSource:any[]= [];
+
+  eventSource: any[] = [];
   viewTitle: string;
   showAddEvent: boolean;
-  
+
   newEvent = {
     title: '',
     description: '',
     startTime: '',
     endTime: '',
-    startplace:'',
-    endplace:''
+    startplace: '',
+    endplace: ''
   };
 
-  minDate = new Date().toISOString();  
+  minDate = new Date().toISOString();
 
 
   calendar = {
-    
+
     startingDayMonth: "1",
-    formatDayHeader:'EEEEEE',
-    formatDay:'dd',
+    formatDayHeader: 'EEEEEE',
+    formatDay: 'dd',
     mode: 'month',
     currentDate: new Date(),
     queryMode: 'remote',
@@ -58,15 +58,15 @@ export class Tab1Page implements OnInit{
     private router: Router,
     private translate: TranslateService) {
 
-      this.loadEvent();  
+    this.loadEvent();
 
-      
-     
-    }
-  
- ngOnInit(){
 
- }
+
+  }
+
+  ngOnInit() {
+
+  }
 
   openFirst() {
     this.menuCtl.enable(true, 'first');
@@ -79,9 +79,9 @@ export class Tab1Page implements OnInit{
 
     this.newEvent = {
       title: '',
-      description: '',  
-      startplace:'',
-      endplace:'',
+      description: '',
+      startplace: '',
+      endplace: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString()
     };
@@ -92,170 +92,154 @@ export class Tab1Page implements OnInit{
   }
 
   /** this function will refresh the page by pulling down */
-  refresh(event){
+  refresh(event) {
 
     this.loadEvent();
     setTimeout(() => {
 
       event.target.complete();
-    },2000);
+    }, 2000);
   }
 
-/** the created event will be pushed in the realtime database */
+  /** the created event will be pushed in the realtime database */
   addEvent() {
 
-    let events={
-      
+    var ref = firebase.database().ref('Events').push();
+    var newKey = ref.key;
+
+    let events = {
+
+      id: newKey,
       title: this.newEvent.title,
-      startTime:  this.newEvent.startTime,
+      startTime: this.newEvent.startTime,
       endTime: this.newEvent.endTime,
       description: this.newEvent.description,
       startplace: this.newEvent.startplace,
       endplace: this.newEvent.endplace,
-    
-    
+
+
     }
-   
+
     this.db.list('/Events').push(events);
-    
+
     this.showHideForm();
 
     console.log('Event: ' + JSON.stringify(this.newEvent));
   }
-  
+
 
   /** this function loads all the events from the database */
   loadEvent() {
     this.db.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
-      actions.forEach(action => {  
+      actions.forEach(action => {
         console.log('Title: ' + action.payload.exportVal().title);
-        let event={title: action.payload.exportVal().title,
-
-          startTime:  new Date(action.payload.exportVal().startTime),
+        let event = {
+          id:action.payload.exportVal().id,
+          title: action.payload.exportVal().title,
+          startTime: new Date(action.payload.exportVal().startTime),
           endTime: new Date(action.payload.exportVal().endTime),
           description: action.payload.exportVal().description,
-          startplace: action.payload.exportVal().description,
-          endplace: action.payload.exportVal().description,}
+          startplace: action.payload.exportVal().startplace,
+          endplace: action.payload.exportVal().endplace,
+        }
 
         this.eventSource.push(event);
 
-         this.myCalendar.loadEvents();
+        this.myCalendar.loadEvents();
       });
-        
-     
-    }); 
+
+
+    });
   }
 
-  /*remove(){
+  /** function for sliding back in the calendar */
+  async back() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
 
-    var adaRef = this.db.list('/Events');
-    adaRef.remove()
-      .then(function() {
-        //window.location.reload();
-        console.log("Remove succeeded.")
-      })
-      .catch(function(error) {
-        console.log("Remove failed: " + error.message)
-      });
-    }*/
+  /** function for sliding forward in the calendar */
+  async next() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
 
-/** function for sliding back in the calendar */
-async back(){
-  var swiper = document.querySelector('.swiper-container')['swiper'];
-  swiper.slidePrev();
-}
+  async onViewTitleChanged(title: string) {
+    this.viewTitle = title;
+  }
 
-/** function for sliding forward in the calendar */
-async next(){
-  var swiper=document.querySelector('.swiper-container')['swiper'];
-  swiper.slideNext();
-}
+  /** this function opens an alert if the created event is selected */
+  async onEventSelected(newEvent) {
 
-async onViewTitleChanged(title:string) {
-  this.viewTitle = title;
-}
+    console.log('Event: ' + JSON.stringify(newEvent));
+    const start = moment(newEvent.startTime).format('LL');
+    const end = moment(newEvent.endTime).format('LL');
+    const itemsRef = this.db.list('Events');
 
-/** this function opens an alert if the created event is selected */
-async onEventSelected(newEvent) {
-  
-  console.log('Event: ' + JSON.stringify(newEvent));
-  const start = moment(newEvent.startTime).format('LL');
-  const end = moment(newEvent.endTime).format('LL');
-  const itemsRef = this.db.list('Events');
 
-    
-    const alert =  await this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
       header: newEvent.title,
-      subHeader: newEvent.description,
       message: `
-        <p> Begin ${start} ${newEvent.startplace}</p> 
-        <p>Ende ${end} ${newEvent.endplace}</p>
+        <p> Beginn ${start} <br> ${newEvent.startplace}</p> 
+        <p>Ende ${end} <br> ${newEvent.endplace}</p>
         <p > ${newEvent.description}</p>
         
       `,
       buttons: [
-        {text:this.translate.instant('TAB1.btn-delete'),
-        handler:()=>{
+        {
+          text: this.translate.instant('TAB1.btn-delete'),
+          handler: () => {
 
-          var adaRef = this.db.list('/Events');
-    adaRef.remove()
-      .then(function() {
-        
-        //window.location.reload();
-        console.log("Remove succeeded.")
-      })
-      .catch(function(error) {
-        console.log("Remove failed: " + error.message)
-      });
+            firebase.database().ref('/Events').once('child_added').then(function(data) {
 
-          //this.remove();
-          
-        }
-      },{
-        text: this.translate.instant('TAB1.btn-edit'),
-        handler:()=>{
-          
-          
-        }
+              data.val().remove;
+
               
-        },{
-          text:this.translate.instant('TAB1.btn-share'),
-          handler:(newEvent)=>{
+            })
+           
+          }
+        }, {
+          text: this.translate.instant('TAB1.btn-edit'),
+          handler: () => {
 
-            
-           // this.hallo();
-            
+
+          }
+
+        }, {
+          text: this.translate.instant('TAB1.btn-share'),
+          handler: () => {
+
             let navigationExtras: NavigationExtras = {
               queryParams: {
-                special: JSON.stringify(this.newEvent)
-              }};
-            this.router.navigate(['tabs/tab3'], navigationExtras).then(() => {
-            console.log('going to produkt' + navigationExtras);
-              })
-            
+              
+                special: JSON.stringify(newEvent.title),
+                specialStartTime: JSON.stringify(newEvent.startTime),
+                specialEndTime: JSON.stringify(newEvent.endTime),
+                specialStartPlace: JSON.stringify(newEvent.startplace),
+                specialEndPlace: JSON.stringify(newEvent.endplace),
+                specialDescription: JSON.stringify(newEvent.description),
 
-        this.db.list('Events/').valueChanges().subscribe(data=>{
-            console.log("bye" + this.newEvent)
-              })
-                
+              }
+            };
+            this.router.navigate(['tabs/tab3'], navigationExtras).then(() => {
+              console.log('going to produkt' + JSON.stringify(navigationExtras));
+            })
+
+
+            this.db.list('Events/').valueChanges().subscribe(data => {
+              console.log("bye" + newEvent)
+            })
+
           }
         }]
 
     })
     await alert.present();
   }
-  
 
-items:any;
 
-async hallo(){
-
- /*firebase.database().ref('/Events/').once('value').then(function(data){
-
-    alert(JSON.stringify(data.val()));
-  })*/
-}
+  items: any;
 
 }
 

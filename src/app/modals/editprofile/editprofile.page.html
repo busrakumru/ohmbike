@@ -6,8 +6,8 @@
 <ion-header>
   <div >
 
-    <ion-toolbar color="tertiary">
-      <ion-title color="secondary">{{ 'EDIT-PROFILE.title' | translate }}</ion-title>
+    <ion-toolbar >
+      <ion-title >{{ 'EDIT-PROFILE.title' | translate }}</ion-title>
 
       <ion-buttons slot="start" class="hide-md">
         <ion-button (click)="closeModal()">
@@ -24,7 +24,7 @@
   </div>
 </ion-header>
 
-<ion-content color="tertiary" *ngIf="user">
+<ion-content *ngIf="user">
 
   <div >
 
@@ -95,7 +95,7 @@
       </ion-fab-list>
     </ion-fab>
 
-    <ion-fab vertical="center" horizontal="start" class="hide-ios">
+    <ion-fab style="margin-top: 45%;" horizontal="start" class="hide-ios">
 
       <ion-fab-button>
         <ion-icon name="settings"></ion-icon>

@@ -19,8 +19,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MenuComponent } from '../components/menu/menu.component';
 import { CardOBComponent } from '../components/card-ob/card-ob.component';
-import{ EventCardComponent } from '../components/event-card/event-card.component';
+import { EventCardComponent } from '../components/event-card/event-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MyEventCardComponent } from '../components/my-event-card/my-event-card.component';
 
 
 
@@ -48,6 +49,6 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   
 
-  declarations: [Tab3Page,MenuComponent,CardOBComponent,EventCardComponent]
+  declarations: [Tab3Page,MenuComponent,CardOBComponent,EventCardComponent, MyEventCardComponent]
 })
 export class Tab3PageModule {}

@@ -14,20 +14,8 @@ ion-slides {
 
   .grafik{
 
-    width: 70%;
-    position: absolute;
-    top:22%;
+  transform: translate(0,-10%);
 
-  }
-
-
-  .text{
-
-    position: relative;
-    top: 23%;
-    text-align: center;
-    width: 200px;
-  
   }
 
   .blockbutton{
@@ -36,6 +24,11 @@ ion-slides {
     top: 80%;
     width: 70%;
 
+  }
+
+  figcaption{
+
+    font-size: 80%;
   }
 
 

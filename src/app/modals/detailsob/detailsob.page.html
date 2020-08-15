@@ -21,30 +21,27 @@ and a button for the navigation of the route. -->
 <ion-grid >
 
       <ion-row class="ion-justify-content-center">  
-        <ion-col >
-        <ion-item lines="none"> 
+        
+        <ion-item lines="primary"> 
 
-        <ion-col >
+        <ion-col size="8">
           <ion-icon  src="assets/icon/place.svg"></ion-icon> 
-            <ion-label>{{detail.startPlace}}</ion-label>
+            <p>{{detail.startPlace}}</p>
         </ion-col>
-        <ion-col >
+        <ion-col size="6" class="text">
           <ion-icon  src="assets/icon/snipp.svg"></ion-icon> 
-            <ion-label>{{detail.length}}</ion-label>   
+            <p>{{detail.length}}</p>   
         </ion-col>
-        <!--ion-col  >
-          <ion-icon src="assets/weg2.svg"></ion-icon> 
-          <ion-label size="small">Hin-& Rückweg</ion-label> 
-        </ion-col-->
+       
     
         </ion-item>  
-      </ion-col>
+    <p class="ion-padding">{{detail.description}}</p>
+    
 
       </ion-row>
     
       </ion-grid>
 </div>
-      <p class="ion-padding">{{detail.description}}</p>
     
 
 

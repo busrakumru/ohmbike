@@ -132,7 +132,9 @@ export class Tab4Page implements OnInit {
   /** this function will refresh the page by pulling down */
 
   refresh(event) {
-    
+
+    this.initializer();
+
     this.getDummyTestuser();
 
     this.getDummyData();

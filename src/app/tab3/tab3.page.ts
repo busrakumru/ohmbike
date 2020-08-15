@@ -3,10 +3,8 @@ import { MenuController, AlertController } from '@ionic/angular';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
-
-import * as firebase from 'firebase';
-import { error } from 'protractor';
-//import { AngularFireDatabase } from '@angular/fire/database/database';
+import { TranslateService } from '@ngx-translate/core';
+import { VehiclesService } from '../services/vehicles.service';
 
 
 @Component({
@@ -17,24 +15,19 @@ import { error } from 'protractor';
 
 export class Tab3Page {
 
-  ohmbikeEvent: any[] = [];
-
   minDate: Date;
   maxDate: Date;
-
-  events: any[] = [];
-  newEvent: any;
-
+ 
   item: any;
 
-
+/**dummy vehicles 
   vehicles = [
 
     { title: 'Fahrzeug-1', image: 'assets/vehicle-qr-codes/qrcode-v1.png' },
     { title: 'Fahrzeug-2', image: 'assets/vehicle-qr-codes/qrcode-v2.png' },
     { title: 'Fahrzeug-3', image: 'assets/vehicle-qr-codes/qrcode-v3.png' }
 
-  ];
+  ];*/
 
   constructor(
     public aroute: ActivatedRoute,
@@ -42,32 +35,18 @@ export class Tab3Page {
     private barcodeScanner: BarcodeScanner,
     public route: Router,
     public afAuth: AngularFireAuth,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private translate: TranslateService,
 
-    // public db: AngularFireDatabase,
+    public vehicleService: VehiclesService
 
 
   ) {
-
-    /*firebase.database().ref('/Events/').once('value').then(function(data){
-
-      alert(JSON.stringify(data.val()));
-    });*/
 
 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear, 0, 1);
     this.maxDate = new Date(currentYear + 20, 11, 31);
-
-    /** gets the event data from tab1 */
-    this.aroute.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.newEvent = JSON.parse(params.special);
-        console.log("got data !");
-
-      }
-
-    });
 
   }
 
@@ -96,38 +75,62 @@ export class Tab3Page {
 
         if (!barcodeData.cancelled) {
 
-          for (var x = 0; x <= this.vehicles.length; x++) {
+          for (var x = 0; x <= this.vehicleService.vehicles.length; x++) {
 
-            if (barcodeData.text == this.vehicles[x].title) {
+            if (barcodeData.text == this.vehicleService.vehicles[x].title) {
 
               let navigationExtras: NavigationExtras = {
                 queryParams: {
-                  special: JSON.stringify(barcodeData.text)
+                  special: JSON.stringify(barcodeData.text),
+                  specialImg: this.vehicleService.vehicles.image
                 }
               }; this.route.navigate(['product'], navigationExtras);
 
-            
-            }
 
-            
+              
+          }
+
+          break;
+
+
           }
 
           this.showAlert();
+
+
+
         }
 
       })
+
+    
 
   }
 
   async showAlert() {
 
     const alert = await this.alertCtrl.create({
-      header:"Fehler",
-      message:"Dies ist ein ungültiger QR-Code !",
-      buttons: ['OK']
+      header: this.translate.instant('ALERT-SCANCODE.header'),
+      message:this.translate.instant('ALERT-SCANCODE.message'),
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'cancel'
+        },
+        {
+          text: this.translate.instant('ALERT-SCANCODE.try-it-again'),
+          
+          handler: () => {
+
+            this.scanCode();
+          }
+
+        }
+      ]
     });
 
     await alert.present();
 
   }
+
 }

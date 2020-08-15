@@ -20,31 +20,47 @@
   <ion-card-content>
     <ion-grid>
       <ion-row>
-        <ion-col class="ion-no-padding" size="10">
-          <div>
-            <ion-icon name="bicycle" slot="start"></ion-icon>
-            <ion-label>{{detail.startPlace}} </ion-label>
-          </div>
+
+        <ion-col class="ion-no-padding" size="2">
+            <ion-icon name="bicycle" ></ion-icon>
+          </ion-col>
+
+        <ion-col size="10">
+          <ion-label>{{detail.startPlace}} </ion-label>
         </ion-col>
-        <ion-col class="ion-no-padding" size="10">
-          <div>
-            <mat-icon slot="start">call_split</mat-icon>
-            <ion-label>15 km</ion-label>
-          </div>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col class="ion-no-padding" size="2">
+            <mat-icon >call_split</mat-icon>
         </ion-col>
-        <ion-col class="ion-no-padding" size="10">
-          <div>
-            <ion-icon name="time" slot="start"></ion-icon>
-            <ion-label>{{detail.startTime}}</ion-label>
-          </div>
+
+        <ion-col size="10">
+          <ion-label>15 km</ion-label>
         </ion-col>
+    
+      </ion-row>
+       
+      <ion-row>
+
+        <ion-col class="ion-no-padding" size="2">
+            <ion-icon name="time"></ion-icon>  
+        </ion-col>
+
+        <ion-col size="10">
+          <ion-label>{{detail.startTime}}</ion-label>
+        </ion-col>
+        
+      </ion-row>
+       
 
 
 
         <ion-item-divider mode="md">
         </ion-item-divider>
 
-      </ion-row>
     </ion-grid>
 
     <ion-grid>

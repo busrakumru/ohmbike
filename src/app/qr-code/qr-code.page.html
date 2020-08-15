@@ -1,18 +1,19 @@
 <!-- after the onboarding page the user will be navigate to this qr-code scanner page. It includes the barcode scanner function -->
 
 <ion-content class="ion-padding-vertical">
+  <ion-img class="logo" src="assets/logo.png"></ion-img>
 
-  <figure class="ion-text-center">
+  <figure class="ion-text-center" style="margin-top: 50px;">
     <img src="assets/qr.svg">
-    <figcaption>QR-Scanner</figcaption>
+    <figcaption>{{ 'QR-CODE.text' | translate }}</figcaption>
   </figure>
 
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="3">
-        <ion-tab-button (click)="scanCode()">
-          <ion-icon src="assets/kamera.svg"></ion-icon>
-        </ion-tab-button>
+        <ion-fab-button (click)="scanCode()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
       </ion-col>
     </ion-row>
   </ion-grid>
