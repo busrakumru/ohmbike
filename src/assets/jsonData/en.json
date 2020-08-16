@@ -12,6 +12,7 @@
 
         "monthShortNames": "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec",
         "dayShortNames": "Sun, Mon, Tue, Wed, Thu, Fri, Sat",
+        
 
         "btn-delete": "Delete",
         "btn-edit": "Edit",
@@ -137,12 +138,19 @@
     "DETAILS-PAGE": {
 
         "title": "Route from Max",
-        "btn": "Participate",
         "beginning": "Beginning",
         "end": "End",
         "from": "From",
         "to": "To",
-        "notes": "Notes"
+        "notes": "Notes",
+
+        "btn-participate": "Participate",
+        "btn-not-participate": "Dont participate anymore",
+
+        "alert-header": "Warning",
+        "alert-message": "You are about to no longer take part in the event!",
+        "alert-btn-not-participate": "No longer participate",
+        "alert-btn-cancel": "Cancel"
 
     },
 
@@ -363,7 +371,9 @@
         "distance-in-kilometers":"Distance",
         "hints": "Hints",
 
-        "btn": "Participate",
+        "btn-participate": "Participate",
+        "btn-not-participate": "Dont participate anymore",
+
 
         "alert-header": "Done",
         "alert-message": "Great. You take part in the competition. We look forward to you !",
@@ -396,17 +406,12 @@
         "message": "This is an invalid QR code !",
 
         "try-it-again": "Try it again"
+    },
+
+    "MY-EVENT-CARD": {
+
+        "begin": "Begin",
+        "end": "End"
     }
-
-
-
-   
-
-
-
-
-
-
-
 
 }

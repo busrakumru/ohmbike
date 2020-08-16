@@ -3,6 +3,8 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { OpenAktvComponent } from '../open-aktv/open-aktv.component';
+
 
 declare var google: any;
 
@@ -25,13 +27,17 @@ export class CDetailComponent implements OnInit {
 
   map: any;
 
+  visible = false;
+
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
   constructor(
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private router: Router,
-    private translate: TranslateService) { }
+    private translate: TranslateService,
+  ) {
+  }
 
   ngOnInit() { }
 
@@ -58,7 +64,8 @@ export class CDetailComponent implements OnInit {
         specialDetailFrom: JSON.stringify(this.from),
         specialDetailTo: JSON.stringify(this.to),
         specialDetailLength: JSON.stringify(this.length),
-        specialDetailNotes: JSON.stringify(this.notes)
+        specialDetailNotes: JSON.stringify(this.notes),
+
 
       }
 
@@ -96,6 +103,34 @@ export class CDetailComponent implements OnInit {
     }
 
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+  }
+
+  /** deletes the selected activity from the list */
+  async notParticipate() {
+
+    let alert = await this.alertCtrl.create({
+      header: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-header'),
+      message: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-message'),
+      buttons: [
+        {
+          text: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-btn-not-participate'),
+          handler: () => {
+            console.log('Freund wurde gelöscht');
+            //this is just an alert and the delete function doesn't exist 
+          }
+        },
+        {
+          text: this.translate.instant('ALERT-OPEN-ACTIVITY.alert-btn-cancel'),
+          role: 'cancel',
+          handler: () => {
+            console.log('canceled');
+          }
+
+        }
+      ]
+    });
+    await alert.present();
+
   }
 
 }

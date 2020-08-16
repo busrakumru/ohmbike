@@ -124,7 +124,9 @@ user to participate on it -->
 
   <div #map id="map"></div>
 
-  <ion-button class="ion-padding" size="small" expand="block" (click)="participate()">{{ 'COMPETITIONS-DETAIL.btn' | translate }}</ion-button>
+  <ion-button class="ion-padding" size="small" expand="block" (click)="participate()" *ngIf="!visible">{{ 'COMPETITIONS-DETAIL.btn-participate' | translate }}</ion-button>
+  <ion-button class="ion-padding" size="small" expand="block" (click)="notParticipate()" *ngIf="visible">{{ 'COMPETITIONS-DETAIL.btn-not-participate' | translate }}</ion-button>
+
 
 
 </ion-content>

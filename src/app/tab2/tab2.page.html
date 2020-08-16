@@ -6,7 +6,17 @@
     <ion-title class="hide-md">Route</ion-title>
     <ion-img class="hide-ios" src="assets/logo.png"></ion-img>
 
+    <ion-buttons slot="primary" class="hide-ios">
+      <app-menu>
+        <ion-button mat-button>
+          <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </app-menu>
+    </ion-buttons>
+
   </ion-toolbar>
+
+ 
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -18,14 +28,14 @@
       <ion-row>
 
         <ion-col>
-          <ion-icon class="icon-position" name="flag" size="large"></ion-icon>
+          <ion-icon class="icon-position" name="flag" ></ion-icon>
         </ion-col>
         <ion-col size="10">
           <ion-input class="input" placeholder="{{ 'TAB2.from' | translate }}"></ion-input>
         </ion-col>
 
         <ion-col>
-          <ion-icon class="icon-position" name="location"  size="large"></ion-icon>
+          <ion-icon class="icon-position" name="location"  ></ion-icon>
         </ion-col>
         <ion-col size="10">
           <ion-input class="input" placeholder="{{ 'TAB2.to' | translate }}"> </ion-input>
@@ -60,7 +70,7 @@
 
   <div #map id="map"></div>
 
-  <ion-fab  vertical="center" horizontal="end" slot="fixed" >
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" style="bottom:200px;" >
     <ion-fab-button size="small" color="light">
       <ion-icon   size="small"src="assets/icon/scale-arrows.svg" color="primary"></ion-icon>
     </ion-fab-button>

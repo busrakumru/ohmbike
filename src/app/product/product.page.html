@@ -12,10 +12,9 @@
 
   <figure *ngIf="data" class="ion-text-center">
 
-    <!--img src="${data}"-->
     <figcaption><ion-title style="font-weight: bold;">{{data}}</ion-title></figcaption>
 
-    <div>
+    <div class="ion-padding">
 
       <ion-label style="margin-left: 6%;">{{ 'PRODUCT.title' | translate }} </ion-label>
       <ion-input placeholder="Titel" [(ngModel)]="vehicle.title"></ion-input>

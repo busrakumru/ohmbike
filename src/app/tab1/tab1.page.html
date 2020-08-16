@@ -12,7 +12,14 @@ The user can plan an event and save it in the same page. With a tap of the creat
           <ion-button size="small" *ngIf="!showAddEvent" color="primary" (click)="showHideForm()">
             <ion-icon name="add-outline"></ion-icon>
           </ion-button>
+        </ion-buttons>
 
+        <ion-buttons slot="primary" class="hide-ios">
+          <app-menu>
+            <ion-button mat-button>
+              <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </app-menu>
         </ion-buttons>
 
         <ion-title class="hide-md">Event</ion-title>
@@ -31,8 +38,6 @@ The user can plan an event and save it in the same page. With a tap of the creat
 
         </ion-refresher>
       </div>
-
-
 
       <ion-content fullscreen *ngIf="showAddEvent" class="hide-md">
        
@@ -160,7 +165,7 @@ The user can plan an event and save it in the same page. With a tap of the creat
       <ion-content *ngIf="!showAddEvent">
 
         <ion-grid>
-          <ion-row class="ion-padding">
+          <ion-row>
 
             <ion-col size="2" class="ion-no-padding">
               <ion-button fill="clear" (click)="back()">

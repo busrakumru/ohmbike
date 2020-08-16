@@ -15,7 +15,10 @@ and a button for the participation. -->
 <ion-content>
 
   <div #map id="map"></div>
-  <ion-button class="participation" (click)="participate(detail)">{{ 'DETAILS-PAGE.btn' | translate }}</ion-button>
+
+  <ion-button class="participation" (click)="participate(detail)" *ngIf="!test">{{ 'DETAILS-PAGE.btn-participate' | translate }}</ion-button>
+  <ion-button class="participation" (click)="notParticipate(detail)" *ngIf="test">{{ 'DETAILS-PAGE.btn-not-participate' | translate }}</ion-button>
+
 
   <div class="hide-md">
 

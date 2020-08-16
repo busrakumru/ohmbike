@@ -87,6 +87,18 @@ export class CardOBComponent implements OnInit {
       });
       await toast.present();
 
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          special: JSON.stringify(this.visible),
+
+
+        }
+      };
+      console.log("Data has been sent!");
+
+
+      this.router.navigate(['tabs/tab4'], navigationExtras);
+
     }
   }
 

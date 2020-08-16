@@ -138,12 +138,19 @@
     "DETAILS-PAGE": {
 
         "title": "Route von Max",
-        "btn": "Teilnehmen",
         "beginning": "Beginn",
         "end": "Ende",
         "from": "Start",
         "to": "Ziel",
-        "notes": "Notizen"
+        "notes": "Notizen",
+
+        "btn-participate": "Teilnehmen",
+        "btn-not-participate": "Nicht mehr teilnehmen",
+
+        "alert-header": "Achtung",
+        "alert-message": "Du bist dabei, nicht mehr an dem Event teilzunehmen !",
+        "alert-btn-not-participate": "Nicht mehr teilnehmen",
+        "alert-btn-cancel": "Abbrechen"
 
     },
 
@@ -214,7 +221,7 @@
 
     "PRODUCT": {
 
-        "message": "Ihr Produkt wurde gefunden !",
+        "message": "Dein Produkt wurde gefunden !",
         "btn-add-product": "Produkt hinzufügen",
         "btn-back-to-home": "Zurück zur Startseite",
         "title": "Benenne dein Fahrzeug",
@@ -363,7 +370,9 @@
         "distance-in-kilometers":"Strecke",
         "hints": "Hinweise",
 
-        "btn": "Teilnehmen",
+        "btn-participate": "Teilnehmen",
+        "btn-not-participate": "Nicht mehr teilnehmen",
+
 
         "alert-header": "Teilgenommen",
         "alert-message": "Super. Du nimmst an dem Wettbewerb teil. Wir freuen uns auf dich !",
@@ -394,6 +403,12 @@
         "message": "Dies ist ein ungültiger QR-Code !",
 
         "try-it-again": "Erneut versuchen"
+    },
+
+    "MY-EVENT-CARD": {
+
+        "begin": "Beginn",
+        "end": "Ende"
     }
 
 }

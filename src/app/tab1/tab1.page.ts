@@ -1,6 +1,5 @@
 import { Component, LOCALE_ID, ViewChild, OnInit, Inject, } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular'
 import { AngularFireDatabase, snapshotChanges } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -11,6 +10,8 @@ import * as moment from 'moment';
 import * as firebase from 'firebase';
 import { TranslateService } from '@ngx-translate/core';
 
+
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -52,25 +53,20 @@ export class Tab1Page implements OnInit {
   constructor(
     public afs: AngularFirestore,
     public db: AngularFireDatabase,
-    private menuCtl: MenuController,
     public modalController: ModalController,
     private alertCtrl: AlertController,
     private router: Router,
-    private translate: TranslateService) {
+    private translate: TranslateService,
+
+    private platform: Platform) {
 
     this.loadEvent();
-
 
 
   }
 
   ngOnInit() {
 
-  }
-
-  openFirst() {
-    this.menuCtl.enable(true, 'first');
-    this.menuCtl.open('first');
   }
 
   showHideForm() {
@@ -135,7 +131,7 @@ export class Tab1Page implements OnInit {
       actions.forEach(action => {
         console.log('Title: ' + action.payload.exportVal().title);
         let event = {
-          id:action.payload.exportVal().id,
+          id: action.payload.exportVal().id,
           title: action.payload.exportVal().title,
           startTime: new Date(action.payload.exportVal().startTime),
           endTime: new Date(action.payload.exportVal().endTime),
@@ -191,7 +187,8 @@ export class Tab1Page implements OnInit {
           text: this.translate.instant('TAB1.btn-delete'),
           handler: () => {
 
-           
+            this.db.list('Events/').remove()
+
           }
         }, {
           text: this.translate.instant('TAB1.btn-edit'),
@@ -204,12 +201,15 @@ export class Tab1Page implements OnInit {
           text: this.translate.instant('TAB1.btn-share'),
           handler: () => {
 
+            const start = moment(newEvent.startTime).format('LL - HH:mm');
+            const end = moment(newEvent.endTime).format('LL - HH:mm');
+
             let navigationExtras: NavigationExtras = {
               queryParams: {
-              
+
                 special: JSON.stringify(newEvent.title),
-                specialStartTime: JSON.stringify(newEvent.startTime),
-                specialEndTime: JSON.stringify(newEvent.endTime),
+                specialStartTime: JSON.stringify(start),
+                specialEndTime: JSON.stringify(end),
                 specialStartPlace: JSON.stringify(newEvent.startplace),
                 specialEndPlace: JSON.stringify(newEvent.endplace),
                 specialDescription: JSON.stringify(newEvent.description),

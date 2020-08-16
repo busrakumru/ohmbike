@@ -7,6 +7,12 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MenuComponent } from '../components/menu/menu.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+
+
+
 
 @NgModule({
   imports: [
@@ -15,8 +21,11 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     Tab2PageRoutingModule,
     MatIconModule,
-    TranslateModule
+    TranslateModule,
+    MatMenuModule,
+    MatButtonModule
+    
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page,MenuComponent]
 })
 export class Tab2PageModule {}

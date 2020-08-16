@@ -73,6 +73,7 @@ export class OpenAktvComponent implements OnInit {
         to: this.to,
         length: this.length,
         notes: this.notes,
+        visible: true
       },
 
 
@@ -84,12 +85,15 @@ export class OpenAktvComponent implements OnInit {
 
   }
 
+  visible = true;
+
   goDetails(aktv) {
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(aktv),
-
+        specialVisible: this.visible
+        
       }
     };
     console.log("data has been sent !");

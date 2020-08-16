@@ -86,13 +86,6 @@ export class Tab3Page {
                 }
               }; this.route.navigate(['product'], navigationExtras);
 
-              break
-              
-          }else{
-
-          continue
-
-
           }
         }
          
