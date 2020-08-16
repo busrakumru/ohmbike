@@ -29,7 +29,7 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ 'LOGIN.label-password' | translate }}</mat-label>
         <input [formControl]="password" matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password">
-        <button style="background-color: white;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        <button style="background-color: #fcfcff;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide">
           <mat-icon style="top: 0px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>

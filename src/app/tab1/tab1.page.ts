@@ -10,7 +10,6 @@ import { NavigationExtras, Router } from '@angular/router';
 import * as moment from 'moment';
 import * as firebase from 'firebase';
 import { TranslateService } from '@ngx-translate/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -47,6 +46,7 @@ export class Tab1Page implements OnInit {
     mode: 'month',
     currentDate: new Date(),
     queryMode: 'remote',
+
   };
 
   constructor(
@@ -191,12 +191,6 @@ export class Tab1Page implements OnInit {
           text: this.translate.instant('TAB1.btn-delete'),
           handler: () => {
 
-            firebase.database().ref('/Events').once('child_added').then(function(data) {
-
-              data.val().remove;
-
-              
-            })
            
           }
         }, {

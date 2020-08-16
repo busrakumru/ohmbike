@@ -14,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class TestuserPage implements OnInit {
 
-  segment = 'aktivitaet';
+  segment = 'activity';
 
   data: any;
   testuser:any;

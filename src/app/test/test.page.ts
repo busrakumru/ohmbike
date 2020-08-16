@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class TestPage implements OnInit {
 
-  segment = 'aktivitaet';
+  segment = 'activity';
   data: any;
   term = '';
 

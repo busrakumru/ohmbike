@@ -23,7 +23,7 @@ import * as firebase from 'firebase';
 export class Tab4Page implements OnInit {
 
 
-  segment = 'aktivitaet';
+  segment = 'activity';
 
   //fahrzeuge: any[] = [];
   vehicles: any[] = [];
@@ -132,6 +132,8 @@ export class Tab4Page implements OnInit {
   /** this function will refresh the page by pulling down */
 
   refresh(event) {
+
+    this.testusers;
 
     this.initializer();
 

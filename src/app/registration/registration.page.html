@@ -116,7 +116,7 @@
           <mat-label>{{ 'SIGNUP.password' | translate }}</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" type="password" required matInput [formControl]="password"
             placeholder="{{ 'SIGNUP.password' | translate }}" [(ngModel)]="user.password">
-          <button style="background-color: white; height: 25px;" mat-icon-button matSuffix (click)="hide = !hide"
+          <button style="background-color: #fcfcff; height: 25px;" mat-icon-button matSuffix (click)="hide = !hide"
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -142,7 +142,7 @@
           <mat-label>{{ 'SIGNUP.repeat-password' | translate }}</mat-label>
           <input matInput [type]="hidepw ? 'password' : 'text'" required type="password" matInput
             [formControl]="password2" placeholder="{{ 'SIGNUP.password' | translate }}">
-          <button style="background-color: white; height: 25px;" mat-icon-button matSuffix (click)="hidepw = !hidepw"
+          <button style="background-color: #fcfcff; height: 25px;" mat-icon-button matSuffix (click)="hidepw = !hidepw"
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hidepw ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>

@@ -10,7 +10,7 @@
 
 
     <ion-button slot="end" fill="none" (click)="presentPopover($event)">
-      <ion-icon color="secondary" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
     </ion-button>
   </ion-toolbar>
 
@@ -50,7 +50,7 @@
 
     <ion-segment mode="md" [(ngModel)]="segment">
 
-      <ion-segment-button value="aktivitaet">
+      <ion-segment-button value="activity">
         <mat-icon class="segment-icon">history</mat-icon>
         <ion-label class="ion-text-capitalize">
           {{'TAB4.segment-activity' | translate}}
@@ -75,7 +75,7 @@
   </div>
 
 
-  <div *ngIf="segment == 'aktivitaet'" class="inhalt">
+  <div *ngIf="segment == 'activity'" class="inhalt">
 
     <mat-accordion class="example-headers-align" multi>
       <mat-expansion-panel>

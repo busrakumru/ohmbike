@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CatalogserviceService {
   posts: any=[];
-  
+  scooters: any[];
+  boards:any[];
+
   /** this service includes all dummy products from Ohmbike */
 
   constructor(public http: HttpClient) {
@@ -18,21 +20,30 @@ export class CatalogserviceService {
    load(){
 
     this.posts=[
-      { title: 'Grails 4 Tutorial: Spring Security Core Login Example', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
-      { title: 'Angular Material Form Controls, Form Field and Input Examples', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
-      { title: 'Angular 8 Tutorial: Observable and RXJS Examples', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
-      { title: 'React Native Tutorial: Facebook Login Example', image: 'assets/img-ohmbikeprodukte/Matte .png' },
-      { title: 'Spring Boot Tutorial: Build an MVC Java Web App using Netbeans', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmBike iRider - faltbares EBike', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmBike iUrban 20', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmBike iRider - faltbares EBike "Marc Marquez Edition', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'}
     ];
-        }
-      
 
-  getItem(id){
-  	
-  }
+    this.scooters=[
+      { title: 'OhmScooter R9 eXtreme', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmScooter R9', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmScooter R8', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
+      { title: 'OhmScooter R6', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
+    ];
+
+    this.boards=[
+      { title: 'OhmBoard iCruiser', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmBoard iRocket', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png' },
+      { title: 'OhmBoard iWave', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
+      { title: 'OhmBoard iWild', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
+      { title: 'OhmBoard Segway', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
+      { title: 'OhmBoard Segway Plus', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'},
+      { title: 'OhmSkate Dreiradscooter', image: 'assets/img-ohmbikeprodukte/Matte Khaki.png'}
+
+    ];
 
 
-  addItem(){
-  	
-  }
+   }
+
 }

@@ -8,8 +8,8 @@
 
     <ion-item>
       <ion-button fill="none" (click)="settings()">
-        <mat-icon style="margin-right: 25px;">settings</mat-icon>
-        <ion-label class="label" style="font-size: 13px;">{{ 'POPOVER.settings' | translate }}</ion-label>
+        <mat-icon >settings</mat-icon>
+        <ion-label class="ion-margin-start">{{ 'POPOVER.settings' | translate }}</ion-label>
 
       </ion-button>
     </ion-item>
@@ -17,8 +17,8 @@
 
     <ion-item>
       <ion-button fill="none" (click)="logOut()">
-        <mat-icon id="icon-abmelden" style="color:red; margin-right: 25px;"> exit_to_app</mat-icon>
-        <ion-label class="label-abmelden" style="font-size: 13px; color:red">{{ 'POPOVER.logOut' | translate }}</ion-label>
+        <mat-icon id="icon-abmelden" style="color:red;"> exit_to_app</mat-icon>
+        <ion-label class="ion-margin-start" color="danger">{{ 'POPOVER.logOut' | translate }}</ion-label>
       </ion-button>
     </ion-item>
 

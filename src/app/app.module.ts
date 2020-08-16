@@ -31,9 +31,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'; 
 
-//weiss nicht, ob die benutzt werden !
-import { Camera } from '@ionic-native/camera/ngx';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+//import { Camera } from '@ionic-native/camera/ngx';
+//import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 
@@ -83,8 +82,8 @@ export function createTranslateLoader(http: HttpClient){
     {provide: MAT_DATE_LOCALE, useValue: 'de'},
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     MatIconModule,
-    Camera,
-    QRScanner,
+    //Camera,
+    //QRScanner,
     BarcodeScanner,
     CatalogserviceService,
     InAppBrowser
