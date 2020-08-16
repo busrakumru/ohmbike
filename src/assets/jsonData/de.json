@@ -407,8 +407,8 @@
 
     "MY-EVENT-CARD": {
 
-        "begin": "Beginn",
-        "end": "Ende"
+        "begin": "Beginn: ",
+        "end": "Ende: "
     }
 
 }

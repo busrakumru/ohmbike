@@ -10,6 +10,7 @@ import { SettingsPage } from './settings.page';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonicModule,
     SettingsPageRoutingModule,
     MatExpansionModule,
-    TranslateModule
+    TranslateModule,
+    MatIconModule
   ],
   declarations: [SettingsPage]
 })

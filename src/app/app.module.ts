@@ -32,7 +32,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'; 
 
 //import { Camera } from '@ionic-native/camera/ngx';
-//import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 
@@ -83,7 +82,6 @@ export function createTranslateLoader(http: HttpClient){
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     MatIconModule,
     //Camera,
-    //QRScanner,
     BarcodeScanner,
     CatalogserviceService,
     InAppBrowser

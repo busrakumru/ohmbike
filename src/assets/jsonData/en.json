@@ -410,8 +410,8 @@
 
     "MY-EVENT-CARD": {
 
-        "begin": "Begin",
-        "end": "End"
+        "begin": "Begin: ",
+        "end": "End: "
     }
 
 }
