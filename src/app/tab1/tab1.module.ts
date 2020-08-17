@@ -42,10 +42,7 @@ registerLocaleData(localeDe)
     ReactiveFormsModule,
     MatNativeDateModule,
     TranslateModule
-    
   ],
-  
-
   declarations: [Tab1Page,MenuComponent],
   providers: [{ provide: LOCALE_ID, useValue: 'de-DE' }]
 })

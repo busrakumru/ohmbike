@@ -2,13 +2,11 @@
   - activities: shows the noted, open, and completed activities
   - friends: includes a friendsliste which navigates to their profile
   - vehicles: lists the added vehicles -->
-
 <ion-header>
+
   <ion-toolbar>
     <ion-title class="hide-md">{{ 'TAB4.title' | translate }}</ion-title>
     <ion-img class="hide-ios" src="assets/logo.png"></ion-img>
-
-
     <ion-button slot="end" fill="none" (click)="presentPopover($event)">
       <ion-icon ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
     </ion-button>
@@ -20,124 +18,83 @@
 
   <div class="ion-padding" style="background-color: white;">
     <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-
       <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
-
     </ion-refresher>
   </div>
-
-
   <div class="avatar">
-
     <ion-avatar mode="ios">
-
       <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
       <div class="ion-text-center">
-
         <div *ngFor="let uid of users">
-
           <h7>{{ uid.data().user_name }} {{ uid.data().user_nachname }}</h7>
-
         </div>
-
         <ion-button id="edit" size="small" (click)="edit(user)">
           {{'TAB4.edit-profile' | translate}}
         </ion-button>
-
       </div>
     </ion-avatar>
-
-
     <ion-segment mode="md" [(ngModel)]="segment">
-
       <ion-segment-button value="activity">
         <mat-icon class="segment-icon">history</mat-icon>
         <ion-label class="ion-text-capitalize">
           {{'TAB4.segment-activity' | translate}}
         </ion-label>
       </ion-segment-button>
-
       <ion-segment-button value="freunde">
         <mat-icon class="segment-icon">people</mat-icon>
         <ion-label class="ion-text-capitalize">
           {{'TAB4.segment-friends' | translate}}
         </ion-label>
       </ion-segment-button>
-
       <ion-segment-button value="vehicles">
         <mat-icon class="segment-icon">motorcycle</mat-icon>
         <ion-label class="ion-text-capitalize">
           {{'TAB4.segment-vehicles' | translate}}
         </ion-label>
       </ion-segment-button>
-
     </ion-segment>
   </div>
-
-
   <div *ngIf="segment == 'activity'" class="inhalt">
-
     <mat-accordion class="example-headers-align" multi>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{'TAB4.noted-activities' | translate}}
           </mat-panel-title>
-
-
-
         </mat-expansion-panel-header>
-
         <ion-item-sliding id="itemSlide" lines="none" *ngFor="let item of notedActivities; let activity = index">
-
           <app-noted-aktv></app-noted-aktv>
-
           <ion-item-options side="end">
             <ion-item-option color="danger" (click)="deleteActivitie(activity)">
               <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
             </ion-item-option>
-
           </ion-item-options>
         </ion-item-sliding>
-
-
       </mat-expansion-panel>
-
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{'TAB4.open-activities' | translate}}
           </mat-panel-title>
-
         </mat-expansion-panel-header>
-
         <ion-list class="abgeschlossen" lines="none">
-
-
           <ion-item-sliding id="itemSlide" *ngFor="let item of openActivities; let activity = index">
-
             <app-open-aktv></app-open-aktv>
-
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="deleteActivities(activity)">
                 <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
               </ion-item-option>
-
             </ion-item-options>
           </ion-item-sliding>
         </ion-list>
-
       </mat-expansion-panel>
-
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{'TAB4.completed-activities' | translate}}
           </mat-panel-title>
-
         </mat-expansion-panel-header>
         <ion-list class="abgeschlossen" lines="none">
-
           <!-- dummy item -->
           <ion-item button (click)="completed()">
             <ion-avatar slot="start">
@@ -146,76 +103,49 @@
             <ion-label>Route durch Wedding</ion-label>
             <ion-icon slot="end" color="primary" name="checkmark-circle"></ion-icon>
           </ion-item>
-
-
         </ion-list>
       </mat-expansion-panel>
-
     </mat-accordion>
   </div>
 
   <div *ngIf="segment == 'freunde'">
-
-
     <ion-list lines="none" class="list">
-
       <ion-searchbar class="searchbar" animated placeholder="{{ 'TAB4.searchbar' | translate }}" showcancelbutton=""
         [(ngModel)]="term"></ion-searchbar>
-
       <ion-item-sliding id="itemSlide" *ngIf="data">
-
         <ion-item button (click)="goFrienddData(data)">
           <ion-avatar mode="ios">
-
             <img src="assets/user.png">
-
           </ion-avatar>
           <ion-label>{{data.name}} {{ data.nachname}}</ion-label>
         </ion-item>
-
         <ion-item-options side="end">
           <ion-item-option color="danger" (click)="delete(data)">
             <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
           </ion-item-option>
-
         </ion-item-options>
       </ion-item-sliding>
-
       <ion-item-sliding id="itemSlide" *ngFor="let testuser of testusers | filter:term; let friend = index">
-
         <ion-item button (click)="goFriend(testuser)">
           <ion-avatar mode="ios">
-
             <img src="{{testuser.image}}" />
-
           </ion-avatar>
           <ion-label>{{testuser.name}} {{testuser.nachname}}</ion-label>
         </ion-item>
-
         <ion-item-options side="end">
           <ion-item-option color="danger" (click)="deleteTestuser(friend)">
             <ion-icon slot="icon-only" name="trash" color="tertiary"></ion-icon>
           </ion-item-option>
-
         </ion-item-options>
       </ion-item-sliding>
-
-
-
     </ion-list>
-
   </div>
-
-
   <div *ngIf="segment == 'vehicles'">
-
     <app-vehicle></app-vehicle>
-
   </div>
 
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-toolbar color="tertiary">
-  </ion-toolbar>
+  <ion-toolbar ></ion-toolbar>
 </ion-footer>

@@ -10,8 +10,6 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule} from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

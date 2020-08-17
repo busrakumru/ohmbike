@@ -3,29 +3,24 @@ The user can plan an event and save it in the same page. With a tap of the creat
 <ion-app>
 
   <div class="ion-page" id="main">
-
     <ion-header *ngIf="!showAddEvent" [translucent]="true">
 
       <ion-toolbar>
-
         <ion-buttons slot="primary" class="hide-md">
           <ion-button size="small" *ngIf="!showAddEvent" color="primary" (click)="showHideForm()">
             <ion-icon name="add-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-
         <ion-buttons slot="primary" class="hide-ios">
           <app-menu>
             <ion-button mat-button>
-              <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
             </ion-button>
           </app-menu>
         </ion-buttons>
-
         <ion-title class="hide-md">Event</ion-title>
         <ion-img class="hide-ios" src="assets/logo.png"></ion-img>
       </ion-toolbar>
-
 
     </ion-header>
 
@@ -33,15 +28,13 @@ The user can plan an event and save it in the same page. With a tap of the creat
 
       <div class="ion-padding">
         <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-
-        <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
-
+          <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
         </ion-refresher>
       </div>
 
       <ion-content fullscreen *ngIf="showAddEvent" class="hide-md">
-       
         <ion-header *ngIf="showAddEvent" class="ion-padding-top">
+
           <ion-row class="ion-padding-top">
             <ion-col>
               <ion-tab-button (click)="showHideForm()">
@@ -54,56 +47,52 @@ The user can plan an event and save it in the same page. With a tap of the creat
               </ion-tab-button>
             </ion-col>
           </ion-row>
+
         </ion-header>
-
         <ion-item-divider></ion-item-divider>
-
         <ion-list>
           <ion-item lines="none">
-            <ion-input [(ngModel)]="newEvent.title" class="title" placeholder="{{ 'TAB1.title' | translate }}" style="height:100px;"></ion-input>
+            <ion-input [(ngModel)]="newEvent.title" class="title" placeholder="{{ 'TAB1.title' | translate }}"
+              style="height:100px;"></ion-input>
           </ion-item>
-
           <ion-item-divider></ion-item-divider>
           <ion-item lines="none">
-
             <ion-label>{{ 'TAB1.beginning' | translate }}</ion-label>
             <ion-datetime [(ngModel)]="newEvent.startTime" [min]="minDate" value="2008-09-02T13:47"
-              displayFormat=" DD.MM.YYYY H:mm" pickerFormat="DDD MMM/YYYY/H:mm" cancelText="{{ 'TAB1.btn-back' | translate }}" doneText="{{ 'TAB1.btn-save' | translate }}"
+              displayFormat=" DD.MM.YYYY H:mm" pickerFormat="DDD MMM/YYYY/H:mm"
+              cancelText="{{ 'TAB1.btn-back' | translate }}" doneText="{{ 'TAB1.btn-save' | translate }}"
               monthShortNames="{{ 'TAB1.monthShortNames' | translate }}"
               dayShortNames="{{ 'TAB1.dayShortNames' | translate }}">
             </ion-datetime>
           </ion-item>
-
           <ion-item lines="none">
             <ion-label>{{ 'TAB1.end' | translate }}</ion-label>
             <ion-datetime [(ngModel)]="newEvent.endTime" [min]="minDate" value="2008-09-02T13:47"
-              dayShortNames="{{ 'TAB1.dayShortNames' | translate }}" displayFormat=" DD.MM.YYYY H:mm" cancelText="{{ 'TAB1.btn-back' | translate }}"
-              doneText="{{ 'TAB1.btn-save' | translate }}" pickerFormat="DDD MMM/YYYY/H:mm"
-              monthShortNames="{{ 'TAB1.monthShortNames' | translate }}">
+              dayShortNames="{{ 'TAB1.dayShortNames' | translate }}" displayFormat=" DD.MM.YYYY H:mm"
+              cancelText="{{ 'TAB1.btn-back' | translate }}" doneText="{{ 'TAB1.btn-save' | translate }}"
+              pickerFormat="DDD MMM/YYYY/H:mm" monthShortNames="{{ 'TAB1.monthShortNames' | translate }}">
             </ion-datetime>
           </ion-item>
-
           <ion-item-divider></ion-item-divider>
-
           <ion-item lines="none">
-
             <ion-input placeholder="{{ 'TAB1.from' | translate }}" [(ngModel)]="newEvent.startplace"></ion-input>
           </ion-item>
-
           <ion-item lines="none">
-
             <ion-input placeholder="{{ 'TAB1.to' | translate }}" [(ngModel)]="newEvent.endplace"></ion-input>
           </ion-item>
           <ion-item-divider></ion-item-divider>
           <ion-item lines="none">
-            <ion-textarea auto-grow="true" placeholder="{{ 'TAB1.notes' | translate }}" [(ngModel)]="newEvent.description"></ion-textarea>
+            <ion-textarea auto-grow="true" placeholder="{{ 'TAB1.notes' | translate }}"
+              [(ngModel)]="newEvent.description"></ion-textarea>
           </ion-item>
         </ion-list>
+
       </ion-content>
 
       <ion-content *ngIf="showAddEvent" class="hide-ios">
 
         <ion-header *ngIf="showAddEvent" class="ion-padding-top">
+
           <ion-row class="ion-padding-top">
             <ion-col>
               <ion-tab-button (click)="showHideForm()">
@@ -116,76 +105,69 @@ The user can plan an event and save it in the same page. With a tap of the creat
               </ion-tab-button>
             </ion-col>
           </ion-row>
+
         </ion-header>
 
         <div class="ion-padding-top">
           <ion-item class="closed">
-            <ion-input [(ngModel)]="newEvent.title" class="title" placeholder="{{ 'TAB1.title' | translate }}" style="height:100px;"></ion-input>
+            <ion-input [(ngModel)]="newEvent.title" class="title" placeholder="{{ 'TAB1.title' | translate }}"
+              style="height:100px;"></ion-input>
           </ion-item>
-
           <ion-item>
-
             <ion-label>{{ 'TAB1.beginning' | translate }}</ion-label>
             <ion-datetime [(ngModel)]="newEvent.startTime" [min]="minDate" value="2008-09-02T13:47"
-              displayFormat="DDD., DD. MMM. YYYY H:mm" pickerFormat="DDD MMM/YYYY/H:mm" cancelText="{{ 'TAB1.btn-back' | translate }}"
-              doneText="{{ 'TAB1.btn-save' | translate }}" monthShortNames="{{ 'TAB1.monthShortNames' | translate }}"
+              displayFormat="DDD., DD. MMM. YYYY H:mm" pickerFormat="DDD MMM/YYYY/H:mm"
+              cancelText="{{ 'TAB1.btn-back' | translate }}" doneText="{{ 'TAB1.btn-save' | translate }}"
+              monthShortNames="{{ 'TAB1.monthShortNames' | translate }}"
               dayShortNames="{{ 'TAB1.dayShortNames' | translate }}">
             </ion-datetime>
           </ion-item>
-
           <ion-item>
             <ion-label>{{ 'TAB1.end' | translate }}</ion-label>
             <ion-datetime [(ngModel)]="newEvent.endTime" [min]="minDate" value="2008-09-02T13:47"
-              dayShortNames="{{ 'TAB1.dayShortNames' | translate }}" displayFormat="DDD., DD. MMM. YYYY H:mm" cancelText="{{ 'TAB1.btn-back' | translate }}"
-              doneText="{{ 'TAB1.btn-save' | translate }}" pickerFormat="DDD MMM/YYYY/H:mm"
-              monthShortNames="{{ 'TAB1.monthShortNames' | translate }}">
+              dayShortNames="{{ 'TAB1.dayShortNames' | translate }}" displayFormat="DDD., DD. MMM. YYYY H:mm"
+              cancelText="{{ 'TAB1.btn-back' | translate }}" doneText="{{ 'TAB1.btn-save' | translate }}"
+              pickerFormat="DDD MMM/YYYY/H:mm" monthShortNames="{{ 'TAB1.monthShortNames' | translate }}">
             </ion-datetime>
           </ion-item>
-
         </div>
-
         <ion-card>
           <ion-item>
             <ion-icon name="flag" style="padding-right: 10px;"></ion-icon>
             <ion-input placeholder="{{ 'TAB1.from' | translate }}" [(ngModel)]="newEvent.startplace"></ion-input>
           </ion-item>
-
           <ion-item>
             <ion-icon name="location" style="padding-right: 10px;"></ion-icon>
             <ion-input placeholder="{{ 'TAB1.to' | translate }}" [(ngModel)]="newEvent.endplace"></ion-input>
           </ion-item>
-
           <ion-item>
             <ion-icon style="margin-top: -15px;" name="document-text"></ion-icon>
-            <ion-textarea [(ngModel)]="newEvent.description" auto-grow="true" placeholder="{{ 'TAB1.notes' | translate }}"></ion-textarea>
+            <ion-textarea [(ngModel)]="newEvent.description" auto-grow="true"
+              placeholder="{{ 'TAB1.notes' | translate }}"></ion-textarea>
           </ion-item>
         </ion-card>
+
       </ion-content>
 
       <ion-content *ngIf="!showAddEvent">
 
         <ion-grid>
           <ion-row>
-
             <ion-col size="2" class="ion-no-padding">
               <ion-button fill="clear" (click)="back()">
                 <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
               </ion-button>
             </ion-col>
-
             <ion-col size="8" class="ion-text-center" mode="md">
               <ion-title size="small">{{viewTitle}}</ion-title>
             </ion-col>
-
             <ion-col size="2" class="ion-no-padding">
               <ion-button fill="clear" (click)="next()">
                 <ion-icon name="chevron-forward-outline" slot="start"></ion-icon>
               </ion-button>
             </ion-col>
-
           </ion-row>
         </ion-grid>
-
         <calendar id="myCalendar" [startingDayMonth]="calendar.startingDayMonth" [eventSource]="eventSource"
           [currentDate]="calendar.currentDate" [formatDayHeader]="calendar.formatDayHeader"
           [formatDay]="calendar.formatDay" (onEventSelected)="onEventSelected($event)"
@@ -193,7 +175,6 @@ The user can plan an event and save it in the same page. With a tap of the creat
           [monthviewDisplayEventTemplate]="template" (onRangeChanged)="onRangeChanged($event)"
           [queryMode]="calendar.queryMode">
         </calendar>
-
         <ion-fab horizontal="end" class="hide-ios">
           <ion-fab-button size="small" color="primary" (click)="showHideForm()">
             <ion-icon name="add-outline"></ion-icon>
@@ -202,22 +183,21 @@ The user can plan an event and save it in the same page. With a tap of the creat
 
       </ion-content>
 
-
       <ng-template #template let-view="view" let-row="row" let-col="col">
-
         <div [class.with-event]="view.dates[row*7+col].events.length">
           {{view.dates[row*7+col].label}}
           <div class="indicator-container">
             <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"></div>
           </div>
         </div>
-
       </ng-template>
+
     </ion-content>
 
-    <ion-footer class="ion-no-border" >
-      <ion-toolbar >
-      </ion-toolbar>
+    <ion-footer class="ion-no-border">
+      <ion-toolbar></ion-toolbar>
     </ion-footer>
+
   </div>
+
 </ion-app>

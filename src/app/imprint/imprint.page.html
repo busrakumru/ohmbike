@@ -1,33 +1,32 @@
 <!-- this page gives the user informations about the OhmBike company -->
-
 <ion-header>
+
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>{{'IMPRESSUM.title' | translate}}</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
-  <div class="ion-text-uppercase">
-    <h7>Ohm Bike</h7>
-  </div>
-
-  <p>
-
-    Blomberger Weg 8<br>
-    13437 Berlin<br>
-    Deutschland<br><br>
-
-    Telefon: 030 2555 9117<br><br>
-
-    {{'IMPRESSUM.email-adress' | translate}}: info@ohmbike.de<br><br>
-
-    {{'IMPRESSUM.executive-director' | translate}}:<br>
-    Yaser Öztürk
-    
-  </p>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <div class="ion-text-center">
+        <h3>Ohm Bike</h3>
+        <p>
+          Blomberger Weg 8<br>
+          13437 Berlin<br>
+          Deutschland<br><br>
+          Telefon: 030 2555 9117<br><br>
+          {{'IMPRESSUM.email-adress' | translate}}: info@ohmbike.de<br><br>
+          {{'IMPRESSUM.executive-director' | translate}}:<br>
+          Yaser Öztürk
+        </p>
+      </div>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

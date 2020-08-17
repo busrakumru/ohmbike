@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-
-
 @Component({
   selector: 'app-aboutus',
   templateUrl: './aboutus.page.html',
@@ -10,17 +7,14 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 })
 export class AboutusPage implements OnInit {
 
-  constructor(
-    private iab: InAppBrowser
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /** opens the website of OhmBike */
   goDetails() {
 
-    this.iab.create('https://www.ohmbike.de/');
+    window.open('https://www.ohmbike.de/pages/unsere-story', '_blank', 'location=yes');
 
   }
 }

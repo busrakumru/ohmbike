@@ -12,7 +12,6 @@ import { VehicleComponent } from '../components/vehicle/vehicle.component';
 import { NotedAktvComponent } from '../components/noted-aktv/noted-aktv.component';
 import { CompletedAktvComponent } from '../components/completed-aktv/completed-aktv.component';
 import { EventCardComponent } from '../components/event-card/event-card.component';
-
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -24,21 +23,19 @@ import { TranslateModule } from '@ngx-translate/core';
     Tab4PageRoutingModule,
     MatExpansionModule,
     MatIconModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
     Ng2SearchPipeModule,
     TranslateModule,
-
-
   ],
 
   declarations: [Tab4Page,
-                 PopovercomponentPage,
-                 OpenAktvComponent,
-                 VehicleComponent,
-                 NotedAktvComponent,
-                 CompletedAktvComponent,
-                 EventCardComponent,
-                 ],
+    PopovercomponentPage,
+    OpenAktvComponent,
+    VehicleComponent,
+    NotedAktvComponent,
+    CompletedAktvComponent,
+    EventCardComponent,
+  ],
   entryComponents: [PopovercomponentPage]
 })
-export class Tab4PageModule {}
+export class Tab4PageModule { }

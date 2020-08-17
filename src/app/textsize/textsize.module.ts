@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { TextsizePageRoutingModule } from './textsize-routing.module';
-
 import { TextsizePage } from './textsize.page';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -19,4 +16,4 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   declarations: [TextsizePage]
 })
-export class TextsizePageModule {}
+export class TextsizePageModule { }

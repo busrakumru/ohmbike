@@ -1,75 +1,47 @@
 <!-- this is a dummy testuser page. It is built to show how other user profiles will be presented and has the function to unfollow that profile -->
-
 <ion-header>
-  <ion-toolbar>
 
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'TESTUSER.title' | translate}}</ion-title>
-
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content color="tertiary">
 
   <div class="avatar" *ngIf="testuser">
-
     <ion-avatar mode="ios">
-
-          <img src="{{testuser.image}}"/>
-
+      <img src="{{testuser.image}}" />
       <div class="ion-text-center">
-
         <h7>{{testuser.name}} {{testuser.nachname}} </h7>
-
-        <ion-button id="remove" size="small" (click)="deleteTestuser(testuser)">{{ 'TESTUSER.btn-unfollow' | translate}}</ion-button>
-
+        <ion-button id="remove" size="small" (click)="deleteTestuser(testuser)">{{ 'TESTUSER.btn-unfollow' | translate}}
+        </ion-button>
       </div>
     </ion-avatar>
-
-
     <ion-segment mode="md" [(ngModel)]="segment">
-
       <ion-segment-button value="activity">
         <mat-icon class="segment-icon">history</mat-icon>
         <ion-label class="ion-text-capitalize">{{ 'TESTUSER.segment-activity' | translate}}</ion-label>
       </ion-segment-button>
-
       <ion-segment-button value="freunde">
         <mat-icon class="segment-icon">people</mat-icon>
         <ion-label class="ion-text-capitalize">{{ 'TESTUSER.segment-friends' | translate}}</ion-label>
       </ion-segment-button>
-
     </ion-segment>
   </div>
-
-
   <div *ngIf="segment == 'activity'" class="inhalt">
-
-
   </div>
-
   <div *ngIf="segment == 'freunde'">
-
     <ion-list lines="none" class="list">
-
-
       <ion-searchbar class="searchbar" animated placeholder="{{ 'TAB4.searchbar' | translate }}" showcancelbutton=""
-      [(ngModel)]="term"></ion-searchbar>
-
-
-
-
+        [(ngModel)]="term"></ion-searchbar>
       <ion-item *ngFor="let testId of test | filter:term; let test = index" button (click)="goFriend(testId)">
-
-
         <ion-label style="font-size: 13px;">{{ testId.name }} {{ testId.nachname }}</ion-label>
-
       </ion-item>
-
     </ion-list>
-
   </div>
 
 </ion-content>

@@ -22,17 +22,11 @@ import * as firebase from 'firebase';
 
 export class Tab4Page implements OnInit {
 
-
   segment = 'activity';
-
-  //fahrzeuge: any[] = [];
   vehicles: any[] = [];
   users: any[] = [];
-
-  //gemerkt: any;
   testuser: any;
   data: any;
-
   notedActivities: NotedAktvComponent[];
   openActivities: OpenAktvComponent[];
 
@@ -40,7 +34,6 @@ export class Tab4Page implements OnInit {
 
   /** dummy friends */
   testusers = [{
-
     name: 'Marie',
     nachname: 'Müller',
     image: 'assets/profile/profil.jpg'
@@ -49,13 +42,11 @@ export class Tab4Page implements OnInit {
     name: 'Kai',
     nachname: 'Baum',
     image: 'assets/profile/profil2.jpg'
-
   },
   {
     name: 'Kelly',
     nachname: 'Tänzer',
     image: 'assets/profile/profil3.jpg'
-
   },
   {
     name: 'Max',
@@ -67,13 +58,11 @@ export class Tab4Page implements OnInit {
     name: 'Robin',
     nachname: 'Schulz',
     image: 'assets/profile/profil4.jpg'
-
   },
   {
     name: 'Paul',
     nachname: 'Hermann',
     image: 'assets/profile/profil5.jpg'
-
   },
   {
     name: 'Phillip',
@@ -85,24 +74,16 @@ export class Tab4Page implements OnInit {
     name: 'Telly',
     nachname: 'Karsten',
     image: 'assets/profile/profil7.jpg'
-
   }];
 
   initializer() {
-
     this.openActivities = [
-
       name,
-
     ];
-
     this.notedActivities = [
-
       name
     ]
-
   }
-
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
@@ -118,78 +99,52 @@ export class Tab4Page implements OnInit {
   ) {
 
     this.getUser();
-
     this.initializer();
-
     this.getDocuments();
-
     this.getDummyData();
-
     this.getDummyTestuser();
-
   }
 
-  /** this function will refresh the page by pulling down */
+  ngOnInit() { }
 
+  /** this function will refresh the page by pulling down */
   refresh(event) {
 
     this.testusers;
-
     this.initializer();
-
     this.getDummyTestuser();
-
     this.getDummyData();
-
     this.getDocuments();
-
     setTimeout(() => {
-
       event.target.complete();
     }, 2000);
   }
-
-  async ngOnInit() { }
-
 
   /** opens the popover */
   async presentPopover(event) {
 
     const popover = await this.popoverController.create({
-
       component: PopovercomponentPage,
       event
-
     });
-
     return await popover.present();
-
-
   }
 
   /** opens the edip profile modal */
   edit() {
 
     this.modalController.create({
-
       component: EditprofilePage,
       cssClass: 'edit-modal-class',
       componentProps: this.users,
-
       swipeToClose: true
-
-
     }).then(modalres => {
 
       modalres.present();
-
       modalres.onDidDismiss().then(res => {
-
         if (res.data != null) {
-
           this.users = res.data;
         }
-
       })
     })
   }
@@ -198,19 +153,12 @@ export class Tab4Page implements OnInit {
   async completed() {
 
     const modal = await this.modalController.create({
-
       component: CompletedAktvComponent,
       cssClass: 'my-custom-class',
-
-
-
       swipeToClose: true,
     });
-
     return await modal.present();
-
   }
-
 
   /** deletes the selected activity from the list */
   async deleteActivities(activity) {
@@ -232,12 +180,10 @@ export class Tab4Page implements OnInit {
           handler: () => {
             console.log('canceled');
           }
-
         }
       ]
     });
     await alert.present();
-
   }
 
 
@@ -259,7 +205,6 @@ export class Tab4Page implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(data),
-
       }
     };
     this.router.navigate(['test'], navigationExtras);
@@ -270,21 +215,17 @@ export class Tab4Page implements OnInit {
 
     var user = firebase.auth().currentUser;
     var name, email, uid;
-
     if (user != null) {
       name = user.displayName;
       email = user.email;
       uid = user.uid;
       console.log(user);
     }
+
     firebase.firestore().collection("users").get().then((queryDocumentSnapshot) => {
-
       console.log(queryDocumentSnapshot.docs);
-
       this.users = queryDocumentSnapshot.docs;
-
     }).catch((err) => {
-
       console.log(err);
     })
   }
@@ -309,13 +250,10 @@ export class Tab4Page implements OnInit {
           handler: () => {
             console.log('Abgebrochen');
           }
-
         }
       ]
     });
     await alert.present();
-
-
   }
 
   /** this function is checking wheter the user is logged in or not. If the user is logged in, the application will open the root page "tab4-profile".
@@ -325,7 +263,6 @@ export class Tab4Page implements OnInit {
 
     var user = firebase.auth().currentUser;
     var name, email, uid;
-
     if (user != null) {
       name = user.displayName;
       email = user.email;
@@ -339,13 +276,10 @@ export class Tab4Page implements OnInit {
           console.log(userProfileSnapshot.data().uid);
         });
         console.log("User is signed in.");
-
         this.router.navigate(['tabs/tab4']);
       } else {
-
         this.router.navigate(['login']);
         console.log("No user is signed in.");
-
       }
     });
   }
@@ -358,9 +292,7 @@ export class Tab4Page implements OnInit {
         this.data = JSON.parse(params.specialData);
         console.log("got data !", this.data)
       }
-
     });
-
   }
 
   /** gets data from dummy testuser */
@@ -370,11 +302,7 @@ export class Tab4Page implements OnInit {
       if (params && params.special) {
         this.testusers = JSON.parse(params.special);
         console.log("array:", this.testusers)
-
       }
-
     });
   }
-
-
 }

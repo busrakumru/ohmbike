@@ -15,42 +15,30 @@ export class QrCodePage implements OnInit {
     public modalCtrl: ModalController,
     public route: Router,
     private barcodeScanner: BarcodeScanner) {
-
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /** closes the page  */
   dismiss() {
-
     this.modalCtrl.dismiss();
   }
-
 
   /** opens the camera to scan the qr-code */
   async scanCode() {
 
     console.log('scanning');
-
     this.barcodeScanner.scan().then(
       barcodeData => {
-
         if (!barcodeData.cancelled) {
-
           let navigationExtras: NavigationExtras = {
             queryParams: {
               special: JSON.stringify(barcodeData.text)
             }
           }; this.route.navigate(['product2'], navigationExtras);
-
         }
-
       }).catch((err) => {
         alert(err);
-
       })
-
   }
-
 }

@@ -16,38 +16,30 @@ export class CompletedAktvComponent implements OnInit {
 
   map: any;
 
-  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
+  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
   constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   /* closes the modal page */
-  closePage(){
-
+  closePage() {
     this.modalCtrl.dismiss();
-
   }
 
   /* shows the map */
-  ionViewDidEnter(){
-    
+  ionViewDidEnter() {
     this.showMap();
-
   }
 
   showMap() {
 
     const location = new google.maps.LatLng(-17.824858, 31.053028);
     const options = {
-
       center: location,
       zoom: 15,
       disableDefaultUI: true
-
     }
-
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
-
 }

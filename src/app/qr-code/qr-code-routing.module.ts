@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { QrCodePage } from './qr-code.page';
 
 const routes: Routes = [

@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-onboarding',
   templateUrl: './onboarding.page.html',
@@ -14,11 +13,9 @@ export class OnboardingPage implements OnInit {
 
   /** navigates to the qr-code scanner page */
   go() {
-
     this.router.navigate(['qr-code']);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

@@ -18,36 +18,28 @@ export class MyEventCardComponent implements OnInit {
   constructor(
     public aroute: ActivatedRoute,
 
-  ) { 
+  ) {
 
-        /** gets the shared event data from tab1 */
-        this.aroute.queryParams.subscribe(params => {
-          if (params && params.special) {
-            this.newEvent = JSON.parse(params.special);
-            this.newEventStartTime = JSON.parse(params.specialStartTime);
-            this.newEventEndTime = JSON.parse(params.specialEndTime);
-            this.newEventStartPlace = JSON.parse(params.specialStartPlace);
-            this.newEventEndPlace = JSON.parse(params.specialEndPlace);
-            this.newEventDescription = JSON.parse(params.specialDescription);
+    /** gets the shared event data from tab1 */
+    this.aroute.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.newEvent = JSON.parse(params.special);
+        this.newEventStartTime = JSON.parse(params.specialStartTime);
+        this.newEventEndTime = JSON.parse(params.specialEndTime);
+        this.newEventStartPlace = JSON.parse(params.specialStartPlace);
+        this.newEventEndPlace = JSON.parse(params.specialEndPlace);
+        this.newEventDescription = JSON.parse(params.specialDescription);
 
-
-            
-            console.log("got data !" + JSON.stringify(this.newEvent));
-    
-          }
-    
-        });
+        console.log("got data !" + JSON.stringify(this.newEvent));
+      }
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   visible = false;
 
-  details(){
-
+  details() {
     this.visible = !this.visible;
-
-
   }
-
 }

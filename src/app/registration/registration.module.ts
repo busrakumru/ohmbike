@@ -9,10 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
-
-
 @NgModule({
-  
   imports: [
     CommonModule,
     FormsModule,
@@ -22,11 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDividerModule,
     MatIconModule,
     TranslateModule,
-
-
     ReactiveFormsModule
   ],
-
   declarations: [RegistrationPage]
 })
 export class RegistrationPageModule {}

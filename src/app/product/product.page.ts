@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -10,11 +10,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ProductPage implements OnInit {
   
   data:any;
-
   vehicle = {
-
     title: ''
-
   };
 
   constructor(
@@ -28,27 +25,17 @@ export class ProductPage implements OnInit {
         this.data = JSON.parse(params.special);
       }
     });
-    
    }
+
+   ngOnInit() {}
 
    /** adds the scanned product to the 'vehicles' collection in firestore  */
    product(data){
 
-   /* let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(data), 
-        specialTitle: JSON.parse(this.vehicle.title)
-      }};*/
-      
       this.afs.collection(`vehicles`).add({
         data, 
         "title": this.vehicle.title,
-
       })  
     this.router.navigate(['/tabs/tab4'])
   }
-
-  ngOnInit() {
-  }
-
 }

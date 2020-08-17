@@ -6,7 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
 
 declare var google: any;
 
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -14,15 +13,13 @@ declare var google: any;
 })
 export class DetailsPage implements OnInit {
 
-  detail:any;
-  test:any;
-
+  detail: any;
+  test: any;
   visible = false;
 
   /** map integration */
   map: any;
-  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
-
+  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
   constructor(
 
@@ -32,27 +29,19 @@ export class DetailsPage implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private alertCtrl: AlertController,
+  ) {
 
-
-
-    ) { 
-
-      /** gets the data from the event-card component */
-     this.route.queryParams.subscribe(params => {
-        if (params && params.special) {
-          this.detail = JSON.parse(params.special);
-          this.test = JSON.parse(params.specialVisible);
-
-          
-          console.log("Got the data!");
-
-        }
-        
-      });
-    }
-
-  ngOnInit() {
+    /** gets the data from the event-card component */
+    this.route.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.detail = JSON.parse(params.special);
+        this.test = JSON.parse(params.specialVisible);
+        console.log("Got the data!");
+      }
+    });
   }
+
+  ngOnInit() { }
 
   /** allows the user to participate on an event. It will be placed in the "open-activities" list in the profile */
   async participate(detail) {
@@ -67,40 +56,30 @@ export class DetailsPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         specialtitle: JSON.stringify(detail),
-
-
       }
     };
     console.log("Data has been sent!");
-
-
     this.router.navigate(['tabs/tab4'], navigationExtras);
-
   }
 
   /* shows the map */
-
   ionViewDidEnter() {
-
     this.showMap();
-
   }
 
   showMap() {
 
     const location = new google.maps.LatLng(-17.824858, 31.053028);
     const options = {
-
       center: location,
       zoom: 15,
       disableDefaultUI: true
-
     }
-
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
 
-  async notParticipate(detail) {
+  /** shows an alert if the user taps on the 'not participate anymore' button */
+  async notParticipate() {
 
     let alert = await this.alertCtrl.create({
       header: this.translate.instant('DETAILS-PAGE.alert-header'),
@@ -119,12 +98,9 @@ export class DetailsPage implements OnInit {
           handler: () => {
             console.log('canceled');
           }
-
         }
       ]
     });
     await alert.present();
-
   }
-
 }

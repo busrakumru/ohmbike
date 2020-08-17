@@ -1,60 +1,40 @@
 {
     "TAB1": {
-
-        "btn-cancel":"Cancel",
-        "btn-save":"Save",
+        "btn-cancel": "Cancel",
+        "btn-save": "Save",
         "title": "Title",
-        "beginning":"Beginning",
-        "end":"End",
-        "from":"From",
-        "to":"To",
-        "notes":"Notes",
-
+        "beginning": "Beginning",
+        "end": "End",
+        "from": "From",
+        "to": "To",
+        "notes": "Notes",
         "monthShortNames": "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec",
         "dayShortNames": "Sun, Mon, Tue, Wed, Thu, Fri, Sat",
-        
-
         "btn-delete": "Delete",
         "btn-edit": "Edit",
         "btn-share": "Share"
-
     },
-
     "TAB2": {
-
         "from": "From",
         "to": "To",
-
         "alert-header": "Done !",
         "alert-message": "We look forward to further routes with you !",
         "alert-btn-continue": "Continue",
         "alert-btn-delete": "Delete"
-
-
     },
-
     "TAB4": {
-
         "title": "Profile",
-
         "edit-profile": "Edit Profile",
-
         "segment-activity": "Activities",
         "segment-friends": "Friends",
         "segment-vehicles": "Vehicles",
-
         "noted-activities": "Noted Activities",
         "open-activities": "Open Activities",
         "completed-activities": "Completed Activities",
-
         "searchbar": "Search friend"
-
     },
-
     "SETTINGS": {
-
         "title": "Settings",
-
         "list-title-notifications": "Notifications",
         "list-item-activities": "Activities",
         "list-item-participation": "Participation",
@@ -62,260 +42,175 @@
         "list-item-competitions": "Competitions",
         "list-item-catalog": "Catalog",
         "list-item-advertising": "Advertising",
-
         "list-title-informations": "Informations",
         "list-item-aboutUs": "About Us",
         "list-item-imprint": "Imprint",
         "list-item-privacy": "Privacy",
-
         "list-item-language": "Language",
         "list-item-textSize": "Text size"
-
     },
-
     "ALERTS-SETTINGS": {
-
         "alert-participation-title": "Information",
         "alert-participation-text": "As soon as a user takes part in your created activity, you will receive a notification!",
-
         "alert-catalog-title": "Information",
         "alert-catalog-text": "If you activate me, you will be informed about the newly arrived Ohm bike products!",
-
         "alert-advertising-title": "Information",
         "alert-advertising-text": "Be surprised by great discounts and offers from Ohm Bike!",
-
         "toast-setting-language": "Sprache wird eingestellt..."
-
-
     },
-
     "IMPRESSUM": {
-
         "title": "Imprint",
         "email-adress": "E-Mail-Adress",
         "executive-director": "Executive Director"
     },
-
-    "ALERTS-CATALOG":{
-
+    "ALERTS-CATALOG": {
         "btn": "Continue to the shop"
-
     },
-
     "LOGIN": {
-
         "label-email-adress": "E-Mail-Adress",
         "label-password": "Password",
-
         "placeholder-email-adress": "E-Mail-Adresse",
         "placeholder-password": "Passwort",
-        
         "error-email-adress-required": "Please enter an email address",
         "error-email-adress-invalid": "The email address is not valid",
-
         "forgotten-password": "Forgotten password?",
         "LogIn": "Log in",
         "dont-have-an-account": "Don't have an account?",
         "SignUp": "Sign Up",
         "or": "or"
-
     },
-
     "ALERTS-LOGIN": {
-
         "forgotten-password-header": "Forgotten Password",
         "forgotten-password-message": "To reset your password, a link will be sent to the email adress above ! ",
         "forgotten-password-btn-cancel": "Cancel",
         "forgotten-password-btn-continue": "Continue",
         "forgotten-password-toast": "A link to change your password has been sent to your email address.",
-
         "user-not-found": "There is no profile for this email address! Please check your entry and try again.",
         "wrong-password": "Your password does not match your email address! Please check your entry and try again.",
-        "invalid-email":  "Please check your entries and try again."
-        
+        "invalid-email": "Please check your entries and try again."
     },
-
     "DETAILS-PAGE": {
-
         "title": "Route from Max",
         "beginning": "Beginning",
         "end": "End",
         "from": "From",
         "to": "To",
         "notes": "Notes",
-
         "btn-participate": "Participate",
         "btn-not-participate": "Dont participate anymore",
-
         "alert-header": "Warning",
         "alert-message": "You are about to no longer take part in the event!",
         "alert-btn-not-participate": "No longer participate",
         "alert-btn-cancel": "Cancel"
-
     },
-
     "DETAILS-OB-PAGE": {
-
         "btn": "Navigate"
-
     },
-
     "ROUTE-MODAL": {
-
         "title": "Route planner",
         "btn-cancel": "Cancel",
         "btn-start": "Start",
         "from": "From",
         "to": "To",
-
         "alert-header": "Done !",
         "alert-message": "We look forward to further routes with you !",
         "alert-btn-continue": "Continue",
         "alert-btn-delete": "Delete"
-
     },
-
     "PASSWORD-MODAL": {
-
         "title": "Change password",
         "current-pw": "Current passwort",
         "new-pw": "New Password",
         "repeat-new-pw": "Repeat new password",
-
         "btn-cancel": "Cancel",
         "btn-save": "Save"
-
     },
-
     "EDIT-PROFILE": {
-
         "title": "Edit profile",
         "btn-cancel": "Cancel",
         "btn-save": "Save",
         "label-name": "Name",
         "label-surname": "Surname",
         "label-email-adress": "E-Mail Adress",
-
         "alert-header": "Warning",
         "alert-message": "Are you sure you want to remove your profile? All saved data will be lost!",
         "alert-btn-yes": "Yes",
         "alert-btn-cancel": "Cancel"
-
     },
-
     "ONBOARDING": {
-
         "slide-1": "Scan the QR code of your vehicle and add it to your profile",
         "slide-2": "Plan routes and share it ",
         "slide-3": "Take part in various competitions and events and win great prizes !",
-
         "btn": "Start"
     },
-
     "POPOVER": {
-
         "settings": "Settings",
         "logOut": "Log Out"
-
     },
-
     "PRODUCT": {
-
         "message": "Your product has been found!",
         "btn-add-product": "Add product",
         "btn-back-to-home": "Back to the home page",
         "title": "Name your vehicle",
-
         "btn-continue": "Continue"
-
     },
-
     "TESTUSER": {
-
         "title": "Profile",
         "btn-unfollow": "Unfollow friend",
-        "segment-activity":"Activity",
-        "segment-friends":"Friends",
-
+        "segment-activity": "Activity",
+        "segment-friends": "Friends",
         "alert-header": "Warning",
         "alert-message": "Do you really want to unfollow your friend?",
         "alert-btn-unfollow": "Unfollow",
         "alert-btn-cancel": "Cancel",
-
         "btn-follow": "Follow"
-
-
     },
-
     "QR-CODE": {
-
-        "btn-cancel":"Cancel",
+        "btn-cancel": "Cancel",
         "text": "Scan the qr-code from your vehicle !"
-
     },
-
     "SIGNUP": {
-
         "title": "SIGN UP",
-
         "name": "Name",
         "surname": "Surname",
         "email-adress": "Email adress",
         "repeat-email-adress": "Repeat email adress",
         "password": "Password",
         "repeat-password": "Repeat password",
-        "privacy-1":"I accept the",
-        "privacy-2":"general terms and conditions",
-        "privacy-3":"from Ohm Bike",
+        "privacy-1": "I accept the",
+        "privacy-2": "general terms and conditions",
+        "privacy-3": "from Ohm Bike",
         "btn-signUp": "Sign Up",
-        "or":"or",
-
+        "or": "or",
         "error-name-required": "Please enter your name !",
         "error-name-minLength": "Entry is to short !",
-
         "error-surname-required": "Please enter your surname !",
         "error-surname-minLength": "Entry is to short !",
-
         "error-email-required": "An email adress is required !",
         "error-email-pattern": "Please enter a valid e-mail address !",
-
         "error-repeat-email-required": "Please re-enter your email address !",
         "error-repeat-email-pattern": "Your email address does not match !",
-
         "error-password-required": "A password is required !",
         "error-password-minLength": "Your password must be at least 8 characters long !",
-
         "error-repeat-password-required": "Please re-enter your password !",
         "error-repeat-password-minLength": "Your password does not match !"
-
-
     },
-
     "TEXTSIZE": {
-
         "title": "Textsize",
         "text": "Adjust the font size individually !"
-
     },
-
     "ABOUT-US": {
-
         "title": "About Us",
-        "label-1": "Vision",
+        "label-1": "VISION",
         "text-1": "We believe in alternative solutions to urban cars for a greener environment. That is why OhmBike is working hard to provide you with the best mobility solutions for the city for the benefit of nature.",
         "label-2": "MISSION",
         "text-2": "100% electrified and having a lot of fun from A to B. OhmBike tries to achieve this goal for everyone.",
-
         "btn": "Continue to the OhmBike website"
     },
-
     "COMPETITIONS": {
-
         "title": "Competitions"
     },
-
     "FILTER": {
-
         "title": "Filter",
         "category": "Category",
         "all": "All",
@@ -325,93 +220,68 @@
         "date": "Date",
         "time": "Time",
         "btn": "Show"
-
     },
-
     "COMPLETED-ACTIVITY": {
-
         "title": "Completed",
-        "beginning":"Beginning",
-        "end":"End",
-        "from":"From",
-        "to":"To",
-        "distance-in-kilometers":"Distance in kilometers"
+        "beginning": "Beginning",
+        "end": "End",
+        "from": "From",
+        "to": "To",
+        "distance-in-kilometers": "Distance in kilometers"
     },
-
     "EVENT": {
-
         "btn": "Participate"
     },
-
-    "VEHICLE":{
-
+    "VEHICLE": {
         "battery": "Battery",
         "saved-route": "Saved route",
         "amount-of-emissions-saved": "Amount of emission saved",
-
-        "btn": "DELETE"
-
+        "btn-delete": "DELETE",
+        "btn-edit": "EDIT",
+        "alert-delete-header": "Delete vehicle",
+        "alert-delete-message": "Are you sure you want to remove your vehicle?",
+        "alert-delete-btn-cancel": "Cancel",
+        "alert-delete-btn-delete": "Delete",
+        "alert-edit-header": "Rename vehicle",
+        "alert-edit-btn-cancel": "Cancel",
+        "alert-edit-btn-done": "Ok"
     },
-
     "MENU": {
-
         "competitions": "Competitions",
         "catalog": "Ohm Bike - Product Catalog",
         "settings": "Settings"
-
     },
-
     "COMPETITIONS-DETAIL": {
-
-
-        "beginning":"Beginning",
-        "end":"End",
-        "from":"From",
-        "to":"To",
-        "distance-in-kilometers":"Distance",
+        "beginning": "Beginning",
+        "end": "End",
+        "from": "From",
+        "to": "To",
+        "distance-in-kilometers": "Distance",
         "hints": "Hints",
-
         "btn-participate": "Participate",
         "btn-not-participate": "Dont participate anymore",
-
-
         "alert-header": "Done",
         "alert-message": "Great. You take part in the competition. We look forward to you !",
         "alert-btn-back": "Back"
-
     },
-
     "ALERT-OPEN-ACTIVITY": {
-
         "alert-header": "Warning",
         "alert-message": "You are about to no longer take part in the competition!",
         "alert-btn-not-participate": "No longer participate",
         "alert-btn-cancel": "Cancel"
-
     },
-
     "TOASTS": {
-
         "cardob-noted": "The route has been added to your profile under the Noted Activities list.",
         "cardob-delete": "The route has been removed from the list.",
-
         "event-participation": "You take part in the route. It is added to your profile under the list of open activities."
-
-
     },
-
     "ALERT-SCANCODE": {
-
         "header": "Error",
         "message": "This is an invalid QR code !",
-
         "try-it-again": "Try it again"
     },
-
     "MY-EVENT-CARD": {
-
         "begin": "Begin: ",
         "end": "End: "
     }
-
 }

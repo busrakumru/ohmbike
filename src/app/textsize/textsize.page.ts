@@ -9,7 +9,5 @@ export class TextsizePage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-//import { AlertController, ModalController } from '@ionic/angular';
-//import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-noted-aktv',
@@ -10,49 +8,35 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 })
 export class NotedAktvComponent implements OnInit {
 
-  
-  ohmbikeEvent: any [] = [];
-
-  noted:any;
+  ohmbikeEvent: any[] = [];
+  noted: any;
 
   constructor(
     private aroute: ActivatedRoute,
     private router: Router,
-    //private alertController: AlertController,
-    //private modalCtrl: ModalController,
-    //private afs: AngularFirestore
-    ) { 
+  ) {
 
-      /** gets the data from the noted events */
-      this.aroute.queryParams.subscribe(params => {
-        if (params && params.special) {
-          this.noted = JSON.parse(params.special);
-
-        }
-        console.log("got data !");
-      });
-    }
-
-
-    /** navigates to the details page */
-    goDetail(noted){
-
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          special: JSON.stringify(noted),
-
-        }
-      };      
-      console.log("data has been sent");
-  
-      
-      this.router.navigate(['detailsob'], navigationExtras);
-  
-
-    }
-    
-  ngOnInit() {
-
+    /** gets the data from the noted events */
+    this.aroute.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.noted = JSON.parse(params.special);
+      }
+      console.log("got data !");
+    });
   }
+
+  /** navigates to the details page */
+  goDetail(noted) {
+
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(noted),
+      }
+    };
+    console.log("data has been sent");
+    this.router.navigate(['detailsob'], navigationExtras);
+  }
+
+  ngOnInit() { }
 
 }

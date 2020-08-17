@@ -3,8 +3,6 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { OpenAktvComponent } from '../open-aktv/open-aktv.component';
-
 
 declare var google: any;
 
@@ -24,7 +22,6 @@ export class CDetailComponent implements OnInit {
   notes: any;
 
   /* map integration */
-
   map: any;
 
   visible = false;
@@ -36,16 +33,13 @@ export class CDetailComponent implements OnInit {
     private alertCtrl: AlertController,
     private router: Router,
     private translate: TranslateService,
-  ) {
-  }
+  ) { }
 
   ngOnInit() { }
 
   /* closes the modal page */
   closePage() {
-
     this.modalCtrl.dismiss();
-
   }
 
   /** allows the user to participate on the competition. If the button is clicked it will send the data to the open-actv. 
@@ -53,11 +47,8 @@ export class CDetailComponent implements OnInit {
    */
   async participate() {
 
-
     let navigationExtras: NavigationExtras = {
-
       queryParams: {
-
         specialName: JSON.stringify(this.name),
         specialDetailBeginning: JSON.stringify(this.beginning),
         specialDetailEnd: JSON.stringify(this.end),
@@ -65,43 +56,31 @@ export class CDetailComponent implements OnInit {
         specialDetailTo: JSON.stringify(this.to),
         specialDetailLength: JSON.stringify(this.length),
         specialDetailNotes: JSON.stringify(this.notes),
-
-
       }
-
     }
 
     this.router.navigate(['tabs/tab4'], navigationExtras);
-
 
     const alert = await this.alertCtrl.create({
       header: this.translate.instant('COMPETITIONS-DETAIL.alert-header'),
       message: this.translate.instant('COMPETITIONS-DETAIL.alert-message'),
       buttons: [this.translate.instant('COMPETITIONS-DETAIL.alert-btn-back'), 'OK']
     });
-
     await alert.present();
-
   }
 
   /* shows the map */
   ionViewDidEnter() {
-
     this.showMap();
-
   }
 
   showMap() {
-
     const location = new google.maps.LatLng(-17.824858, 31.053028);
     const options = {
-
       center: location,
       zoom: 15,
       disableDefaultUI: true
-
     }
-
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
 
@@ -130,7 +109,5 @@ export class CDetailComponent implements OnInit {
       ]
     });
     await alert.present();
-
   }
-
 }

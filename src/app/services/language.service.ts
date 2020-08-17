@@ -10,21 +10,19 @@ const LNG_KEY = 'SELECTED_LANGUAGE';
 export class LanguageService {
 
   /** this service includes functions for the language switch option */
-
   selected = '';
 
   constructor(
     private translate: TranslateService,
     private storage: Storage
-    ) { }
+  ) {}
 
-  setInitialAppLanguage(){
+  setInitialAppLanguage() {
+
     let language = this.translate.getBrowserLang();
     this.translate.setDefaultLang(language);
-
     this.storage.get(LNG_KEY).then(val => {
-
-      if(val) {
+      if (val) {
         this.setLanguage(val);
         this.selected = val;
       }
@@ -32,19 +30,15 @@ export class LanguageService {
   }
 
   getLanguages() {
-
     return [
-      { text: 'English', value:'en', img:'assets/english.png'},
-      { text: 'German', value:'de', img:'assets/german.png'},
-
+      { text: 'English', value: 'en', img: 'assets/english.png' },
+      { text: 'German', value: 'de', img: 'assets/german.png' },
     ];
   }
 
-  setLanguage(lng){
-
+  setLanguage(lng) {
     this.translate.use(lng);
     this.selected = lng;
     this.storage.set(LNG_KEY, lng);
-
   }
 }

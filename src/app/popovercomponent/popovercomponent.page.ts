@@ -5,7 +5,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import * as firebase from 'firebase';
 
-
 @Component({
   selector: 'app-popovercomponent',
   templateUrl: './popovercomponent.page.html',
@@ -13,39 +12,32 @@ import * as firebase from 'firebase';
 })
 export class PopovercomponentPage implements OnInit {
 
-  constructor(public popoverController: PopoverController,
-              private router: Router,
-              public afAuth: AngularFireAuth) { }
+  constructor(
+    public popoverController: PopoverController,
+    private router: Router,
+    public afAuth: AngularFireAuth
+    ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-/** closes the popover */
-  closePopover(){
-
+  /** closes the popover */
+  closePopover() {
     this.popoverController.dismiss();
-
   }
 
-/** navigates to the settings page  */
-  async settings(){
-
+  /** navigates to the settings page  */
+  async settings() {
     this.router.navigate(['settings']);
     this.popoverController.dismiss();
-
   }
 
-/** the user will be logged out */
-  async logOut(){
+  /** the user will be logged out */
+  async logOut() {
 
     firebase.auth().signOut().then(() => {
       this.router.navigate(['/login']);
     });
     this.popoverController.dismiss();
     console.log('logged out');
-    
-
   }
 }
-
-

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { EditprofilePage } from './editprofile.page';
 
 const routes: Routes = [

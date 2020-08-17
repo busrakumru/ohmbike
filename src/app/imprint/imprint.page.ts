@@ -11,5 +11,4 @@ export class ImprintPage implements OnInit {
 
   ngOnInit() {
   }
-
 }

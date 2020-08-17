@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { NavigationExtras, Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -11,32 +10,25 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class EventCardComponent implements OnInit {
 
-
   /** dummy event */
-  eventcard=[{
-
-    name:'Max',
+  eventcard = [{
+    name: 'Max',
     title: 'kurze Fahrt durch Wedding',
-    startTime:'13.00 Uhr',
+    startTime: '13.00 Uhr',
     endTime: '14:00 Uhr',
     startPlace: 'naunerplatz',
-    endPlace:'Seestraße',
+    endPlace: 'Seestraße',
     description: 'zu lang',
-    length:'29km'
-
+    length: '29km'
   }]
 
   constructor(
-
     public toastController: ToastController,
     private router: Router,
     private translate: TranslateService
-    
-    ) { }
+  ) { }
 
-
-  ngOnInit() {}
-  
+  ngOnInit() { }
 
   /** sends the data and navigates to the deatils page */
   async details(detail) {
@@ -44,14 +36,10 @@ export class EventCardComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         special: JSON.stringify(detail),
-
       }
     };
     console.log("Data has been sent!");
-
-
     this.router.navigate(['details'], navigationExtras);
-
   }
 
   /** the default visiblity of the bookmark is outlined and without color */
@@ -59,9 +47,9 @@ export class EventCardComponent implements OnInit {
 
   /** as soon as the user taps on the bookmark, it will be colored and sends the data to the noted list in the profile page */
   async note(detail) {
+
     this.visible = !this.visible;
     if (this.visible) {
-
       const toast = await this.toastController.create({
         message: this.translate.instant('TOASTS.cardob-noted'),
         duration: 2000,
@@ -72,13 +60,9 @@ export class EventCardComponent implements OnInit {
       let navigationExtras: NavigationExtras = {
         queryParams: {
           special: JSON.stringify(detail),
-
-
         }
       };
       console.log("Data has been sent!");
-
-
       this.router.navigate(['tabs/tab4'], navigationExtras);
 
     } else {
@@ -90,7 +74,6 @@ export class EventCardComponent implements OnInit {
         color: 'dark'
       });
       await toast.present();
-
     }
   }
 
@@ -107,15 +90,9 @@ export class EventCardComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         specialtitle: JSON.stringify(detail),
-
-
       }
     };
     console.log("Data has been sent!");
-
-
     this.router.navigate(['tabs/tab4'], navigationExtras);
-
   }
-
 }

@@ -1,19 +1,18 @@
 <!-- the login page allows the user to login with his private data  -->
 
 <ion-header>
+
   <ion-toolbar>
     <ion-img class="logo" src="assets/logo.png"></ion-img>
   </ion-toolbar>
-</ion-header>
 
+</ion-header>
 
 <ion-content>
 
-  <ion-title  style="margin-top: 10% !important;" mode="md" class="ion-text-center">LOGIN</ion-title>
-
+  <ion-title style="margin-top: 10% !important;" mode="md" class="ion-text-center">LOGIN</ion-title>
   <section>
-
-<!-- input for the email adress -->
+    <!-- input for the email adress -->
     <div class="ion-padding-top">
       <mat-icon> email</mat-icon>
       <mat-form-field appearance="outline">
@@ -22,8 +21,7 @@
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
-
-<!-- input for the password -->
+    <!-- input for the password -->
     <div>
       <mat-icon>vpn_key</mat-icon>
       <mat-form-field appearance="outline">
@@ -33,68 +31,47 @@
           [attr.aria-pressed]="hide">
           <mat-icon style="top: 0px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        
       </mat-form-field>
-
     </div>
-
   </section>
-
   <div>
     <ion-tab-button tab="" [disabled]="!email.valid">
       <ion-label color="primary" (click)="resetPassword()">{{ 'LOGIN.forgotten-password' | translate }}</ion-label>
     </ion-tab-button>
   </div>
-
-
   <div class="ion-text-center" style="padding: 3%;">
-      <ion-button (click)="logIn()">{{ 'LOGIN.LogIn' | translate }}</ion-button>
+    <ion-button (click)="logIn()">{{ 'LOGIN.LogIn' | translate }}</ion-button>
   </div>
-
-
   <div class="ion-text-center">
     <ion-label color="medium">{{ 'LOGIN.dont-have-an-account' | translate }}</ion-label>
     <ion-tab-button [routerLink]="['/registration']" tab="">
       <ion-label color="primary">{{ 'LOGIN.SignUp' | translate }}</ion-label>
     </ion-tab-button>
   </div>
-
   <div mode="md">
     <ion-grid>
       <ion-row>
-
         <ion-col>
           <ion-item-divider>
           </ion-item-divider>
         </ion-col>
-
         <ion-col>
           <p style="text-align: center; position: relative;top: 20px;">{{ 'LOGIN.or' | translate }}</p>
         </ion-col>
-
         <ion-col>
           <ion-item-divider>
           </ion-item-divider>
         </ion-col>
-
       </ion-row>
-
     </ion-grid>
   </div>
-
   <div class="ion-text-center">
-
-    
-      <ion-button style="width: 80% !important;" color="light">
-        <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
-      </ion-button>
-
-   
-      <ion-button style="width: 80% !important;" (click)="loginwithgp" color="light">
-        <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
-      </ion-button>
-
-
+    <ion-button style="width: 80% !important;" color="light">
+      <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
+    </ion-button>
+    <ion-button style="width: 80% !important;" (click)="loginwithgp" color="light">
+      <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
+    </ion-button>
   </div>
-
+  
 </ion-content>

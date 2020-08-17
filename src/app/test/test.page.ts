@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-
 @Component({
   selector: 'app-test',
   templateUrl: './test.page.html',
@@ -33,13 +32,9 @@ export class TestPage implements OnInit {
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
-
         specialData: JSON.stringify(data)
       }
-
     }
-
     this.router.navigate(['tabs/tab4'], navigationExtras);
-
   }
 }

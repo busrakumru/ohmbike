@@ -17,8 +17,8 @@ export class OpenAktvComponent implements OnInit {
   to: any;
   length: any;
   notes: any;
-
   aktv: any;
+  visible = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,14 +26,12 @@ export class OpenAktvComponent implements OnInit {
     private modalCtrl: ModalController,
     public alertCtrl: AlertController,
   ) {
+    
 
     /** gets all the data from the participated events */
-
     this.route.queryParams.subscribe(params => {
-
       console.log('params: ', params);
       if (params && params.specialName) {
-
         this.data = JSON.parse(params.specialName);
         this.beginning = JSON.parse(params.specialDetailBeginning);
         this.end = JSON.parse(params.specialDetailEnd);
@@ -46,22 +44,17 @@ export class OpenAktvComponent implements OnInit {
 
         if (params && params.specialtitle) {
           this.aktv = JSON.parse(params.specialtitle);
-
         }
-
-
       }
-
-
     });
   }
 
+  ngOnInit() {}
 
   /** opens a modal page with the details of the event */
   async goDetail() {
 
     const modal = await this.modalCtrl.create({
-
       component: CDetailComponent,
       cssClass: 'my-custom-class',
 
@@ -75,17 +68,10 @@ export class OpenAktvComponent implements OnInit {
         notes: this.notes,
         visible: true
       },
-
-
       swipeToClose: true,
     });
-
     return await modal.present();
-
-
   }
-
-  visible = true;
 
   goDetails(aktv) {
 
@@ -93,18 +79,9 @@ export class OpenAktvComponent implements OnInit {
       queryParams: {
         special: JSON.stringify(aktv),
         specialVisible: this.visible
-        
       }
     };
     console.log("data has been sent !");
-
-
     this.router.navigate(['details'], navigationExtras);
-
-
   }
-
-  ngOnInit() { }
-
-
 }

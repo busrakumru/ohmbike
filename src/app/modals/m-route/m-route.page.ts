@@ -18,16 +18,13 @@ export class MRoutePage implements OnInit {
      private translate: TranslateService,
      private iab: InAppBrowser,
 
-    ) { }
+    ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /** closes the modal page */
   async closeModal(){
-
     await this.modalController.dismiss();
-
   }
 
   /** this function isn't complete. It should start the given route */
@@ -39,22 +36,13 @@ export class MRoutePage implements OnInit {
       buttons: [{
         text:this.translate.instant('ROUTE-MODAL.alert-btn-delete'),
       handler:()=>{
-
-
       }},{
         text:this.translate.instant('ROUTE-MODAL.alert-btn-continue'),
       handler:()=>{
-
         this.iab.create('https://www.google.com/maps');
-
-        
       }}]
     });
-
     await alert.present();
-
-  
     await this.modalController.dismiss();
-
   }
 }

@@ -6,69 +6,55 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="src\app\tab1" icon="chevron-back-outline" text=""></ion-back-button>
     </ion-buttons>
-   
     <ion-title>Katalog</ion-title>
-    
-</ion-toolbar>
-
+  </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
 
-  
-<ion-list class="ion-padding-top">
-  <ion-list-header expand="full" fill="outline" color="primary" mode="md">
-    OhmBike
-  </ion-list-header>
- 
+  <ion-list class="ion-padding-top">
+    <ion-list-header expand="full" fill="outline" color="primary" mode="md">
+      OhmBike
+    </ion-list-header>
 
-
-<ion-grid>
-  <ion-row>
-    <ion-col size="6" *ngFor=" let post of postsService.posts">
-     
-      <ion-button fill="none"  (click)="goDetails(post)" >
-     
-      <img src="{{post.image}}"/>
-      
-        </ion-button>
-      </ion-col>
-  </ion-row>
-</ion-grid>
-
-</ion-list>
-
-<ion-list class="ion-padding-top">
-<ion-list-header expand="full" fill="outline" color="primary" mode="md">
-  OhmScooter
-</ion-list-header>
- 
-<ion-grid>
-  <ion-row>
-    <ion-col size="6" *ngFor=" let scooter of postsService.scooters"><ion-button fill="none" style="width:100%; height: 100%;"  (click)="goDetail(scooter)" >
-    <img src="{{scooter.image}}"/>
-      </ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
-</ion-list>
-
-<ion-list class="ion-padding-top">
-  <ion-list-header expand="full" fill="outline" color="primary" mode="md">
-    OhmBoard
-  </ion-list-header>
-   
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor=" let board of postsService.boards"><ion-button fill="none" style="width:100%; height: 100%;"  (click)="goProduct(board)" >
-      <img src="{{board.image}}"/>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor=" let post of postsService.posts">
+          <ion-button fill="none" (click)="goDetails(post)">
+            <img src="{{post.image}}" />
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list class="ion-padding-top">
+    <ion-list-header expand="full" fill="outline" color="primary" mode="md">
+      OhmScooter
+    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor=" let scooter of postsService.scooters">
+          <ion-button fill="none" (click)="goDetail(scooter)">
+            <img src="{{scooter.image}}"/>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list class="ion-padding-top">
+    <ion-list-header expand="full" fill="outline" color="primary" mode="md">
+      OhmBoard
+    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor=" let board of postsService.boards">
+          <ion-button fill="none" (click)="goProduct(board)">
+            <img src="{{board.image}}" />
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 
 </ion-content>

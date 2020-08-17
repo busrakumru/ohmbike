@@ -1,27 +1,18 @@
 <!-- this popover opens if the user taps on the more-button in the profile page. There are two options:
   - navigate to the settings page
   - log out  -->
-
 <ion-content>
 
   <ion-list class="list" lines="none">
-
-    <ion-item>
       <ion-button fill="none" (click)="settings()">
-        <mat-icon >settings</mat-icon>
+        <mat-icon>settings</mat-icon>
         <ion-label class="ion-margin-start">{{ 'POPOVER.settings' | translate }}</ion-label>
-
       </ion-button>
-    </ion-item>
-
-
-    <ion-item>
+  
       <ion-button fill="none" (click)="logOut()">
         <mat-icon id="icon-abmelden" style="color:red;"> exit_to_app</mat-icon>
         <ion-label class="ion-margin-start" color="danger">{{ 'POPOVER.logOut' | translate }}</ion-label>
       </ion-button>
-    </ion-item>
-
   </ion-list>
 
 </ion-content>

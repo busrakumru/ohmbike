@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { OnboardingPage } from './onboarding.page';
 
 const routes: Routes = [

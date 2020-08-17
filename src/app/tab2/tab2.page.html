@@ -1,49 +1,41 @@
 <!-- tab2 is the page for planning a route. This page includes a large map. There is an input section for the android users where they can plan their routes. -->
-
 <ion-header>
-  <ion-toolbar>
 
+  <ion-toolbar>
     <ion-title class="hide-md">Route</ion-title>
     <ion-img class="hide-ios" src="assets/logo.png"></ion-img>
 
     <ion-buttons slot="primary" class="hide-ios">
       <app-menu>
         <ion-button mat-button>
-          <ion-icon slot="icon-only"  name="ellipsis-vertical"></ion-icon>
+          <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
         </ion-button>
       </app-menu>
     </ion-buttons>
-
   </ion-toolbar>
 
- 
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
   <!-- this section will just be presented in the android version. For the IOS version exists a m-route page -->
   <div class="hide-ios">
-
     <ion-grid>
       <ion-row>
-
         <ion-col>
-          <ion-icon class="icon-position" name="flag" ></ion-icon>
+          <ion-icon class="icon-position" name="flag"></ion-icon>
         </ion-col>
         <ion-col size="10">
           <ion-input class="input" placeholder="{{ 'TAB2.from' | translate }}"></ion-input>
         </ion-col>
-
         <ion-col>
-          <ion-icon class="icon-position" name="location"  ></ion-icon>
+          <ion-icon class="icon-position" name="location"></ion-icon>
         </ion-col>
         <ion-col size="10">
           <ion-input class="input" placeholder="{{ 'TAB2.to' | translate }}"> </ion-input>
         </ion-col>
-
       </ion-row>
     </ion-grid>
-    
     <ion-item-divider mode="md" style="margin-top: -25px;"></ion-item-divider>
     <div>
       <ion-grid>
@@ -58,47 +50,39 @@
             <ion-item lines="none">
               <mat-icon>call_split</mat-icon>
               <ion-lable>...km</ion-lable>
-
             </ion-item>
-
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
   </div>
-  <!-- -->
 
   <div #map id="map"></div>
 
-  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" style="bottom:200px;" >
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="bottom:200px;">
     <ion-fab-button size="small" color="light">
-      <ion-icon   size="small"src="assets/icon/scale-arrows.svg" color="primary"></ion-icon>
+      <ion-icon size="small" src="assets/icon/scale-arrows.svg" color="primary"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <ion-fab vertical="bottom" horizontal="end"  slot="fixed" class="hide-ios" style="bottom:150px;">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="hide-ios" style="bottom:150px;">
     <ion-fab-button size="small" color="light">
       <mat-icon class="color"> my_location</mat-icon>
     </ion-fab-button>
   </ion-fab>
-
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="hide-ios" style="bottom:80px;">
     <ion-fab-button (click)="start()">
-      <ion-icon  size="small" name="navigate"></ion-icon>
+      <ion-icon size="small" name="navigate"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  class="hide-md"style="bottom:150px;">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="hide-md" style="bottom:150px;">
     <ion-fab-button size="small" color="light">
-      <ion-icon size="small"color="primary" name="navigate"></ion-icon>
+      <ion-icon size="small" color="primary" name="navigate"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="bottom:80px;"  class="hide-md">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="bottom:80px;" class="hide-md">
     <ion-fab-button (click)="Modal()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 
 </ion-content>

@@ -1,46 +1,37 @@
 #map{
     height: 80%;
-    
   }
   
-  ion-title{
-    padding-left: 50px;
-    font-size: 14px;
-  }
+ion-title{
+  padding-left: 50px;
+  font-size: 14px;
+}
 
-  .card{
-    transform:translate(0,10%);
-  }
+.card{
+  transform:translate(0,10%);
+}
   
+.participate{
+  position: relative;
+}
+  
+ion-img{
+  width: 50px;
+  position: absolute;
+  top:25%;
+  left: 50%;
+  transform: translate(-50%,0);
+}
 
-  
-  .participate{
-    position: relative;
-  }
-  
-  ion-img{
-  
-    width: 50px;
-      position: absolute;
-      top:25%;
-      left: 50%;
-      transform: translate(-50%,0);
-  
-  }
-
-  ion-label{
-
-    font-size: 13px;
-    
-  }
+ion-label{
+  font-size: 13px;
+}
    
-  .ion-padding{
+.ion-padding{
+  padding-left: 35px;
+  padding-right: 35px;
+}
 
-    padding-left: 35px;
-    padding-right: 35px;
-  }
-
-  .text{
-
-    transform: translate(0,-15%);
-  }
+.text{
+  transform: translate(0,-15%);
+}

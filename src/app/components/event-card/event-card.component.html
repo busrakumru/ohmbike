@@ -1,7 +1,8 @@
 <!-- this component contains informations about the created event from other users -->
 
-<ion-card *ngFor=" let detail of eventcard " >
+<ion-card *ngFor=" let detail of eventcard ">
   <ion-card-header mode="md">
+
     <ion-grid>
       <ion-row>
         <ion-col class="ion-no-padding" size="4">
@@ -15,86 +16,57 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
   </ion-card-header>
 
   <ion-card-content>
+
     <ion-grid>
       <ion-row>
-
         <ion-col class="ion-no-padding" size="2">
-            <ion-icon name="bicycle" ></ion-icon>
-          </ion-col>
-
+          <ion-icon name="bicycle"></ion-icon>
+        </ion-col>
         <ion-col size="10">
           <ion-label>{{detail.startPlace}} </ion-label>
         </ion-col>
-
       </ion-row>
-
       <ion-row>
-
         <ion-col class="ion-no-padding" size="2">
-            <mat-icon >call_split</mat-icon>
+          <mat-icon>call_split</mat-icon>
         </ion-col>
-
         <ion-col size="10">
           <ion-label>15 km</ion-label>
         </ion-col>
-    
       </ion-row>
-       
       <ion-row>
-
         <ion-col class="ion-no-padding" size="2">
-            <ion-icon name="time"></ion-icon>  
+          <ion-icon name="time"></ion-icon>
         </ion-col>
-
         <ion-col size="10">
           <ion-label>{{detail.startTime}}</ion-label>
         </ion-col>
-        
       </ion-row>
-       
-
-
-
-        <ion-item-divider mode="md">
-        </ion-item-divider>
-
+      <ion-item-divider mode="md"></ion-item-divider>
     </ion-grid>
 
     <ion-grid>
       <ion-row>
-
         <ion-col class="ion-no-padding" size="2">
-
           <ion-tab-button class="ion-float-right" fill="clear" (click)="note(detail)">
-
             <ion-icon name="bookmark-outline" *ngIf="!visible"></ion-icon>
             <ion-icon name="bookmark" *ngIf="visible" color="primary"></ion-icon>
-
           </ion-tab-button>
-
         </ion-col>
-
         <ion-col class="ion-no-padding" size="6">
           <ion-button (click)="participate(detail)">{{ 'EVENT.btn' | translate }}</ion-button>
         </ion-col>
-
-
         <ion-col class="ion-no-padding" size="4">
-
           <ion-tab-button class="ion-float-right" fill="clear" (click)="details(detail)">
-
             <ion-icon name="chevron-forward-outline"></ion-icon>
-
           </ion-tab-button>
-
         </ion-col>
-
-
       </ion-row>
     </ion-grid>
-
   </ion-card-content>
+
 </ion-card>

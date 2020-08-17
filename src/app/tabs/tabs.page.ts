@@ -7,29 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
 
     let content = document.querySelector('ion-content');
     content.scrollEvents = true;
     content.addEventListener('ionScrollStart', () => {
-          document.querySelector('ion-tab-bar').style.display = 'none';
+      document.querySelector('ion-tab-bar').style.display = 'none';
     });
     content.addEventListener('ionScrollEnd', () => {
-          document.querySelector('ion-tab-bar').style.display = 'flex';
+      document.querySelector('ion-tab-bar').style.display = 'flex';
     });
   }
 
   showLoader: boolean;
-  
-    showProgressBar() {
-      this.showLoader = true;
-    }
-  
-    hideProgressBar() {
-      this.showLoader = false;
-    }
+
+  showProgressBar() {
+    this.showLoader = true;
+  }
+
+  hideProgressBar() {
+    this.showLoader = false;
+  }
 
 
 }

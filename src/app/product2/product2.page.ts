@@ -42,6 +42,5 @@ export class Product2Page implements OnInit {
       })  
     this.router.navigate(['/login'], navigationExtras).then(() => {
     });
-
   }
 }

@@ -1,24 +1,24 @@
 <ion-app>
-
   <!-- here is the filter menu which let the user customize his home page posts -->
-
   <ion-menu side="start" menu-id="first" contentId="main" type="overlay">
 
     <ion-header>
+
       <ion-toolbar>
         <ion-title slot="start">{{ 'FILTER.title' | translate }}</ion-title>
-          <ion-button slot="end" fill="none" (click)="closePage()">
-            <ion-icon name="close-outline"></ion-icon>
-          </ion-button>
+        <ion-button slot="end" fill="none" (click)="closePage()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
       </ion-toolbar>
-    </ion-header> 
+
+    </ion-header>
 
     <ion-content>
 
       <ion-list class="ion-padding-top">
-
         <!-- let the user choose wheter all posts should be shown or just from his friends -->
-        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.category' | translate }}</ion-menu-title>
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.category' | translate }}
+        </ion-menu-title>
         <ion-item style="margin-left: -15px;" lines="none" class="ion-padding-start">
           <ion-checkbox color="primary" checked="true"></ion-checkbox>
           <ion-label>{{ 'FILTER.all' | translate }}</ion-label>
@@ -26,10 +26,9 @@
           <ion-label>{{ 'FILTER.friends' | translate }}</ion-label>
         </ion-item>
         <ion-item-divider mode="md"></ion-item-divider>
-
         <!-- let the user define the route distance -->
-        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.distance-in-kilometers' | translate }}</ion-menu-title>
-
+        <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.distance-in-kilometers' | translate }}
+        </ion-menu-title>
         <ion-item lines="none">
           <ion-row>
             <ion-col size="6">
@@ -43,9 +42,7 @@
             </ion-col>
           </ion-row>
         </ion-item>
-
         <ion-item-divider mode="md"></ion-item-divider>
-
         <!-- let the user choose the date of the events -->
         <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.date' | translate }}</ion-menu-title>
         <ion-item lines="none">
@@ -55,24 +52,22 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi="true" #picker></mat-datepicker>
           </mat-form-field>
-
-
-        <!-- let the user choose the time of the events -->
+          <!-- let the user choose the time of the events -->
         </ion-item>
         <ion-item-divider mode="md"></ion-item-divider>
         <ion-menu-title class="ion-padding" style="font-weight: bold;">{{ 'FILTER.time' | translate }}</ion-menu-title>
         <ion-item lines="none" style="transform: translate(-5%,0);">
-          <ion-datetime display-format="hh:mm " picker-format="hh:mm " value="1990-02-19T07:43Z" cancelText="{{ 'TAB1.btn-back' | translate }}"
-          doneText="{{ 'TAB1.btn-save' | translate }}"></ion-datetime>
+          <ion-datetime display-format="hh:mm " picker-format="hh:mm " value="1990-02-19T07:43Z"
+            cancelText="{{ 'TAB1.btn-back' | translate }}" doneText="{{ 'TAB1.btn-save' | translate }}"></ion-datetime>
         </ion-item>
-
-
       </ion-list>
       <ion-button class="ion-padding" size="small" expand="block" color="primary"
-        style="position: relative; left: 50%; transform: translate(-50%,0);" (click)="filter()">{{ 'FILTER.btn' | translate }}</ion-button>
-    </ion-content>
-  </ion-menu>
+        style="position: relative; left: 50%; transform: translate(-50%,0);" (click)="filter()">
+        {{ 'FILTER.btn' | translate }}</ion-button>
 
+    </ion-content>
+
+  </ion-menu>
 
   <ion-router-outlet id="main"></ion-router-outlet>
 

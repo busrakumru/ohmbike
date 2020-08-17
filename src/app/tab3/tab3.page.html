@@ -4,18 +4,14 @@ participate on those.-->
 <ion-app>
 
   <div class="ion-page" id="main">
-
     <ion-header [translucent]="true">
 
       <ion-toolbar>
-
         <ion-buttons slot="start">
           <ion-button expand='block' (click)="scanCode()">
             <ion-icon slot="icon-only" name="scan-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-
-
         <ion-buttons slot="primary">
           <app-menu>
             <ion-button mat-button>
@@ -23,9 +19,7 @@ participate on those.-->
             </ion-button>
           </app-menu>
         </ion-buttons>
-
         <ion-img src="assets/logo.png"></ion-img>
-
       </ion-toolbar>
 
       <!-- here is the filter icon. If the user tapps on it the filter menu will be open. This function is defined in the app-component.html -->
@@ -36,9 +30,7 @@ participate on those.-->
             <ion-icon slot="icon-only" name="filter"></ion-icon>
           </ion-button>
         </ion-buttons>
-
       </ion-navbar>
-
 
     </ion-header>
 
@@ -46,26 +38,18 @@ participate on those.-->
 
       <div class="ion-no-padding">
         <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-
-        <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
-        
+          <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
         </ion-refresher>
-    </div>
-
+      </div>
       <app-my-event-card></app-my-event-card>
-
       <app-card-ob></app-card-ob>
-
       <app-event-card></app-event-card>
 
     </ion-content>
 
-    <ion-footer class="ion-no-border" >
-      <ion-toolbar >
-      </ion-toolbar>
+    <ion-footer class="ion-no-border">
+      <ion-toolbar> </ion-toolbar>
     </ion-footer>
-
   </div>
 
 </ion-app>
-

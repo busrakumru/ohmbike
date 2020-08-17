@@ -12,9 +12,7 @@ export class CompetitionsPage implements OnInit {
 
   /** dummy competitions */
   competitions = [
-
     {
-
       name: 'Fahrrad-Marathon',
       beginning: '17.05.2020 - 15:00 Uhr',
       end: '18:00 Uhr',
@@ -22,10 +20,8 @@ export class CompetitionsPage implements OnInit {
       to: 'Potsdamer Platz',
       length: '3,6km',
       notes: 'Nehme an einer kurzen Strecke teil und gewinne tolle Preise ! '
-
     },
     {
-
       name: 'Quer durch Berlin',
       beginning: '20.07.2020 - 13:00 Uhr',
       end: '14:00 Uhr',
@@ -33,22 +29,16 @@ export class CompetitionsPage implements OnInit {
       to: 'Gedenkstätte Berlinder Mauer',
       length: '11,2km',
       notes: 'Es wird ein warmer Tag. Denke daran, genug Wasser mitzunehmen ! :) '
-
-
     }
-
   ];
-
 
   constructor(
     private modalCtrl: ModalController) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /** opens a modal page for the selected competition */
   async goDetail(competition) {
-
 
     const modal = await this.modalCtrl.create({
 
@@ -64,14 +54,9 @@ export class CompetitionsPage implements OnInit {
         length: competition.length,
         notes: competition.notes
       },
-
-
       swipeToClose: true,
     });
-
     return await modal.present();
-
-
   }
 
 }

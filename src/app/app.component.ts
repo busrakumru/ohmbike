@@ -20,7 +20,6 @@ import { LanguageService } from './services/language.service';
 export class AppComponent {
 
   date = new FormControl(new Date().toISOString);
-
   minDate: Data;
   maxDate: Data;
 
@@ -33,28 +32,21 @@ export class AppComponent {
   ) {
     this.initializeApp();
     firebase.initializeApp(environment.firebase);
-
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear, 0, 1);
     this.maxDate = new Date(currentYear + 20, 11, 31);
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
       this.languageService.setInitialAppLanguage();
-
     });
   }
 
   /** this function isn't complete. It should filter the customized entries  */
   async closePage() {
-
     await this.menuCtl.close();
-
-
   }
 }

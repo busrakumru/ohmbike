@@ -1,50 +1,36 @@
 <!-- this is the datils page which will open if the details button of OhmBikes created events got tapped. It includes the details about an event 
 and a button for the navigation of the route. -->
-
 <ion-header>
+
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-   
     <ion-img src="assets/logo.png"></ion-img>
   </ion-toolbar>
+
 </ion-header>
- 
-<ion-content >
+
+<ion-content>
 
   <div #map id="map"></div>
-  
   <ion-button class="participate">{{ 'DETAILS-OB-PAGE.btn' | translate }}</ion-button>
-
-<div class="card" *ngIf="detail" >
-<ion-grid >
-
-      <ion-row class="ion-justify-content-center">  
-        
-        <ion-item lines="primary"> 
-
-        <ion-col size="8">
-          <ion-icon  src="assets/icon/place.svg"></ion-icon> 
+  <div class="card" *ngIf="detail">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-item lines="primary">
+          <ion-col size="8">
+            <ion-icon src="assets/icon/place.svg"></ion-icon>
             <p>{{detail.startPlace}}</p>
-        </ion-col>
-        <ion-col size="6" class="text">
-          <ion-icon  src="assets/icon/snipp.svg"></ion-icon> 
-            <p>{{detail.length}}</p>   
-        </ion-col>
-       
-    
-        </ion-item>  
-    <p class="ion-padding">{{detail.description}}</p>
-    
-
+          </ion-col>
+          <ion-col size="6" class="text">
+            <ion-icon src="assets/icon/snipp.svg"></ion-icon>
+            <p>{{detail.length}}</p>
+          </ion-col>
+        </ion-item>
+        <p class="ion-padding">{{detail.description}}</p>
       </ion-row>
-    
-      </ion-grid>
-</div>
-    
-
-
-
+    </ion-grid>
+  </div>
 
 </ion-content>

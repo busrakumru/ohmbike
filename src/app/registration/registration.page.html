@@ -1,117 +1,87 @@
 <!-- this page includes the registration form. The user can create his own account -->
-
 <ion-header>
+
   <ion-toolbar>
-
     <ion-img class="logo" src="assets/logo.png"></ion-img>
-
     <ion-buttons slot="start">
       <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-
   </ion-toolbar>
 
 </ion-header>
+
 <ion-content>
 
   <ion-title class="ion-text-center" mode="md" style="margin-top: 10% !important;">{{ 'SIGNUP.title' | translate }}
   </ion-title>
-
   <form [formGroup]="registrationForm" (ngSubmit)="submit()">
     <ion-list>
 
       <!-- input name -->
       <form>
-
         <mat-form-field appearance="outline">
           <mat-label>{{ 'SIGNUP.name' | translate }} </mat-label>
           <input required matInput [formControl]="displayName" placeholder="{{ 'SIGNUP.name' | translate }}"
             [(ngModel)]="user.displayName">
-
           <mat-error>
-
             <ng-container *ngIf="formctrl.displayName.errors && (displayName.dirty || displayName.touched)"
               class="invalid-feedback">
               <div *ngIf="formctrl.displayName.errors.required">{{ 'SIGNUP.error-name-required' | translate }}</div>
               <div *ngIf="formctrl.displayName.errors.minlength">{{ 'SIGNUP.error-name-minLength' | translate }}</div>
             </ng-container>
-
           </mat-error>
         </mat-form-field>
-
-
       </form>
 
       <!-- input surname -->
       <form>
-
         <mat-form-field class="form" appearance="outline">
           <mat-label>{{ 'SIGNUP.surname' | translate }} </mat-label>
           <input required matInput [formControl]="nachname" placeholder="{{ 'SIGNUP.surname' | translate }}"
             [(ngModel)]="user.nachname">
-
           <mat-error>
-
             <ng-container *ngIf="formctrl.nachname.errors && (nachname.dirty || nachname.touched)"
               class="invalid-feedback">
               <div *ngIf="formctrl.nachname.errors.required">{{ 'SIGNUP.error-surname-required' | translate }}</div>
               <div *ngIf="formctrl.nachname.errors.minlength">{{ 'SIGNUP.error-surname-minLength' | translate }}</div>
             </ng-container>
-
           </mat-error>
         </mat-form-field>
-
-
       </form>
 
       <!-- input email adress -->
       <form>
-
         <mat-form-field class="form" appearance="outline">
           <mat-label>{{ 'SIGNUP.email-adress' | translate }} </mat-label>
           <input required matInput [formControl]="email" placeholder="{{ 'SIGNUP.email-adress' | translate }}"
             [(ngModel)]="user.email">
-
           <mat-error>
-
             <ng-container *ngIf="formctrl.email.errors && (email.dirty || email.touched)" class="invalid-feedback">
               <div *ngIf="formctrl.email.errors.required">{{ 'SIGNUP.error-email-required' | translate }}</div>
               <div *ngIf="formctrl.email.errors.pattern">{{ 'SIGNUP.error-email-pattern' | translate }}</div>
-
             </ng-container>
-
           </mat-error>
         </mat-form-field>
-
-
       </form>
 
       <!-- input repeat email adress -->
       <form>
-
         <mat-form-field class="form" appearance="outline">
           <mat-label>{{ 'SIGNUP.repeat-email-adress' | translate }} </mat-label>
           <input required matInput [formControl]="email2" placeholder="{{ 'SIGNUP.email-adress' | translate }}"
             [(ngModel)]="user.email2">
-
           <mat-error>
-
             <ng-container *ngIf="formctrl.email2.errors && (email.dirty || email.touched)" class="invalid-feedback">
               <div *ngIf="formctrl.email2.errors.required">{{ 'SIGNUP.error-repeat-email-required' | translate }}</div>
               <div *ngIf="formctrl.email2.errors.confirmPasswordMatch">
                 {{ 'SIGNUP.error-repeat-email-pattern' | translate }}</div>
-
             </ng-container>
-
           </mat-error>
         </mat-form-field>
-
-
       </form>
 
       <!-- input password -->
       <form>
-
         <mat-form-field class="form" appearance="outline">
           <mat-label>{{ 'SIGNUP.password' | translate }}</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" type="password" required matInput [formControl]="password"
@@ -127,17 +97,12 @@
               <div *ngIf="formctrl.password.errors.required">{{ 'SIGNUP.error-password-required' | translate }}</div>
               <div *ngIf="formctrl.password.errors.minlength">{{ 'SIGNUP.error-password-minLength' | translate }}</div>
             </ng-container>
-
           </mat-error>
         </mat-form-field>
-
-
       </form>
-
 
       <!-- input repeat password -->
       <form>
-
         <mat-form-field class="form" appearance="outline">
           <mat-label>{{ 'SIGNUP.repeat-password' | translate }}</mat-label>
           <input matInput [type]="hidepw ? 'password' : 'text'" required type="password" matInput
@@ -146,44 +111,29 @@
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hidepw ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-
           <mat-error>
-
             <div *ngIf="formctrl.password2.errors && (password.dirty || password.touched)" class="invalid-feedback">
               <div *ngIf="formctrl.password2.errors.required">{{ 'SIGNUP.error-repeat-password-required' | translate }}
               </div>
               <div *ngIf="formctrl.password2.errors.confirmPasswordMatch">
                 {{ 'SIGNUP.error-repeat-password-minLength' | translate }}</div>
             </div>
-
           </mat-error>
         </mat-form-field>
-
       </form>
       <ion-grid>
-
         <ion-row>
-
           <ion-item style="margin-left: -15px;" lines="none" class="ion-padding-start">
-
             <ion-col size="2">
-
               <ion-checkbox formControlName="checkbox"></ion-checkbox>
-
             </ion-col>
-
             <ion-col>
-
               <p style="font-size: 12px;">{{ 'SIGNUP.privacy-1' | translate }} <a
                   (click)="privacy()">{{ 'SIGNUP.privacy-2' | translate }}</a> {{ 'SIGNUP.privacy-3' | translate }}</p>
-
             </ion-col>
-
           </ion-item>
-
         </ion-row>
       </ion-grid>
-
       <div class="ion-padding">
         <ion-tab-button tab="">
           <ion-button [disabled]="!registrationForm.valid" type="submit" (click)="createAccount()">
@@ -191,50 +141,32 @@
           </ion-button>
         </ion-tab-button>
       </div>
-
     </ion-list>
-
-
-
   </form>
-
-
   <div mode="md">
     <ion-grid>
       <ion-row>
-
         <ion-col>
           <ion-item-divider>
           </ion-item-divider>
         </ion-col>
-
         <ion-col>
           <p style="text-align: center; position: relative;top: 20px;">{{ 'SIGNUP.or' | translate }}</p>
         </ion-col>
-
         <ion-col>
           <ion-item-divider>
           </ion-item-divider>
         </ion-col>
-
       </ion-row>
-
     </ion-grid>
   </div>
-
   <div class="ion-text-center">
-
-
     <ion-button style="width: 80% !important;" color="light">
       <ion-icon src="assets/icon/facebook.svg" slot="start"></ion-icon>Facebook
     </ion-button>
-
-
     <ion-button style="width: 80% !important;" (click)="loginwithgp" color="light">
       <ion-icon src="assets/icon/google.svg" slot="start"></ion-icon>Google Plus
     </ion-button>
-
-
   </div>
 
 </ion-content>

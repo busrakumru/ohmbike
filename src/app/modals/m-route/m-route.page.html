@@ -1,30 +1,26 @@
-<!-- this modal page will just be shown in the ios version. It contains two inputs for the start and endplace of the route --> 
-
+<!-- this modal page will just be shown in the ios version. It contains two inputs for the start and endplace of the route -->
 <ion-header>
+
   <ion-toolbar>
     <ion-title>{{ 'ROUTE-MODAL.title' | translate }}</ion-title>
-
     <ion-buttons slot="start">
       <ion-button (click)="closeModal()">
         <ion-label class="action" color="danger">{{ 'ROUTE-MODAL.btn-cancel' | translate }}</ion-label>
       </ion-button>
     </ion-buttons>
-
     <ion-buttons slot="end">
       <ion-button (click)="start()">
         <ion-label class="action" color="primary">{{ 'ROUTE-MODAL.btn-start' | translate }}</ion-label>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
 
-    <ion-input class="input" placeholder="{{ 'ROUTE-MODAL.from' | translate }}"></ion-input>
-
-    <ion-input class="input" placeholder="{{ 'ROUTE-MODAL.to' | translate }}"></ion-input>
-    
-
+  <ion-input class="input" placeholder="{{ 'ROUTE-MODAL.from' | translate }}"></ion-input>
+  <ion-input class="input" placeholder="{{ 'ROUTE-MODAL.to' | translate }}"></ion-input>
   <ion-item-divider mode="md" style="margin-top: -15px;"></ion-item-divider>
   <div>
     <ion-grid>
@@ -39,10 +35,7 @@
           <ion-item lines="none">
             <mat-icon>call_split</mat-icon>
             <ion-lable>..km</ion-lable>
-
           </ion-item>
-
-
         </ion-col>
       </ion-row>
     </ion-grid>
