@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { LanguageService } from '../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-settings',
@@ -23,7 +22,6 @@ export class SettingsPage implements OnInit {
     public alertCtrl: AlertController,
     private languageService: LanguageService,
     private translate: TranslateService,
-    private iab: InAppBrowser,
     public toastController: ToastController
   ) { }
 

@@ -23,7 +23,7 @@ ion-toolbar{
   
 .avatar{
   background-color: #ffffff;
-  height: 220px;
+  height: 230px;
 }
   
 .avatar ion-avatar{
@@ -36,7 +36,7 @@ ion-toolbar{
 ion-segment{
   position: relative;
   top: 125px;
-  height: 10px;
+  height: 25%;
 }
   
 .ion-text-center{
@@ -63,8 +63,8 @@ ion-segment{
 }
   
 mat-expansion-panel{
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   width: 97%;
   position: relative;
   left: 50%;

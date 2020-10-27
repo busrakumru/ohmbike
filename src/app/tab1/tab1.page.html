@@ -175,7 +175,7 @@ The user can plan an event and save it in the same page. With a tap of the creat
           [monthviewDisplayEventTemplate]="template" (onRangeChanged)="onRangeChanged($event)"
           [queryMode]="calendar.queryMode">
         </calendar>
-        <ion-fab horizontal="end" class="hide-ios">
+        <ion-fab horizontal="end" class="hide-ios" vertical="bottom" style="bottom:80px;">
           <ion-fab-button size="small" color="primary" (click)="showHideForm()">
             <ion-icon name="add-outline"></ion-icon>
           </ion-fab-button>

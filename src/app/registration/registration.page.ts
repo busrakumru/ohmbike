@@ -5,7 +5,6 @@ import { ToastController, AlertController } from '@ionic/angular';
 import { FormBuilder } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import * as firebase from 'firebase';
 
@@ -42,7 +41,6 @@ export class RegistrationPage implements OnInit {
     public afAuth: AngularFireAuth,
     public alertCtrl: AlertController,
     public afs: AngularFirestoreModule,
-    private iab: InAppBrowser,
     public router: Router
   ) { }
 

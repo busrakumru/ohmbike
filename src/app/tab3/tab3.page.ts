@@ -59,7 +59,6 @@ export class Tab3Page {
               let navigationExtras: NavigationExtras = {
                 queryParams: {
                   special: JSON.stringify(barcodeData.text),
-                  specialImg: this.vehicleService.vehicles.image
                 }
               }; this.route.navigate(['product'], navigationExtras);
             }
